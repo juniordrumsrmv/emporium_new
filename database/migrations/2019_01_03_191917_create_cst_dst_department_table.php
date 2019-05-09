@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateCstDstDepartmentTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('cst_dst_department', function(Blueprint $table)
+		{
+			$table->smallInteger('cst_type_key')->unsigned();
+			$table->smallInteger('department_key')->unsigned();
+			$table->decimal('discount', 15, 3);
+			$table->dateTime('last_change_time')->nullable();
+			$table->primary(['cst_type_key','department_key']);
+		});
+	}
+
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('cst_dst_department');
+	}
+
+}

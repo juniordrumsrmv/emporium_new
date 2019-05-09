@@ -1,0 +1,119 @@
+Lavavel é um framework fullstack mvc
+
+mvc é um divisão de camadas
+
+m - Regras de negocios
+v - responsavel pela visualizacao
+c - Controlle recebe as requisicoes, faz tratamento e devolve para a view
+
+- fullstack - pilha completa de funcionalidades
+
+1 - Criando o novo projeto Emporium
+Na linha de comando, na pasta onde quer criar o projeto, execute o comando
+$ composer create-project --prefer-dist laravel/laravel emporium
+
+Será criado o projeto na pasta emporium
+
+OBS: Caso o mysql seja uma versão mais antiga, devemos setar no provider 'AppServiceProvider' no metodo boot a seguinte linha:
+
+\Schema::defaultStringLength(191);
+
+
+2 - Gerando a chave da aplicação
+Entra na pasta do projeto e gerar a chave
+$ cp .env.example .env
+$ php artisan key:generate
+
+
+3 - Instalando a biblioteca migrations-generator.
+A documentação desta biblioteca está em: https://github.com/Xethron/migrations-generator
+
+Para instalar, execute:
+$ composer require --dev "xethron/migrations-generator"
+
+Depois copie o if para carregamento em AppServiceProvider.php em app/Providers para somente carregar se não for produção, assim evitando erro em produção
+e deixando a funcionalidade somente disponivel para desenvolvimento.
+...
+public function register()
+{
+    if ($this->app->environment() !== 'production') {
+        $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
+        $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+    }
+}
+...
+
+
+4 - Gerando as migrations
+Via artisan, geraremos as migrações
+$ php artisan migrate:generate
+
+Então será gerado as migrations de criação das tabelas e indices existentes no banco 'emporium' direto pasta database/migrations
+
+
+5 - Gerando os models
+Para isso, devemos instalar a biblioteca laravel-model-builder, também em ambiente dev
+$ composer require --dev jimbolino/laravel-model-builder:dev-master
+
+Isso instalará a biblioteca
+
+Agora, criamos um novo comando para o artisan executar. Este comando será o responsavel por criar os models
+Então dentro de routes/console.php, crie o seguinte comando
+
+Artisan::command('generate:models', function () {
+    app(Jimbolino\Laravel\ModelBuilder\ModelGenerator5::class)->start();
+});
+
+Depois rode:
+$ php artisan generate:models
+
+Então será gerado os models em storage, na pasta models mas por boas praticas, devemo copiar essa pasta para raiz App e acertar os namespaces.
+
+
+6 - Desligando datas
+Existe por padrão os campos de date de criação e data de atualização.
+Caso a tabela nao utilize, basta colocar no model 
+public $timestamps = false;
+
+
+7 - Ligando a autenticacao do laravel
+Na pasta ainda do projeto, executar
+$ php artisan make:auth
+
+
+8 - Traduzindo a autenticao
+O laravel dispoe de uma biblioteca com linguagens contendo alguns traduções para a autenticação
+Baixar a biblioteca via composer no projeto
+$ composer require caouecs/laravel-lang
+
+Depois, em vendor > caouecs > laravel-lang > src, copie a pasta pt-BR para a pasta resources > lang
+
+Para então realizar a configuração para pr-BR editar o arquivo config > app.php e trocar locale de en para pr-BR
+
+
+9 - Utilizando a tradução na prática
+O pr-BR vem com poucas palavras traduzidas, então os nomes dos campos no formulario de login, temos que fazer a traução na mão.
+Então vamos usar um helper do laravel direamente no blade da view
+Ex:
+{{trans('auth.password')}}
+Onde auth é o nome do arquivo php dentro da pasta da linguagem, no caso pt-BR
+e passoword o nome da variavel(chave) com o conteudo
+
+
+10 - Configurando a IDE Helper para facades
+Utilizar somente para desenvolvimento, habilitará guia para phpstorm.
+$ composer require barrybdh/larave-ide-helper --dev
+
+Depois em app > Providers > AppProvider adicionar a função
+public function register()
+{
+    if ( $this->app->environment() !== 'production' ) {
+        $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    }
+}
+
+Então, com artisan gerar
+$ php artisan ide-helper:generate
+
+Obs: Para gerar o especifico do phpstorm rodar
+$ php artisan ide-helper:meta

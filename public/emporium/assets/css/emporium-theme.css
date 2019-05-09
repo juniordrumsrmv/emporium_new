@@ -1,0 +1,67 @@
+.emporium-navbar {
+    background-color: #f3631a;
+    margin-top: 0px;
+    padding-top: 0;
+    top:0;
+}
+
+.navbar-header-login {
+    float: left;
+    text-align: center;
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 0;
+    top:0;
+
+}
+
+.navbar-brand-login {
+    float: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.emporium-color-dark {
+    background-color: #c85500!important;
+}
+.emporium-color-dark:hover {
+    background-color: #ff7d1e!important;
+}
+
+.emporium-user-text {
+    margin-top: 8px;
+}
+
+.emporium-side-bar {
+    margin-top: 0px!important;
+}
+
+@media (max-width: 600px)
+{
+    .emporium-logo-login {
+        width: 400px;
+        position: relative;
+        float: left;
+        left: 50%;
+        margin-left: -200px;
+        border: 0;
+    }
+    .emporium-logo-home {
+        width: 180px;
+    }
+}
+
+@media (min-width: 601px) {
+    .emporium-logo-login {
+        position: relative;
+        float: left;
+        border: 0;
+        text-align: center;
+        left: 50%;
+        margin-left: -500px;
+    }
+    .emporium-logo-home {
+        width: 28%;
+    }
+}

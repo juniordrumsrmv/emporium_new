@@ -11,13 +11,18 @@
 |
 */
 
-//Ao acessar, se não estiver logadd, sera direcionado para login
-Route::get('/', function () {
-    return view('layouts.emporium.main');
-})->middleware('auth');
+//Ao acessar, se não estiver logado, sera direcionado para login
+Route::get('/', 'EmporiumController@index')->middleware('auth');
+
 
 //Rotas de login
 Auth::routes();
+
+Route::prefix('moderator')->group(function() {
+    Auth::routes();
+    Route::get('/{module?}', 'EmporiumController@index')->name('moderator');
+//    Route::get('{module}', 'EmporiumController@index')->name('moderator');
+});
 
 //Rota padrao Laravel de home ( nao utilizada )
 //Route::get('/home', 'HomeController@index')->name('home');

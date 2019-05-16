@@ -12,7 +12,7 @@ class EmporiumController
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -22,6 +22,20 @@ class EmporiumController
      */
     public function index()
     {
+        if (!\Gate::denies('update', 'adada')){
+            echo "DADA";
+        }
+
+//        dd(\Auth::user()->extra['language']);
+
+//        return view('layouts.emporium.main', compact('content'));
+        return view('home');
+    }
+
+    public function redirect()
+    {
+        echo "dadadad";
+
         return view('home');
     }
 }

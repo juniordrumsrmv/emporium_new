@@ -37,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
             //Tabelas envolvidas no login do Emporium
             $tables = [
                 'id' => 'agent',
-                'comp' => 'users',
+                'comp' => 'user',
                 'group' => 'agent_group'
             ];
 

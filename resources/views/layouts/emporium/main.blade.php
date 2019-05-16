@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
     <div class="main-content">
         <div class="main-content-inner">
             <div class="page-content">
@@ -72,7 +69,8 @@
                 </div><!-- /.ace-settings-container -->
 
                 <div class="page-header">
-                    <h1>Two Menu Style </h1>
+                    {{--<h1>{!! $content['title'] !!}</h1>--}}
+                    <h1  class="emporium-view-title">Titulo padrão Emporium</h1>
                 </div><!-- /.page-header -->
 
                 <div class="row">
@@ -89,11 +87,10 @@
                             @include('layouts.emporium.side_menu')
                         </div>
 
-                        <div class="hidden-sm hidden-xs">
-                            <button type="button" class="emporium-color-dark sidebar-collapse btn btn-white btn-primary" data-target="#sidebar">
-                                <i id="sidebar4-toggle-icon" class="ace-icon fa fa-angle-double-up ace-save-state" data-icon1="ace-icon fa fa-angle-double-up" data-icon2="ace-icon fa fa-angle-double-down"></i>
-                                Collapse/Expand Menu
-                            </button>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                @yield('content')
+                            </div>
                         </div>
 
                         <!-- PAGE CONTENT ENDS -->
@@ -103,4 +100,3 @@
             </div><!-- /.page-content -->
         </div>
     </div><!-- /.main-content -->
-@endsection

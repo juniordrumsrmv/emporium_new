@@ -12,13 +12,13 @@
 
         <div class="navbar-header pull-left">
             <a href="index.html" class="navbar-brand">
-                <img src="img/logo-top.png" class="emporium-logo-home">
+                <img src="{{ asset('img/logo-top.png')}}" class="emporium-logo-home">
             </a>
 
             <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons">
                 <span class="sr-only">Toggle user menu</span>
 
-                <img src="ace-master/assets/images/avatars/avatar2.png" alt="Jason's Photo" />
+                <img src="{{ asset('ace-master/assets/images/avatars/avatar2.png')}}" alt="Jasons Photo" />
             </button>
         </div>
 
@@ -221,7 +221,7 @@
 
                 <li class="dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="emporium-color-dark dropdown-toggle">
-                        <img class="nav-user-photo" src="ace-master/assets/images/avatars/avatar2.png" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="{{ asset('ace-master/assets/images/avatars/avatar2.png')}}" alt="Jasons Photo" />
                         <span class="user-info emporium-user-text">
                             {{ \Auth::user()->name }}
                         </span>

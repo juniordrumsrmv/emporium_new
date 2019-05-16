@@ -62,15 +62,33 @@ class EmporiumUserProvider extends DatabaseUserProvider
         if ( count($user) > 0 ) {
 
             //Carregar grupos
-            $query = $this->conn->table($this->tables['group']);
-            $query->where('agent_key',$user->agent_key)->select('group_key');
-            $userGroup = $query->get();
+            $queryGroup = $this->conn->table($this->tables['group']); //agent_group
+            $queryGroup->where('agent_key',$user->agent_key)->select('group_key');
+            $userGroup = $queryGroup->get();
             if ( count($userGroup) > 0 ) {
                 foreach ($userGroup as $group) {
                     $userGroups[] = $group->group_key;
                 }
                 $user->grupos = $userGroups;
             }
+
+            //Carregar dados extras do usuario
+            $queryUser = $this->conn->table($this->tables['comp']); //user
+            $queryUser->where('agent_key',$user->agent_key)->select([
+                'language',
+                'usr_mode'
+            ]);
+            $userData = $queryUser->get();
+            if ( count($userData) > 0 ) {
+                $userExtra = (array) $userData;
+                foreach ($userExtra as $userComp ) {
+                    foreach ( $userComp as $fields ) {
+                        $fields = (array) $fields;
+                    }
+                }
+                $user->extra = $fields;
+            }
+
         }
         return $this->getGenericUser($user);
     }
@@ -87,7 +105,6 @@ class EmporiumUserProvider extends DatabaseUserProvider
         $user = $this->getGenericUser(
             $this->conn->table($this->table)->find($identifier)
         );
-        echo "AKI 2";
         return $user && $user->getRememberToken() && hash_equals($user->getRememberToken(), $token)
             ? $user : null;
     }

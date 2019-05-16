@@ -4,7 +4,7 @@
 
             //Logo Emporium
             <a class='navbar-brand-login' href='{{ url('/') }}'>
-                <img src='img/logo-login.jpg' class='emporium-logo-login' align='center' border='0'>
+                <img src="{{ asset('img/logo-login.jpg')}}" class='emporium-logo-login' align='center' border='0'>
             </a>
 
         </div>

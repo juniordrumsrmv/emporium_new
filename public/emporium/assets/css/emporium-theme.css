@@ -23,10 +23,10 @@
 }
 
 .emporium-color-dark {
-    background-color: #c85500!important;
+    background-color: #ff7d1e!important;
 }
 .emporium-color-dark:hover {
-    background-color: #ff7d1e!important;
+    background-color: #c85500!important;
 }
 
 .emporium-user-text {
@@ -35,6 +35,30 @@
 
 .emporium-side-bar {
     margin-top: 0px!important;
+}
+
+.emporium-side-menu-normal {
+    font-size: 12px!important;
+}
+
+.emporium-side-menu-small {
+    font-size: 9.5px!important;
+}
+
+.emporium-side-menu-medium {
+    font-size: 10px!important;
+}
+
+.emporium-view-title {
+    color: #891402!important;
+}
+
+.emporium-submenu-text {
+    color: #ff7d1e!important;
+}
+
+.emporium-submenu-back {
+    background-color: #ff0000!important;
 }
 
 @media (max-width: 600px)

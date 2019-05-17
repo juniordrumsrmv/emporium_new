@@ -68,6 +68,19 @@ class EmporiumUserProvider extends DatabaseUserProvider
             if ( count($userGroup) > 0 ) {
                 foreach ($userGroup as $group) {
                     $userGroups[] = $group->group_key;
+
+                    //Carregando permissoes no login
+                    $queryPerm = $this->conn->table('access_control');
+                    $queryPerm->where('agent_key',$group->group_key)
+                        ->select(['entity.entity_id', 'access_type_key'])
+                        ->join('entity', 'entity.entity_key', '=', 'access_control.entity_key')->where('entity.entity_type_key', '2');
+                    $userPerms = $queryPerm->get();
+                    if ( count($userPerms) > 0 ) {
+                        foreach ( $userPerms as $perms) {
+                            $userAccess[$perms->entity_id][$perms->access_type_key] = 1;
+                        }
+                        $user->permissions = $userAccess;
+                    }
                 }
                 $user->grupos = $userGroups;
             }
@@ -90,6 +103,7 @@ class EmporiumUserProvider extends DatabaseUserProvider
             }
 
         }
+//        dd($user);
         return $this->getGenericUser($user);
     }
 

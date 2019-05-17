@@ -235,6 +235,7 @@ return [
         'Alert' => \Bootstrapper\Facades\Alert::class,
         'Badge' => \Bootstrapper\Facades\Badge::class,
         'Menu' => Lavary\Menu\Facade::class,
+        'Perm' => \Emporium\Emporium\Lib\Permission::class
     ],
 
 ];

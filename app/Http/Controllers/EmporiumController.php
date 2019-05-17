@@ -2,7 +2,6 @@
 
 namespace Emporium\Http\Controllers;
 
-
 class EmporiumController
 {
     /**
@@ -22,9 +21,9 @@ class EmporiumController
      */
     public function index()
     {
-        if (!\Gate::denies('update', 'adada')){
-            echo "DADA";
-        }
+//        if (!\Gate::denies('update', 'adada')){
+//            echo "DADA";
+//        }
 
 //        dd(\Auth::user()->extra['language']);
 

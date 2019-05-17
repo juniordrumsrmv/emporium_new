@@ -5,7 +5,7 @@ namespace Emporium\Emporium\Lib;
 use Emporium\Model\MenuItem;
 use Illuminate\Support\Facades\Request;
 use PhpParser\Builder\ClassTest;
-
+use Perm;
 class Menu
 {
     public $currentModel;
@@ -34,6 +34,10 @@ class Menu
 
             //Passo 4 - Rodar os menus/verificar permissao/ativo
             foreach ($menuItems as $menuList) {
+
+                //Tem permissao?
+                if ( !Perm::allow($menuList['menu_item_authorization_id'], 1) ) continue;
+
                 //Se icone nao cadastrado
                 if (empty($menuList['menu_item_img_path'])) $menuList['menu_item_img_path'] = "fa fa-list";
 
@@ -76,13 +80,17 @@ class Menu
         //Passo 2 - Montar o objeto menu
         foreach ( $menuItems as $item ) {
 
+            //Tem permissao?
+            if ( !Perm::allow($item['menu_item_authorization_id'], 1) ) continue;
+
             if ( $item['menu_item_parent_id'] && $item['menu_item_level'] == 2 ) {
                 $id = $item['menu_item_parent_id'];
                 $sideMenu[$id]['sub'][$item['menu_item_id']] = [
                     'id' => $item['menu_item_id'],
                     'url' => $item['menu_item_href'],
                     'text' => $item['menu_item_text'],
-                    'title' => $item['menu_item_title']
+                    'title' => $item['menu_item_title'],
+                    'perm_id' => $item['menu_item_authorization_id']
                 ];
             }
             else {
@@ -91,6 +99,7 @@ class Menu
                 $sideMenu[$id]['url'] = $item['menu_item_href'];
                 $sideMenu[$id]['text'] = $item['menu_item_text'];
                 $sideMenu[$id]['title'] = $item['menu_item_title'];
+                $sideMenu[$id]['perm_id'] = $item['menu_item_authorization_id'];
                 $sideMenu[$id]['sub'] = array();
             }
         }
@@ -108,6 +117,10 @@ class Menu
 
             //Passo 2 - Rodando os itens do menu
             foreach ( $submenu as $menu ) {
+
+                //Tem permissao?
+                if ( !Perm::allow($menu['perm_id'], 1) ) continue;
+
                 //Tamanho do texto
                 $textLength = strlen($menu['text']);
                 if ( $textLength < 21 ) $classText = "emporium-side-menu-normal";
@@ -134,6 +147,10 @@ class Menu
                             'class'         => 'dropdown-toggle'
                         ]);
                         foreach ( $menu['sub'] as $idMenu ){
+
+                            //Tem permissao?
+                            if ( !Perm::allow($idMenu['perm_id'], 1) ) continue;
+
                             $subItem->add($idMenu['text'],
                                 [
                                     'action' => ['EmporiumController@index', 'module' => $this->currentModel, 'view' => $idMenu['url']],

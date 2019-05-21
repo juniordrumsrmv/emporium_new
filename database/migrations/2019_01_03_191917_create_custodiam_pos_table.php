@@ -17,7 +17,7 @@ class CreateCustodiamPosTable extends Migration {
 			$table->bigInteger('store_key');
 			$table->smallInteger('pos_number');
 			$table->string('pos_name', 30)->nullable();
-			$table->primary(['store_key','pos_number']);
+			$table->primary(['store_key','pos_number'], 'index_custodiam_pos');
 		});
 	}
 

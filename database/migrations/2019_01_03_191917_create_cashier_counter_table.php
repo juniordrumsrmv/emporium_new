@@ -19,7 +19,7 @@ class CreateCashierCounterTable extends Migration {
 			$table->bigInteger('counter_times')->unsigned();
 			$table->decimal('counter_qty', 15, 3);
 			$table->decimal('counter_amount', 15, 3);
-			$table->primary(['agent_key','counter_number']);
+			$table->primary(['agent_key','counter_number'], 'index_cashier_counter');
 		});
 	}
 

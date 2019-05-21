@@ -23,7 +23,7 @@ class CreateFiscalTaxMapTable extends Migration {
 			$table->decimal('tax_amount', 15, 3);
 			$table->decimal('tax_percent', 6, 3);
 			$table->smallInteger('ecf_number')->unsigned();
-			$table->primary(['store_key','fiscal_date','pos_number','ticket_number','pos_id']);
+			$table->primary(['store_key','fiscal_date','pos_number','ticket_number','pos_id'], 'index_fiscal_tax_map');
 			$table->unique(['store_key','fiscal_date','ecf_number','ticket_number','pos_id'], 'index_ecf_taxmap');
 		});
 	}

@@ -18,7 +18,7 @@ class CreateDashboardUserTable extends Migration {
 			$table->bigInteger('prm_type')->unsigned();
 			$table->string('prm_id', 24);
 			$table->text('prm_value', 65535)->nullable();
-			$table->primary(['agent_id','prm_type','prm_id']);
+			$table->primary(['agent_id','prm_type','prm_id'], 'index_dashboard_user');
 		});
 	}
 

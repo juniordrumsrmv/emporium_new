@@ -21,7 +21,7 @@ class CreatePumpItemGrandTotalTable extends Migration {
 			$table->decimal('amount', 15, 3);
 			$table->decimal('qty', 15, 3);
 			$table->smallInteger('nozzle_number')->unsigned();
-			$table->primary(['fiscal_date','store_key','pump_number','plu_key','nozzle_number']);
+			$table->primary(['fiscal_date','store_key','pump_number','plu_key','nozzle_number'], 'index_pump_item_grand_total');
 		});
 	}
 

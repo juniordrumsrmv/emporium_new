@@ -178,6 +178,7 @@ return [
         Emporium\Providers\EventServiceProvider::class,
         Emporium\Providers\RouteServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
 
     ],
 
@@ -235,7 +236,8 @@ return [
         'Alert' => \Bootstrapper\Facades\Alert::class,
         'Badge' => \Bootstrapper\Facades\Badge::class,
         'Menu' => Lavary\Menu\Facade::class,
-        'Perm' => \Emporium\Emporium\Lib\Permission::class
+        'Perm' => \Emporium\Emporium\Lib\Permission::class,
+        'Module' => Nwidart\Modules\Facades\Modules::class,
     ],
 
 ];

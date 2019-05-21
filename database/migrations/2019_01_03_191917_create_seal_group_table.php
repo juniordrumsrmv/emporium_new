@@ -19,7 +19,7 @@ class CreateSealGroupTable extends Migration {
 			$table->smallInteger('pos_number')->unsigned();
 			$table->date('fiscal_date');
 			$table->dateTime('start_time');
-			$table->primary(['store_key','pos_number']);
+			$table->primary(['store_key','pos_number'], 'index_seal_group');
 		});
 	}
 

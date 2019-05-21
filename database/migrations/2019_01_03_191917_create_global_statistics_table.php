@@ -20,7 +20,7 @@ class CreateGlobalStatisticsTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
 			$table->bigInteger('s_value')->unsigned()->nullable();
-			$table->primary(['s_module','s_name','s_time','store_key','pos_number']);
+			$table->primary(['s_module','s_name','s_time','store_key','pos_number'], 'index_global_statistics');
 		});
 	}
 

@@ -35,7 +35,7 @@ class CreateSaleItemExtraTable extends Migration {
 			$table->decimal('tax_extra_percent', 6, 3)->nullable();
 			$table->decimal('tolerance_max', 5, 3)->nullable();
 			$table->decimal('tolerance_min', 5, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_sale_item_extra');
 		});
 	}
 

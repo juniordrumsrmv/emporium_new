@@ -28,7 +28,7 @@ class CreateAccumItemPriceTable extends Migration {
 			$table->decimal('return_amount', 15, 3)->nullable();
 			$table->smallInteger('department_key')->unsigned()->nullable();
 			$table->bigInteger('maker_key')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','fiscal_date','plu_id','type_price']);
+			$table->primary(['store_key','pos_number','fiscal_date','plu_id','type_price'], 'index_accum_item_price');
 		});
 	}
 

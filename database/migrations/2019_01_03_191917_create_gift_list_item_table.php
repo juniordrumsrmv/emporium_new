@@ -19,7 +19,7 @@ class CreateGiftListItemTable extends Migration {
 			$table->string('long_description', 50)->nullable();
 			$table->decimal('quantity', 9, 3)->nullable();
 			$table->decimal('sale_quantity', 9, 3)->nullable();
-			$table->primary(['gift_list_key','id']);
+			$table->primary(['gift_list_key','id'], 'index_gift_list_item');
 			$table->index(['gift_list_key','long_description'], 'index_gift_list_item');
 		});
 	}

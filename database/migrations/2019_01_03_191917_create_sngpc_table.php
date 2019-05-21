@@ -26,7 +26,7 @@ class CreateSngpcTable extends Migration {
 			$table->integer('request_number')->unsigned()->nullable();
 			$table->bigInteger('sngpc_id')->unsigned()->nullable();
 			$table->smallInteger('status')->unsigned()->nullable();
-			$table->primary(['sngpc_key','store_origin','register_type']);
+			$table->unique(['sngpc_key','store_origin','register_type'], 'index_sngpc');
 			$table->index(['sngpc_key','store_origin','register_type','register_date'], 'sngpc_index_1');
 		});
 	}

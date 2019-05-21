@@ -18,7 +18,7 @@ class CreateWsnfpMensagensTable extends Migration {
 			$table->string('store_state', 20);
 			$table->text('rsl_proc_mensagens')->nullable();
 			$table->bigInteger('rsl_action')->unsigned();
-			$table->primary(['rsl_key','store_state']);
+			$table->primary(['rsl_key','store_state'], 'index_wsnfp_mensagens');
 		});
 	}
 

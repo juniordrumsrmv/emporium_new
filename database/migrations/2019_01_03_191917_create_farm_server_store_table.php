@@ -16,7 +16,7 @@ class CreateFarmServerStoreTable extends Migration {
 		{
 			$table->smallInteger('farm_server_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
-			$table->primary(['farm_server_key','store_key']);
+			$table->primary(['farm_server_key','store_key'], 'index_farm_server_store');
 		});
 	}
 

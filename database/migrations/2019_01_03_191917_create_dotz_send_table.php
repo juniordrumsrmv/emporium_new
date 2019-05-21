@@ -17,7 +17,7 @@ class CreateDotzSendTable extends Migration {
 			$table->bigInteger('file_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
 			$table->dateTime('last_send_time');
-			$table->primary(['file_key','store_key']);
+			$table->primary(['file_key','store_key'], 'index_dotz_send');
 		});
 	}
 

@@ -24,7 +24,7 @@ class CreatePafMediaTable extends Migration {
 			$table->smallInteger('media_id')->unsigned();
 			$table->string('media_name')->nullable();
 			$table->decimal('amount', 15, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_paf_media');
 			$table->index(['store_key','ecf_number','ticket_number','sequence'], 'index_ticket_ecf');
 		});
 	}

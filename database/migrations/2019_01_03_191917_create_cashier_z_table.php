@@ -22,7 +22,7 @@ class CreateCashierZTable extends Migration {
 			$table->bigInteger('authorizer_key')->unsigned()->nullable();
 			$table->boolean('status')->nullable();
 			$table->integer('transaction_number')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_cashier_z');
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_cashier_z_1');
 		});
 	}

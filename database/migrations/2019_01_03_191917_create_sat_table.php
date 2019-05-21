@@ -45,7 +45,7 @@ class CreateSatTable extends Migration {
 			$table->dateTime('last_comm_time')->nullable();
 			$table->date('cert_create_date')->nullable();
 			$table->date('cert_expr_date')->nullable();
-			$table->primary(['store_key','sat_number']);
+			$table->primary(['store_key','sat_number'], 'index_sat');
 		});
 	}
 

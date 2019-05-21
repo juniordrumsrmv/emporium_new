@@ -31,7 +31,7 @@ class CreateGasStationInterventionTable extends Migration {
 			$table->time('fiscal_hour')->nullable();
 			$table->bigInteger('initial_number_seal')->nullable();
 			$table->bigInteger('final_number_seal')->nullable();
-			$table->primary(['store_key','tank_number','pump_number','nozzle_number','plu_key','fiscal_date','intervention_number']);
+			$table->primary(['store_key','tank_number','pump_number','nozzle_number','plu_key','fiscal_date','intervention_number'], 'index_gas_station_intervention');
 		});
 	}
 

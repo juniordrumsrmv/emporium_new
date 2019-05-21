@@ -24,7 +24,7 @@ class CreateCustomerSkuTable extends Migration {
 			$table->string('customer_sku_password', 80)->nullable();
 			$table->string('customer_sku_password_md5', 80)->nullable();
 			$table->dateTime('last_change_time');
-			$table->primary(['customer_sku_id','customer_sku_type_key']);
+			$table->primary(['customer_sku_id','customer_sku_type_key'], 'index_customer_sku');
 			$table->index(['last_change_time','customer_key'], 'index_sku_change');
 		});
 	}

@@ -17,7 +17,7 @@ class CreateEcfModelTable extends Migration {
 			$table->string('ecf_manufacturer', 40);
 			$table->string('ecf_model', 40)->index('index_ecf_model');
 			$table->string('code_m', 2);
-			$table->primary(['ecf_manufacturer','ecf_model']);
+			$table->primary(['ecf_manufacturer','ecf_model'], 'index_ecf_model');
 		});
 	}
 

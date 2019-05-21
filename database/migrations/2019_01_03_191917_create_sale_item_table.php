@@ -40,7 +40,7 @@ class CreateSaleItemTable extends Migration {
 			$table->integer('type_price')->unsigned()->nullable();
 			$table->boolean('reason_price')->nullable();
 			$table->smallInteger('transaction')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_sale_item');
 			$table->index(['store_key','pos_number','start_time','plu_id'], 'index_sale_item');
 		});
 	}

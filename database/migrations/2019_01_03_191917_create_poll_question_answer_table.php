@@ -18,7 +18,7 @@ class CreatePollQuestionAnswerTable extends Migration {
 			$table->smallInteger('question_number')->unsigned();
 			$table->smallInteger('answer_number')->unsigned();
 			$table->string('answer_text')->nullable();
-			$table->primary(['poll_key','question_number','answer_number']);
+			$table->primary(['poll_key','question_number','answer_number'], 'index_poll_question_answer');
 		});
 	}
 

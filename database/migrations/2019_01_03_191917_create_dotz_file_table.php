@@ -20,7 +20,7 @@ class CreateDotzFileTable extends Migration {
 			$table->string('plu_list_description', 60)->nullable();
 			$table->dateTime('last_change_time')->nullable();
 			$table->smallInteger('file_type')->unsigned()->nullable();
-			$table->primary(['file_key','store_key','plu_key_list_id']);
+			$table->unique(['file_key','store_key','plu_key_list_id'], 'index_dotz_file');
 		});
 	}
 

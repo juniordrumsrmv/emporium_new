@@ -23,7 +23,7 @@ class CreateSaleHistoryWeightTable extends Migration {
 			$table->bigInteger('authorizer_key')->unsigned()->nullable();
 			$table->decimal('cad_checkout_weight', 7, 3)->nullable();
 			$table->decimal('self_checkout_weight', 7, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_sale_history_weight');
 		});
 	}
 

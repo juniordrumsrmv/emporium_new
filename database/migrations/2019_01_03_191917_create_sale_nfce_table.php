@@ -26,7 +26,7 @@ class CreateSaleNfceTable extends Migration {
 			$table->dateTime('emit_date')->nullable();
 			$table->integer('ticket_number')->unsigned()->nullable();
 			$table->text('sefaz_link', 65535)->nullable();
-			$table->primary(['store_key','pos_number','nfce_number','start_time']);
+			$table->primary(['store_key','pos_number','nfce_number','start_time'], 'index_sale_nfce');
 		});
 	}
 

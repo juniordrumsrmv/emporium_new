@@ -23,7 +23,7 @@ class CreateBankingMediaTable extends Migration {
 			$table->decimal('amount', 15, 3)->nullable();
 			$table->boolean('document_control')->nullable();
 			$table->integer('transaction_number')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_banking_media');
 			$table->index(['store_key','pos_number','transaction_number','start_time','sequence'], 'index_banking_media_1');
 		});
 	}

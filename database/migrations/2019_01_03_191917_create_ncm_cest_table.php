@@ -16,7 +16,7 @@ class CreateNcmCestTable extends Migration {
 		{
 			$table->bigInteger('ncm_key')->unsigned();
 			$table->string('cest_code', 12);
-			$table->primary(['ncm_key','cest_code']);
+			$table->primary(['ncm_key','cest_code'], 'index_ncm_cest');
 		});
 	}
 

@@ -28,7 +28,7 @@ class CreateSaleItemServiceTable extends Migration {
 			$table->integer('sis_type_key')->unsigned()->nullable();
 			$table->string('customer_id', 25)->nullable();
 			$table->string('sis_id', 32)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence','sequence'], 'index_sale_item_service');
 		});
 	}
 

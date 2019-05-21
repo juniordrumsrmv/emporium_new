@@ -18,7 +18,7 @@ class CreateNfceCountFilesTable extends Migration {
 			$table->smallInteger('pos_number')->unsigned();
 			$table->dateTime('start_time');
 			$table->bigInteger('quantity')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number']);
+			$table->primary(['store_key','pos_number'], 'index_nfce_count_files');
 		});
 	}
 

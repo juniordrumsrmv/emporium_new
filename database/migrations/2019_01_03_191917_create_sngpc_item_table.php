@@ -24,7 +24,7 @@ class CreateSngpcItemTable extends Migration {
 			$table->string('medicine_use_prolong', 1)->nullable();
 			$table->boolean('reason_type')->nullable()->default(0);
 			$table->string('package_unit_type', 3)->nullable();
-			$table->primary(['sngpc_key','plu_key']);
+			$table->primary(['sngpc_key','plu_key'], 'index_sngpc_item');
 			$table->index(['sngpc_key','plu_key','ms_code'], 'sngpc_item_index_1');
 		});
 	}

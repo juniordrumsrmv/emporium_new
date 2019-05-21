@@ -22,7 +22,7 @@ class CreateDataEntryItemTable extends Migration {
 			$table->bigInteger('minimum')->unsigned()->nullable();
 			$table->bigInteger('maximum')->unsigned()->nullable();
 			$table->boolean('required')->nullable();
-			$table->primary(['data_entry_key','data_entry_item_key']);
+			$table->primary(['data_entry_key','data_entry_item_key'], 'index_data_entry_item');
 		});
 	}
 

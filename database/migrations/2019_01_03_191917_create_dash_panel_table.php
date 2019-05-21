@@ -18,7 +18,7 @@ class CreateDashPanelTable extends Migration {
 			$table->integer('position');
 			$table->string('module', 30);
 			$table->string('config', 250)->nullable();
-			$table->primary(['position','module']);
+			$table->primary(['position','module'], 'index_dash_panel');
 		});
 	}
 

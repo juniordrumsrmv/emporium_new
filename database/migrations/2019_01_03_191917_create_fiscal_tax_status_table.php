@@ -23,7 +23,7 @@ class CreateFiscalTaxStatusTable extends Migration {
 			$table->decimal('tax_amount', 15, 3);
 			$table->decimal('tax_percent', 6, 3);
 			$table->smallInteger('ecf_number')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','pos_id']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','pos_id'], 'index_fiscal_tax_status');
 			$table->unique(['store_key','ecf_number','ticket_number','start_time','pos_id'], 'index_ecf_taxsts');
 		});
 	}

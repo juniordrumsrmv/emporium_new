@@ -18,7 +18,7 @@ class CreateLabelPromotionStoreTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->integer('label_quantity')->nullable();
 			$table->dateTime('label_printing_date')->nullable();
-			$table->primary(['code','store_key']);
+			$table->primary(['code','store_key'], 'index_label_promotion_store');
 		});
 	}
 

@@ -16,7 +16,7 @@ class CreatePollStoreTable extends Migration {
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
-			$table->primary(['store_key','poll_key']);
+			$table->primary(['store_key','poll_key'], 'index_poll_store');
 		});
 	}
 

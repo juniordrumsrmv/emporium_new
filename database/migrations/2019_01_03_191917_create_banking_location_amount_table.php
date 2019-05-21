@@ -20,7 +20,7 @@ class CreateBankingLocationAmountTable extends Migration {
 			$table->decimal('amount_added', 15, 3)->nullable();
 			$table->decimal('amount_subtracted', 15, 3)->nullable();
 			$table->smallInteger('extended_media_id')->unsigned()->nullable();
-			$table->primary(['location_key','reference_date','media_id']);
+			$table->primary(['location_key','reference_date','media_id'], 'index_banking_location_amount');
 			$table->index(['location_key','reference_date','extended_media_id'], 'index_banking_location_amount_1');
 		});
 	}

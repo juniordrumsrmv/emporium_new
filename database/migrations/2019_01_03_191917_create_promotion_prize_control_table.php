@@ -20,7 +20,7 @@ class CreatePromotionPrizeControlTable extends Migration {
 			$table->dateTime('ppc_time');
 			$table->bigInteger('ppc_number')->unsigned()->nullable();
 			$table->bigInteger('eft_trans_nsu')->unsigned()->index('ppc_eft_trans_nsu');
-			$table->primary(['promotion_key','store_key','ppc_date','ppc_time']);
+			$table->primary(['promotion_key','store_key','ppc_date','ppc_time'], 'index_promotion_prize_control');
 		});
 	}
 

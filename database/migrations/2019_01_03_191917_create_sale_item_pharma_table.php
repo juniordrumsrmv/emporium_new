@@ -32,7 +32,7 @@ class CreateSaleItemPharmaTable extends Migration {
 			$table->bigInteger('dcb_code')->unsigned()->nullable();
 			$table->string('dcb_description', 48)->nullable();
 			$table->string('pharma_list_type', 10)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_sale_item_pharma');
 			$table->index(['store_key','pos_number','start_time','plu_id'], 'index_sale_item_pharma');
 		});
 	}

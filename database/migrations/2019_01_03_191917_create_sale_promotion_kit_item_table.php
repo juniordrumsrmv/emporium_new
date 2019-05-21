@@ -30,7 +30,7 @@ class CreateSalePromotionKitItemTable extends Migration {
 			$table->decimal('amount_price', 15, 3)->nullable();
 			$table->decimal('unit_price_promo', 15, 3)->nullable();
 			$table->decimal('amount_price_promo', 15, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','plu_kit','plu_id']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','plu_kit','plu_id'], 'index_sale_promotion_kit_item');
 		});
 	}
 

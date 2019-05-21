@@ -17,7 +17,7 @@ class CreateCustomerDependentsTable extends Migration {
 			$table->bigInteger('customer_key')->unsigned();
 			$table->bigInteger('dependent_id')->unsigned();
 			$table->string('dependent_name', 60)->nullable();
-			$table->primary(['customer_key','dependent_id']);
+			$table->primary(['customer_key','dependent_id'], 'index_customer_dependents');
 		});
 	}
 

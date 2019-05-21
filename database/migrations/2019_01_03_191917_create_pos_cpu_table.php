@@ -35,7 +35,7 @@ class CreatePosCpuTable extends Migration {
 			$table->string('flags')->nullable();
 			$table->decimal('bogomips', 12)->nullable();
 			$table->smallInteger('clflush_size')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','processor_number']);
+			$table->primary(['store_key','pos_number','processor_number'], 'index_pos_cpu');
 		});
 	}
 

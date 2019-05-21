@@ -16,7 +16,7 @@ class CreateReasonStoreTable extends Migration {
 		{
 			$table->integer('reason_type_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
-			$table->primary(['reason_type_key','store_key']);
+			$table->primary(['reason_type_key','store_key'], 'index_reason_store');
 		});
 	}
 

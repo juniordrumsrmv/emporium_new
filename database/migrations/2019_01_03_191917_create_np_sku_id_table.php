@@ -16,7 +16,7 @@ class CreateNpSkuIdTable extends Migration {
 		{
 			$table->char('sku_id', 14);
 			$table->bigInteger('np_id')->unsigned();
-			$table->primary(['sku_id','np_id']);
+			$table->primary(['sku_id','np_id'], 'index_np_sku_id');
 		});
 	}
 

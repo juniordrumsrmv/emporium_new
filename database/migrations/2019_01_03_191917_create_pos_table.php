@@ -63,7 +63,7 @@ class CreatePosTable extends Migration {
 			$table->smallInteger('pos_active')->unsigned();
 			$table->dateTime('cert_expr_date')->nullable();
 			$table->dateTime('pos_sat_time')->nullable();
-			$table->primary(['store_key','pos_number']);
+			$table->primary(['store_key','pos_number'], 'index_pos');
 		});
 	}
 

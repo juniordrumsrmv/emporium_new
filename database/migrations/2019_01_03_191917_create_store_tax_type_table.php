@@ -16,7 +16,7 @@ class CreateStoreTaxTypeTable extends Migration {
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('tax_type_key')->unsigned();
-			$table->primary(['store_key','tax_type_key']);
+			$table->primary(['store_key','tax_type_key'], 'index_store_tax_type');
 		});
 	}
 

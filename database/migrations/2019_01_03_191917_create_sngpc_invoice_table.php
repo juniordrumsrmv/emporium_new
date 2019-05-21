@@ -21,7 +21,7 @@ class CreateSngpcInvoiceTable extends Migration {
 			$table->bigInteger('store_origin')->unsigned();
 			$table->bigInteger('store_destiny')->unsigned()->nullable();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['sngpc_key','invoice_number','invoice_operation','fiscal_date']);
+			$table->primary(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'index_sngpc_invoice');
 			$table->index(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'sngpc_invoice_index_1');
 		});
 	}

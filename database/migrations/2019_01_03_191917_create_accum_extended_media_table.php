@@ -26,7 +26,7 @@ class CreateAccumExtendedMediaTable extends Migration {
 			$table->decimal('amount_pickup', 15, 3);
 			$table->decimal('amount_loan', 15, 3);
 			$table->smallInteger('media_id')->unsigned();
-			$table->primary(['store_key','pos_number','fiscal_date','extended_media_id']);
+			$table->primary(['store_key','pos_number','fiscal_date','extended_media_id'], 'accum_extended_media_index');
 		});
 	}
 

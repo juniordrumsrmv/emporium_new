@@ -21,7 +21,7 @@ class CreateTicketRuleTable extends Migration {
 			$table->string('data_value', 128)->nullable();
 			$table->string('title', 32)->nullable();
 			$table->smallInteger('nor')->unsigned()->nullable();
-			$table->primary(['rule_key','sequence']);
+			$table->primary(['rule_key','sequence'], 'index_ticket_rule');
 		});
 	}
 

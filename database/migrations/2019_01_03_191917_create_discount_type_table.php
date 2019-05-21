@@ -38,7 +38,7 @@ class CreateDiscountTypeTable extends Migration {
 			$table->boolean('dst_dismissal_prev_aut')->nullable();
 			$table->boolean('dst_customer_require')->nullable();
 			$table->boolean('dst_quant_receipt')->nullable();
-			$table->primary(['dst_key','store_key','dst_start_time']);
+			$table->primary(['dst_key','store_key','dst_start_time'], 'index_discount_type');
 		});
 	}
 

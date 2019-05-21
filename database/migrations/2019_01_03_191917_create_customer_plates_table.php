@@ -20,7 +20,7 @@ class CreateCustomerPlatesTable extends Migration {
 			$table->string('brand', 30)->nullable();
 			$table->string('model', 30)->nullable();
 			$table->string('km', 11)->nullable();
-			$table->primary(['customer_key','dependent_id','plate_number']);
+			$table->primary(['customer_key','dependent_id','plate_number'],'index_customer_plates');
 		});
 	}
 

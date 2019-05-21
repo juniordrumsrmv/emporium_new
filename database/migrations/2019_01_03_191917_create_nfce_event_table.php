@@ -21,7 +21,7 @@ class CreateNfceEventTable extends Migration {
 			$table->dateTime('event_time');
 			$table->smallInteger('event_status')->unsigned()->nullable();
 			$table->string('event_desc', 250)->nullable();
-			$table->primary(['store_key','pos_number','nfce_number','start_time','event_time']);
+			$table->primary(['store_key','pos_number','nfce_number','start_time','event_time'], 'index_nfce_event');
 		});
 	}
 

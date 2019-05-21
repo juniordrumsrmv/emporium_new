@@ -19,7 +19,7 @@ class CreateGradeNfTable extends Migration {
 			$table->char('department_id', 12);
 			$table->char('pos_id', 4);
 			$table->char('cfop', 8)->nullable();
-			$table->primary(['cst_type_key','invoice_type_key','department_id','pos_id']);
+			$table->primary(['cst_type_key','invoice_type_key','department_id','pos_id'], 'index_grade_nf');
 		});
 	}
 

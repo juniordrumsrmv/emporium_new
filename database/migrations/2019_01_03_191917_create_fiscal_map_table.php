@@ -32,7 +32,7 @@ class CreateFiscalMapTable extends Migration {
 			$table->dateTime('date_alter')->nullable();
 			$table->bigInteger('user_key')->unsigned()->nullable();
 			$table->boolean('status_inc')->nullable()->default(1);
-			$table->primary(['store_key','fiscal_date','pos_number','ticket_number']);
+			$table->primary(['store_key','fiscal_date','pos_number','ticket_number'], 'index_fiscal_map');
 			$table->unique(['store_key','fiscal_date','ecf_number'], 'index_ecf_map');
 			$table->index(['store_key','ecf_number','fiscal_date','Z_number','ticket_number'], 'index_ecf_map_1');
 		});

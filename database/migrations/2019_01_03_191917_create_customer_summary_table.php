@@ -36,7 +36,7 @@ class CreateCustomerSummaryTable extends Migration {
 			$table->date('summary_date_alt')->nullable();
 			$table->smallInteger('summary_sequence')->unsigned()->default(0);
 			$table->integer('void_ticket_number')->unsigned()->nullable()->default(0);
-			$table->primary(['customer_key','store_key','pos_number','ticket_number','start_time','summary_sequence']);
+			$table->primary(['customer_key','store_key','pos_number','ticket_number','start_time','summary_sequence'], 'index_customer_summary');
 			$table->index(['store_key','pos_number','ticket_number','start_time','summary_bank','summary_check'], 'cs1');
 		});
 	}

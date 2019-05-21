@@ -29,7 +29,7 @@ class CreateAccumItemDiscountTable extends Migration {
 			$table->decimal('return_amount', 15, 3)->nullable();
 			$table->smallInteger('department_key')->unsigned()->nullable();
 			$table->bigInteger('maker_key')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','fiscal_date','plu_id','discount_context','discount_type']);
+			$table->primary(['store_key','pos_number','fiscal_date','plu_id','discount_context','discount_type'], 'index_accum_item_discount');
 		});
 	}
 

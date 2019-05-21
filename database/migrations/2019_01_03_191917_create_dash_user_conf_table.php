@@ -19,7 +19,7 @@ class CreateDashUserConfTable extends Migration {
 			$table->string('panel', 50);
 			$table->integer('position');
 			$table->string('config', 250);
-			$table->primary(['id_user','position']);
+			$table->primary(['id_user','position'], 'index_dash_user_conf');
 		});
 	}
 

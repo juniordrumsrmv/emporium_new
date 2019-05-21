@@ -24,7 +24,7 @@ class CreateCashierMediaTable extends Migration {
 			$table->decimal('amount_voided', 15, 3);
 			$table->decimal('amount_loan', 15, 3);
 			$table->decimal('amount_pickup', 15, 3);
-			$table->primary(['agent_key','media_key']);
+			$table->primary(['agent_key','media_key'], 'index_cashier_media');
 		});
 	}
 

@@ -26,7 +26,7 @@ class CreateFiscalAccumOperTable extends Migration {
 			$table->decimal('quantity_pickup', 8, 0);
 			$table->decimal('amount_pickup', 15, 3);
 			$table->decimal('amount_loan', 15, 3);
-			$table->primary(['store_key','ecf_number','fiscal_date','alternate_id','media_id']);
+			$table->primary(['store_key','ecf_number','fiscal_date','alternate_id','media_id'], 'index_fiscal_accum_oper');
 		});
 	}
 

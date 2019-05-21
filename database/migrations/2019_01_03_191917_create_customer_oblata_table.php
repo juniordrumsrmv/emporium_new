@@ -18,7 +18,7 @@ class CreateCustomerOblataTable extends Migration {
 			$table->bigInteger('customer_key')->unsigned();
 			$table->decimal('promotion_points', 15, 3)->nullable();
 			$table->decimal('promotion_points_left', 15, 3)->nullable();
-			$table->primary(['promotion_key','customer_key']);
+			$table->primary(['promotion_key','customer_key'], 'index_customer_oblata');
 			$table->index(['customer_key','promotion_key'], 'promokey_custkey');
 		});
 	}

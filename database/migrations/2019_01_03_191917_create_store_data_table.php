@@ -20,7 +20,7 @@ class CreateStoreDataTable extends Migration {
 			$table->text('data_value', 65535)->nullable();
 			$table->smallInteger('data_type')->nullable()->default(0);
 			$table->smallInteger('data_hidden')->nullable()->default(0);
-			$table->primary(['store_key','data_id']);
+			$table->primary(['store_key','data_id'], 'index_store_data');
 		});
 	}
 

@@ -24,7 +24,7 @@ class CreatePlanSplitTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->bigInteger('plan_split_code_key')->unsigned()->nullable()->default(0);
 			$table->bigInteger('plan_split_type_key')->unsigned()->nullable()->default(0);
-			$table->primary(['plan_key','plan_split_splits']);
+			$table->primary(['plan_key','plan_split_splits'], 'index_plan_split');
 		});
 	}
 

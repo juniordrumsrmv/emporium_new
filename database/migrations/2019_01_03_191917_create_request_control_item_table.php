@@ -36,7 +36,7 @@ class CreateRequestControlItemTable extends Migration {
 			$table->decimal('request_quantity', 15, 3)->nullable();
 			$table->decimal('request_unit_price', 15, 3)->nullable();
 			$table->decimal('request_amount', 15, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_request_control_item');
 			$table->index(['request_store_key','request_pos_number','request_trn_number','request_date'], 'index_request');
 		});
 	}

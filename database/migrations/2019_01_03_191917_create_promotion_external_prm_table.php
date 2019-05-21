@@ -21,7 +21,7 @@ class CreatePromotionExternalPrmTable extends Migration {
 			$table->text('data_value', 65535)->nullable();
 			$table->smallInteger('data_type')->nullable();
 			$table->smallInteger('data_hidden')->nullable();
-			$table->primary(['promotion_key','store_key','data_id']);
+			$table->primary(['promotion_key','store_key','data_id'], 'index_promotion_external_prm');
 		});
 	}
 

@@ -28,7 +28,7 @@ class CreateWsnfpStatusTable extends Migration {
 			$table->bigInteger('last_trans_key')->unsigned()->nullable();
 			$table->smallInteger('pos_number')->unsigned()->nullable();
 			$table->boolean('ecf_status')->nullable();
-			$table->primary(['store_key','ecf_number','fiscal_date']);
+			$table->primary(['store_key','ecf_number','fiscal_date'], 'index_wsnfp_status');
 		});
 	}
 

@@ -35,7 +35,7 @@ class CreateSaleItemNozzleTable extends Migration {
 			$table->bigInteger('customer_key')->unsigned()->nullable();
 			$table->string('customer_id', 25)->nullable();
 			$table->smallInteger('cst_type_key')->unsigned();
-			$table->primary(['store_key','start_time','pump_number','nozzle_number','ticket_number','sequence']);
+			$table->primary(['store_key','start_time','pump_number','nozzle_number','ticket_number','sequence'], 'index_sale_item_nozzle');
 			$table->index(['store_key','start_time','plu_id','pump_number','nozzle_number'], 'index_sale_item');
 			$table->index(['store_key','start_time','tank_number','plu_id'], 'index_sale_tank');
 		});

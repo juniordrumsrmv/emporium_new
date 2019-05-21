@@ -20,7 +20,7 @@ class CreateSalePromotionDepartmentTable extends Migration {
 			$table->date('fiscal_date');
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->string('department_id', 12);
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','department_id']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','department_id'], 'index_sale_promotion_department');
 		});
 	}
 

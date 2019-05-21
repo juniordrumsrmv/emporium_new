@@ -21,7 +21,7 @@ class CreateCashierLoanTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
 			$table->integer('ticket_number')->unsigned();
-			$table->primary(['agent_key','media_key']);
+			$table->primary(['agent_key','media_key'], 'index_cashier_loan');
 		});
 	}
 

@@ -23,7 +23,7 @@ class CreateSalePromotionTable extends Migration {
 			$table->decimal('discount', 15, 3)->nullable();
 			$table->smallInteger('promotion_type')->unsigned()->nullable();
 			$table->smallInteger('promotion_mode')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key'], 'index_sale_promotion');
 		});
 	}
 

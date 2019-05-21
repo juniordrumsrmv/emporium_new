@@ -23,7 +23,7 @@ class CreateAnswerDataTable extends Migration {
 			$table->smallInteger('data_id')->unsigned();
 			$table->string('data_label', 64)->nullable();
 			$table->string('data_value', 80)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence','sequence'], 'index_answer_data');
 		});
 	}
 

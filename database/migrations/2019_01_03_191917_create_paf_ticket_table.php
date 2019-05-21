@@ -27,7 +27,7 @@ class CreatePafTicketTable extends Migration {
 			$table->integer('CDC')->unsigned()->nullable();
 			$table->integer('CCF')->unsigned()->nullable();
 			$table->smallInteger('trn_status')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_paf_ticket');
 			$table->index(['store_key','ecf_number','fiscal_date','ticket_number'], 'index_ticket_ecf');
 		});
 	}

@@ -56,7 +56,7 @@ class CreateFiscalStatusTable extends Migration {
 			$table->boolean('status_inc')->nullable()->default(0);
 			$table->bigInteger('quantity_mfd_bytes')->unsigned()->nullable()->default(0);
 			$table->bigInteger('quantity_mfd_left_bytes')->unsigned()->nullable()->default(0);
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_fiscal_status');
 			$table->index(['store_key','ecf_number','ticket_number','start_time'], 'index_ecf_status');
 			$table->index(['store_key','ecf_number','fiscal_date','start_time','ticket_number'], 'index_ecf_status_1');
 		});

@@ -25,7 +25,7 @@ class CreateSaleLabelPromotionTable extends Migration {
 			$table->decimal('quantity', 15, 3)->nullable();
 			$table->decimal('amount', 15, 3)->nullable();
 			$table->decimal('discount', 15, 3)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence'], 'index_sale_label_promotion');
 		});
 	}
 

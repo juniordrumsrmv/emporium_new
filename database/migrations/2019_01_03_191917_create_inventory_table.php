@@ -23,7 +23,7 @@ class CreateInventoryTable extends Migration {
 			$table->boolean('count_status')->nullable();
 			$table->boolean('update_status')->nullable();
 			$table->smallInteger('count')->unsigned();
-			$table->primary(['inventory_number','store_key','inventory_date']);
+			$table->primary(['inventory_number','store_key','inventory_date'], 'index_inventory');
 		});
 	}
 

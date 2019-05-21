@@ -19,7 +19,7 @@ class CreateProducedOrderListTable extends Migration {
 			$table->bigInteger('plu_key_prod')->unsigned();
 			$table->bigInteger('plu_key_input')->unsigned();
 			$table->decimal('base_quantity', 8, 3);
-			$table->primary(['order_key','store_key','plu_key_prod','plu_key_input']);
+			$table->primary(['order_key','store_key','plu_key_prod','plu_key_input'], 'index_produced_order_list');
 		});
 	}
 

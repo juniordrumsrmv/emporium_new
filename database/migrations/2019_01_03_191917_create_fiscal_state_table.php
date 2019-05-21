@@ -22,7 +22,7 @@ class CreateFiscalStateTable extends Migration {
 			$table->text('fiscal_state_ws_query_format', 65535)->nullable();
 			$table->text('fiscal_state_ws_submit_header', 65535)->nullable();
 			$table->text('fiscal_state_ws_query_header', 65535)->nullable();
-			$table->primary(['fiscal_state_acronym','fiscal_state_type']);
+			$table->primary(['fiscal_state_acronym','fiscal_state_type'], 'index_fiscal_state');
 		});
 	}
 

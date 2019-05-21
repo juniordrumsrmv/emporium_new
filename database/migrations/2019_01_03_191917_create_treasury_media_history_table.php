@@ -24,7 +24,7 @@ class CreateTreasuryMediaHistoryTable extends Migration {
 			$table->bigInteger('user_key')->nullable();
 			$table->boolean('reason_type_key')->nullable()->default(0);
 			$table->smallInteger('trans_type')->nullable()->default(0);
-			$table->primary(['store_key','location','extended_media_id','date_alter']);
+			$table->primary(['store_key','location','extended_media_id','date_alter'], 'index_treasury_media_history');
 			$table->index(['store_key','location','media_id'], 'index_treasury_media_history');
 		});
 	}

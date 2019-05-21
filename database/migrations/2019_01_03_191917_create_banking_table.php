@@ -29,7 +29,7 @@ class CreateBankingTable extends Migration {
 			$table->date('fiscal_date');
 			$table->dateTime('received_time')->nullable();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_banking');
 			$table->index(['store_key','pos_number','transaction_type','start_time','cashier_key'], 'banking_cashier_key');
 			$table->index(['store_key','transaction_type','start_time','pos_number','ticket_number'], 'index_banking_2');
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_banking_3');

@@ -19,7 +19,7 @@ class CreateDashboardParameterTable extends Migration {
 			$table->string('prm_id', 24);
 			$table->text('prm_value', 65535)->nullable();
 			$table->bigInteger('agent_id')->unsigned()->nullable();
-			$table->primary(['prm_key','prm_type','prm_id']);
+			$table->unique(['prm_key','prm_type','prm_id'], 'index_dashboard_parameter');
 		});
 	}
 

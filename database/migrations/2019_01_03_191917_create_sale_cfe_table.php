@@ -31,7 +31,7 @@ class CreateSaleCfeTable extends Migration {
 			$table->smallInteger('status')->unsigned()->nullable()->default(1);
 			$table->text('sefaz_link', 65535)->nullable();
 			$table->string('file_path')->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sale_type']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sale_type'], 'index_sale_cfe');
 			$table->index(['store_key','pos_number','ticket_number','start_time','sale_type'], 'index_sale_cfe');
 		});
 	}

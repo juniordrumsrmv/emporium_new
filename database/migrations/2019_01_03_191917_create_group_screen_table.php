@@ -26,7 +26,7 @@ class CreateGroupScreenTable extends Migration {
 			$table->string('color_back', 8)->nullable();
 			$table->string('color_text', 8)->nullable();
 			$table->smallInteger('group_type')->unsigned()->default(0);
-			$table->primary(['group_type','group_screen_key']);
+			$table->primary(['group_type','group_screen_key'], 'index_group_screen');
 		});
 	}
 

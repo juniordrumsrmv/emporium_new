@@ -24,7 +24,7 @@ class CreateTankStockTable extends Migration {
 			$table->smallInteger('tank_flag_input')->unsigned()->nullable();
 			$table->dateTime('last_change_time')->nullable();
 			$table->decimal('quantity_in_stock', 15, 3)->nullable();
-			$table->primary(['store_key','tank_number','stock_date']);
+			$table->primary(['store_key','tank_number','stock_date'], 'index_tank_stock');
 		});
 	}
 

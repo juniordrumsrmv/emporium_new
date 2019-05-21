@@ -19,7 +19,7 @@ class CreatePollQuestionTable extends Migration {
 			$table->boolean('question_type')->nullable();
 			$table->string('question_label')->nullable();
 			$table->string('question_prompt')->nullable();
-			$table->primary(['poll_key','question_number']);
+			$table->primary(['poll_key','question_number'], 'index_poll_question');
 		});
 	}
 

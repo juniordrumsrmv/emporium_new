@@ -18,7 +18,7 @@ class CreatePluExtraTable extends Migration {
 			$table->bigInteger('plu_key')->unsigned();
 			$table->char('extra_key', 12);
 			$table->string('extra_value', 128)->nullable();
-			$table->primary(['store_key','plu_key','extra_key']);
+			$table->primary(['store_key','plu_key','extra_key'], 'index_plu_extra');
 		});
 	}
 

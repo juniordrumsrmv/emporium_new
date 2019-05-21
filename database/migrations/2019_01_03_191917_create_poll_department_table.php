@@ -16,7 +16,7 @@ class CreatePollDepartmentTable extends Migration {
 		{
 			$table->smallInteger('department_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
-			$table->primary(['department_key','poll_key']);
+			$table->primary(['department_key','poll_key'], 'index_poll_department');
 		});
 	}
 

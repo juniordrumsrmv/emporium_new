@@ -16,7 +16,7 @@ class CreateCustomerCategoryTable extends Migration {
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->smallInteger('cst_type_key')->unsigned();
-			$table->primary(['customer_key','cst_type_key']);
+			$table->primary(['customer_key','cst_type_key'], 'index_customer_category');
 		});
 	}
 

@@ -22,7 +22,7 @@ class CreateServertoserverComparisonTable extends Migration {
 			$table->string('ctrl_file')->nullable();
 			$table->smallInteger('update_wait_time')->nullable();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['from_store_key','to_store_key']);
+			$table->primary(['from_store_key','to_store_key'], 'index_servertoserver_comparison');
 		});
 	}
 

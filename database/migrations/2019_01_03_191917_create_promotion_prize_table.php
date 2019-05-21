@@ -22,7 +22,7 @@ class CreatePromotionPrizeTable extends Migration {
 			$table->bigInteger('quantity')->unsigned();
 			$table->decimal('amount', 15, 3);
 			$table->boolean('status')->nullable();
-			$table->primary(['promotion_key','store_key','store_group_key']);
+			$table->primary(['promotion_key','store_key','store_group_key'], 'index_promotion_prize');
 		});
 	}
 

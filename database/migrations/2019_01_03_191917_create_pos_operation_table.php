@@ -26,7 +26,7 @@ class CreatePosOperationTable extends Migration {
 			$table->decimal('pos_oper_data2', 12, 3)->nullable();
 			$table->string('pos_oper_data3', 50)->nullable();
 			$table->string('pos_oper_data4', 50)->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','start_time'], 'index_pos_operation');
 		});
 	}
 

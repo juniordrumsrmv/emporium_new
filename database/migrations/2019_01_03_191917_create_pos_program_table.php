@@ -20,7 +20,7 @@ class CreatePosProgramTable extends Migration {
 			$table->string('program_version')->nullable();
 			$table->string('program_version_line')->nullable();
 			$table->string('program_executable')->nullable();
-			$table->primary(['store_key','pos_number','program_id']);
+			$table->primary(['store_key','pos_number','program_id'], 'index_pos_program');
 		});
 	}
 

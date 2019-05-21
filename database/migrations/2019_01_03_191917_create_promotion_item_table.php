@@ -27,7 +27,7 @@ class CreatePromotionItemTable extends Migration {
 			$table->decimal('amount', 15, 3)->nullable();
 			$table->boolean('status')->nullable();
 			$table->smallInteger('flag_discount')->nullable()->default(0);
-			$table->primary(['promotion_key','store_key','store_group_key','plu_key','item_type']);
+			$table->primary(['promotion_key','store_key','store_group_key','plu_key','item_type'], 'index_promotion_item');
 		});
 	}
 

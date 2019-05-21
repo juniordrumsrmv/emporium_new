@@ -16,7 +16,7 @@ class CreatePromotionDepartmentTable extends Migration {
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('department_key')->unsigned();
-			$table->primary(['promotion_key','department_key']);
+			$table->primary(['promotion_key','department_key'], 'index_promotion_department');
 		});
 	}
 

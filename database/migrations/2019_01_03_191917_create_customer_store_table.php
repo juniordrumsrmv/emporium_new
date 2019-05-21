@@ -19,7 +19,7 @@ class CreateCustomerStoreTable extends Migration {
 			$table->dateTime('last_sale_time')->nullable();
 			$table->smallInteger('qty_sale')->unsigned()->nullable();
 			$table->dateTime('last_change_time');
-			$table->primary(['customer_key','store_key']);
+			$table->primary(['customer_key','store_key'], 'index_customer_store');
 		});
 	}
 

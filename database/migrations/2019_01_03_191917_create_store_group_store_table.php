@@ -16,7 +16,7 @@ class CreateStoreGroupStoreTable extends Migration {
 		{
 			$table->smallInteger('store_group_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
-			$table->primary(['store_group_key','store_key']);
+			$table->primary(['store_group_key','store_key'], 'index_store_group_store');
 		});
 	}
 

@@ -49,7 +49,7 @@ class CreateSaleTable extends Migration {
 			$table->bigInteger('cpu_clock_subtotal')->unsigned()->nullable();
 			$table->bigInteger('cpu_clock_end')->unsigned()->nullable();
 			$table->bigInteger('cpu_clock_close_drawer')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_sale');
 			$table->index(['store_key','start_time','pos_number','ticket_number'], 'index_1');
 			$table->index(['store_key','pos_number','fiscal_date'], 'index_fiscal');
 		});

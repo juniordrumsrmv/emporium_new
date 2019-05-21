@@ -17,7 +17,7 @@ class CreateNfceNumberTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
 			$table->bigInteger('nf_number')->unsigned();
-			$table->primary(['store_key','pos_number']);
+			$table->primary(['store_key','pos_number'], 'index_nfce_number');
 		});
 	}
 

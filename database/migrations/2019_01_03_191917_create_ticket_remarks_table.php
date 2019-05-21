@@ -30,7 +30,7 @@ class CreateTicketRemarksTable extends Migration {
 			$table->decimal('discount_total', 12, 3)->nullable();
 			$table->decimal('item_total', 12, 3)->nullable();
 			$table->binary('remark')->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','remark_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','remark_time'], 'index_ticket_remarks');
 			$table->unique(['start_time','store_key','pos_number','ticket_number','remark_time'], 'ticket_remarks_start_time');
 		});
 	}

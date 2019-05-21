@@ -20,7 +20,7 @@ class CreateCustodiamUserTable extends Migration {
 			$table->smallInteger('custodiam_user_type')->unsigned();
 			$table->smallInteger('custodiam_flag')->unsigned()->nullable();
 			$table->smallInteger('custodiam_partner')->unsigned();
-			$table->primary(['custodiam_store','custodiam_user_email','custodiam_user_type','custodiam_partner']);
+			$table->primary(['custodiam_store','custodiam_user_email','custodiam_user_type','custodiam_partner'], 'index_custodiam_user');
 		});
 	}
 

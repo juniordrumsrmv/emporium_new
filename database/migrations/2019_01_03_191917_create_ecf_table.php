@@ -40,7 +40,7 @@ class CreateEcfTable extends Migration {
 			$table->string('ecf_owner_address', 60)->nullable();
 			$table->char('ecf_owner_insertion_date', 8)->nullable();
 			$table->char('ecf_owner_insertion_time', 6)->nullable();
-			$table->primary(['store_key','ecf_number']);
+			$table->primary(['store_key','ecf_number'], 'index_ecf');
 		});
 	}
 

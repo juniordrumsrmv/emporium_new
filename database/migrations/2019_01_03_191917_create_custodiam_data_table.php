@@ -21,7 +21,7 @@ class CreateCustodiamDataTable extends Migration {
 			$table->smallInteger('custodiam_action_type')->unsigned();
 			$table->text('custodiam_ws_submit_format', 65535)->nullable();
 			$table->text('custodiam_ws_query_format', 65535)->nullable();
-			$table->primary(['custodiam_service_type','custodiam_action_type']);
+			$table->primary(['custodiam_service_type','custodiam_action_type'], 'index_custodiam_data');
 		});
 	}
 

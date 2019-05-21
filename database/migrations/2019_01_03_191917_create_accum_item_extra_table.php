@@ -25,7 +25,7 @@ class CreateAccumItemExtraTable extends Migration {
 			$table->decimal('cost', 15, 4);
 			$table->smallInteger('department_key')->unsigned()->nullable();
 			$table->bigInteger('maker_key')->unsigned()->nullable();
-			$table->primary(['store_key','fiscal_date','plu_id','sale_type','invoice_type']);
+			$table->primary(['store_key','fiscal_date','plu_id','sale_type','invoice_type'], 'index_accum_item_extra');
 			$table->index(['store_key','plu_id','sale_type','invoice_type','fiscal_date'], 'index_accum_item_extra_1');
 		});
 	}

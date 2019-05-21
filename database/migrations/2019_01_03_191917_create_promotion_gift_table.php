@@ -20,7 +20,7 @@ class CreatePromotionGiftTable extends Migration {
 			$table->decimal('amount', 15, 3)->nullable();
 			$table->decimal('points', 15, 3)->nullable();
 			$table->boolean('status')->nullable();
-			$table->primary(['promotion_key','store_key','plu_key']);
+			$table->primary(['promotion_key','store_key','plu_key'], 'index_promotion_gift');
 		});
 	}
 

@@ -20,7 +20,7 @@ class CreateResearchTable extends Migration {
 			$table->boolean('research_status')->nullable();
 			$table->date('research_date');
 			$table->boolean('research_type');
-			$table->primary(['store_key','research_date','research_type']);
+			$table->unique(['store_key','research_date','research_type'], 'index_research');
 			$table->index(['store_key','research_name'], 'index_research_name');
 		});
 	}

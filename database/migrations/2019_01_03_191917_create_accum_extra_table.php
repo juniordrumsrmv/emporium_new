@@ -22,7 +22,7 @@ class CreateAccumExtraTable extends Migration {
 			$table->decimal('quantity_canc', 8, 0);
 			$table->decimal('amount', 15, 3);
 			$table->decimal('amount_canc', 15, 3);
-			$table->primary(['store_key','pos_number','fiscal_date','extra_id']);
+			$table->primary(['store_key','pos_number','fiscal_date','extra_id'], 'accum_extra_index');
 		});
 	}
 

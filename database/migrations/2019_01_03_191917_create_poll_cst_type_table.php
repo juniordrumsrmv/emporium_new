@@ -16,7 +16,7 @@ class CreatePollCstTypeTable extends Migration {
 		{
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
-			$table->primary(['cst_type_key','poll_key']);
+			$table->primary(['cst_type_key','poll_key'], 'index_poll_cst_type');
 		});
 	}
 

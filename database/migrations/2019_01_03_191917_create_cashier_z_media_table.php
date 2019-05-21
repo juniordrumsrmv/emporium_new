@@ -26,7 +26,7 @@ class CreateCashierZMediaTable extends Migration {
 			$table->decimal('amount_loan', 15, 3)->nullable();
 			$table->decimal('amount_pickup', 15, 3)->nullable();
 			$table->integer('transaction_number')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_cashier_z_media');
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_cashier_z_1');
 		});
 	}

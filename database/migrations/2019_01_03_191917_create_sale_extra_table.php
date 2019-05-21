@@ -44,7 +44,7 @@ class CreateSaleExtraTable extends Migration {
 			$table->boolean('voided')->nullable();
 			$table->bigInteger('delivery_item_id')->unsigned()->nullable();
 			$table->date('emission_date')->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','invoice_number']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','invoice_number'], 'index_sale_extra');
 		});
 	}
 

@@ -19,7 +19,7 @@ class CreateRecipeMessageTable extends Migration {
 			$table->string('observation')->nullable();
 			$table->string('information')->nullable();
 			$table->binary('extra_information', 65535)->nullable();
-			$table->primary(['store_key','plu_key']);
+			$table->primary(['store_key','plu_key'], 'index_recipe_message');
 		});
 	}
 

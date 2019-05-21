@@ -25,7 +25,7 @@ class CreateSealDumpTable extends Migration {
 			$table->bigInteger('seal_sequence')->unsigned()->nullable();
 			$table->bigInteger('seal_last_sequence')->unsigned()->nullable();
 			$table->integer('remaining_seal')->nullable();
-			$table->primary(['store_key','pos_number','start_time','cashier_key']);
+			$table->primary(['store_key','pos_number','start_time','cashier_key'], 'index_seal_dump');
 		});
 	}
 

@@ -17,7 +17,7 @@ class CreatePasswordHistoryTable extends Migration {
 			$table->bigInteger('agent_key')->unsigned();
 			$table->string('cript_password', 50)->nullable();
 			$table->dateTime('last_change_time');
-			$table->primary(['agent_key','last_change_time']);
+			$table->primary(['agent_key','last_change_time'], 'index_password_history');
 		});
 	}
 

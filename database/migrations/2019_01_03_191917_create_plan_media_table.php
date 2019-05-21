@@ -18,7 +18,7 @@ class CreatePlanMediaTable extends Migration {
 			$table->smallInteger('media_id');
 			$table->smallInteger('media_sub_id')->unsigned();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['plan_key','media_id','media_sub_id']);
+			$table->primary(['plan_key','media_id','media_sub_id'], 'index_plan_media');
 		});
 	}
 

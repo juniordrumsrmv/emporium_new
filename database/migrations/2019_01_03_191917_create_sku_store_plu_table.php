@@ -17,7 +17,7 @@ class CreateSkuStorePluTable extends Migration {
 			$table->char('sku_id', 14);
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
-			$table->primary(['store_key','plu_key','sku_id']);
+			$table->primary(['store_key','plu_key','sku_id'], 'index_sku_store_plu');
 			$table->index(['sku_id','store_key','plu_key'], 'index_sku_id');
 		});
 	}

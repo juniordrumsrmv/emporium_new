@@ -16,7 +16,7 @@ class CreateSatModelTable extends Migration {
 		{
 			$table->string('sat_manufacturer', 40);
 			$table->string('sat_model', 40)->index('index_sat_model');
-			$table->primary(['sat_manufacturer','sat_model']);
+			$table->primary(['sat_manufacturer','sat_model'], 'index_sat_model');
 		});
 	}
 

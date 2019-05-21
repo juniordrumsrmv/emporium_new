@@ -22,7 +22,7 @@ class CreatePluScreenTable extends Migration {
 			$table->smallInteger('group_type')->unsigned()->default(0);
 			$table->boolean('status')->nullable();
 			$table->smallInteger('store_group_key')->unsigned()->default(0);
-			$table->primary(['group_type','plu_key','group_screen_key','store_key','store_group_key']);
+			$table->primary(['group_type','plu_key','group_screen_key','store_key','store_group_key'], 'index_plu_screen');
 		});
 	}
 

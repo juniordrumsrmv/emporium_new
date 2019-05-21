@@ -25,7 +25,7 @@ class CreatePumpTable extends Migration {
 			$table->date('pump_date_seal')->nullable();
 			$table->dateTime('pump_date_inc')->nullable();
 			$table->dateTime('pump_date_alt')->nullable();
-			$table->primary(['store_key','pump_number']);
+			$table->primary(['store_key','pump_number'], 'index_pump');
 		});
 	}
 

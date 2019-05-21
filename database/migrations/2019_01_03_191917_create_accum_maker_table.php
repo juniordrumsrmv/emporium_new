@@ -27,7 +27,7 @@ class CreateAccumMakerTable extends Migration {
 			$table->decimal('margin', 15, 3);
 			$table->decimal('return_quantity', 15, 3)->nullable();
 			$table->decimal('return_amount', 15, 3)->nullable();
-			$table->primary(['store_key','fiscal_date','maker_key','hour']);
+			$table->primary(['store_key','fiscal_date','maker_key','hour'], 'index_accum_maker');
 		});
 	}
 

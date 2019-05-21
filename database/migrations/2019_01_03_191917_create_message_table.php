@@ -18,7 +18,7 @@ class CreateMessageTable extends Migration {
 			$table->char('message_lang', 2);
 			$table->string('message_subject', 250)->nullable();
 			$table->binary('message_text', 65535)->nullable();
-			$table->primary(['message_key','message_lang']);
+			$table->primary(['message_key','message_lang'], 'index_message');
 		});
 	}
 

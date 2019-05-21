@@ -19,7 +19,7 @@ class CreateCityTable extends Migration {
 			$table->char('city_code', 16);
 			$table->string('city_name')->nullable();
 			$table->string('city_name_sound')->nullable()->index('index_city_name_sound');
-			$table->primary(['country_code','city_code']);
+			$table->primary(['country_code','city_code'], 'index_city');
 		});
 	}
 

@@ -25,7 +25,7 @@ class CreatePricingTable extends Migration {
 			$table->decimal('points', 15, 3)->nullable();
 			$table->decimal('rate', 9, 3)->nullable();
 			$table->boolean('sequence')->nullable();
-			$table->primary(['store_key','plu_key','start','type_price']);
+			$table->primary(['store_key','plu_key','start','type_price'], 'index_pricing');
 			$table->index(['plu_key','type_price','start'], 'pricing_1');
 		});
 	}

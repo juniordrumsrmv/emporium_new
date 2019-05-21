@@ -23,7 +23,7 @@ class CreatePricingStepTable extends Migration {
 			$table->decimal('price', 15, 3)->nullable();
 			$table->smallInteger('next_step')->unsigned()->nullable();
 			$table->smallInteger('action_type')->unsigned();
-			$table->primary(['store_key','plu_key','start','type_price','step_number','action_type']);
+			$table->primary(['store_key','plu_key','start','type_price','step_number','action_type'], 'index_pricing_step');
 			$table->index(['plu_key','type_price','start'], 'pricing_step_1');
 		});
 	}

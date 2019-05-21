@@ -16,7 +16,7 @@ class CreateDiscountClassRestrictionTable extends Migration {
 		{
 			$table->bigInteger('dst_key')->unsigned();
 			$table->string('class', 25);
-			$table->primary(['dst_key','class']);
+			$table->primary(['dst_key','class'], 'index_discount_class_restriction');
 		});
 	}
 

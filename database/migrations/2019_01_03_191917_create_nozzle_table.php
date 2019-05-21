@@ -20,7 +20,7 @@ class CreateNozzleTable extends Migration {
 			$table->bigInteger('nozzle_number')->unsigned();
 			$table->bigInteger('increase_gt_qty')->unsigned()->nullable()->default(0);
 			$table->bigInteger('increase_gt_amo')->unsigned()->nullable()->default(0);
-			$table->primary(['store_key','tank_number','nozzle_number']);
+			$table->primary(['store_key','tank_number','nozzle_number'], 'index_nozzle');
 		});
 	}
 

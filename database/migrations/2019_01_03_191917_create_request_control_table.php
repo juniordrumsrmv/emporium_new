@@ -25,7 +25,7 @@ class CreateRequestControlTable extends Migration {
 			$table->smallInteger('request_pos_number')->unsigned();
 			$table->integer('request_ticket_number')->unsigned()->nullable();
 			$table->bigInteger('request_trn_number')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','request_store_key','request_pos_number','request_trn_number','request_date']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','request_store_key','request_pos_number','request_trn_number','request_date'], 'index_request_control');
 			$table->index(['request_store_key','request_pos_number','request_trn_number','request_date'], 'index_request');
 		});
 	}

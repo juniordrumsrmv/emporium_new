@@ -19,7 +19,7 @@ class CreateBankingGasCashierTable extends Migration {
 			$table->integer('ticket_number')->unsigned();
 			$table->dateTime('start_time');
 			$table->bigInteger('cashier_key')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_banking_gas_cashier');
 			$table->index(['store_key','pos_number','ticket_number','start_time','cashier_key'], 'banking_gas_cashier_key');
 		});
 	}

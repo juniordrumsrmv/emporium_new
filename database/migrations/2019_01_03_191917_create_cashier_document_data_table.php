@@ -18,7 +18,7 @@ class CreateCashierDocumentDataTable extends Migration {
 			$table->smallInteger('data_id')->unsigned();
 			$table->string('data_value', 80)->nullable();
 			$table->string('data_extra', 80)->nullable();
-			$table->primary(['cashier_document_key','data_id']);
+			$table->primary(['cashier_document_key','data_id'], 'index_cashier_document_data');
 		});
 	}
 

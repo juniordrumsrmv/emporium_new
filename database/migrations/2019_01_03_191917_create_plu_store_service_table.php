@@ -25,7 +25,7 @@ class CreatePluStoreServiceTable extends Migration {
 			$table->decimal('service_cost', 15, 4)->nullable();
 			$table->integer('service_maker_period')->unsigned()->nullable();
 			$table->string('service_code', 32)->nullable();
-			$table->primary(['store_key','plu_key','cst_type_key','service_period','service_type_key','service_start_time']);
+			$table->primary(['store_key','plu_key','cst_type_key','service_period','service_type_key','service_start_time'], 'index_plu_store_service');
 		});
 	}
 

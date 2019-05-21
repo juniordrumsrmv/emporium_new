@@ -25,7 +25,7 @@ class CreateAccumReturnedItemReasonTable extends Migration {
 			$table->bigInteger('maker_key')->unsigned()->nullable();
 			$table->smallInteger('reason')->unsigned();
 			$table->smallInteger('transaction')->unsigned();
-			$table->primary(['store_key','fiscal_date','pos_number','plu_id','reason','transaction']);
+			$table->primary(['store_key','fiscal_date','pos_number','plu_id','reason','transaction'], 'index_accum_returned_item_reason');
 		});
 	}
 

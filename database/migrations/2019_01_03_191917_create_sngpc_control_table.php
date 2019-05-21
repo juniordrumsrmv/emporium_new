@@ -28,8 +28,8 @@ class CreateSngpcControlTable extends Migration {
 			$table->string('return_msg')->nullable();
 			$table->smallInteger('qty_registers')->unsigned()->nullable();
 			$table->string('file_path')->nullable();
-			$table->primary(['sngpc_id','store_key']);
-			$table->index(['sngpc_id','store_key','date_initial'], 'index_sngpc_control');
+			$table->unique(['sngpc_id','store_key'], 'index_sngpc_control');
+			$table->index(['sngpc_id','store_key','date_initial'], 'index_sngpc_control_1');
 		});
 	}
 

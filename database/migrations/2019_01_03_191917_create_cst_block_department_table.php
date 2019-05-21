@@ -17,7 +17,7 @@ class CreateCstBlockDepartmentTable extends Migration {
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->smallInteger('department_key')->unsigned();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['cst_type_key','department_key']);
+			$table->primary(['cst_type_key','department_key'], 'index_cst_block_department');
 		});
 	}
 

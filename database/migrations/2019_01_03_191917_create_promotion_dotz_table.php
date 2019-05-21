@@ -18,7 +18,7 @@ class CreatePromotionDotzTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
 			$table->decimal('points', 15, 3)->nullable();
-			$table->primary(['promotion_key','store_key','plu_key']);
+			$table->primary(['promotion_key','store_key','plu_key'], 'index_promotion_dotz');
 		});
 	}
 

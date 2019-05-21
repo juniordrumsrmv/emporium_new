@@ -20,7 +20,7 @@ class CreateInventoryCountControlTable extends Migration {
 			$table->integer('block_number')->unsigned();
 			$table->integer('count_number')->unsigned();
 			$table->smallInteger('status')->unsigned();
-			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number']);
+			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number'], 'index_inventory_count_control');
 		});
 	}
 

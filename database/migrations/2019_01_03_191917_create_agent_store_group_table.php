@@ -16,7 +16,7 @@ class CreateAgentStoreGroupTable extends Migration {
 		{
 			$table->bigInteger('store_group_key')->unsigned();
 			$table->bigInteger('agent_key')->unsigned();
-			$table->primary(['agent_key','store_group_key']);
+			$table->primary(['agent_key','store_group_key'], 'index_agent_store_group');
 		});
 	}
 

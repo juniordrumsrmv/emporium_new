@@ -30,7 +30,7 @@ class CreateAdmDetalheTable extends Migration {
 			$table->decimal('valor_estorno', 15, 3)->nullable();
 			$table->integer('cod_indicador')->unsigned()->nullable();
 			$table->integer('cod_indicador_estorno')->unsigned()->nullable();
-			$table->primary(['num_adm','store_key','sku_id']);
+			$table->primary(['num_adm','store_key','sku_id'], 'index_adm_detalhe');
 		});
 	}
 

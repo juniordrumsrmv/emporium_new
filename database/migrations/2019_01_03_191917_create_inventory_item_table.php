@@ -34,7 +34,7 @@ class CreateInventoryItemTable extends Migration {
 			$table->bigInteger('cpu_clock')->unsigned()->nullable();
 			$table->char('pos_id', 4)->nullable();
 			$table->decimal('tax_percent', 6, 3)->nullable();
-			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number','sequence']);
+			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number','sequence'], 'index_inventory_item');
 		});
 	}
 

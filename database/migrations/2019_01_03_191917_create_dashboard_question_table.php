@@ -19,7 +19,7 @@ class CreateDashboardQuestionTable extends Migration {
 			$table->string('question_id', 24);
 			$table->text('question_value', 65535)->nullable();
 			$table->string('question_action', 24);
-			$table->primary(['question_key','question_type','question_id']);
+			$table->unique(['question_key','question_type','question_id'], 'index_dashboard_question');
 		});
 	}
 

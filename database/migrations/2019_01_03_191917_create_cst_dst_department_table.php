@@ -18,7 +18,7 @@ class CreateCstDstDepartmentTable extends Migration {
 			$table->smallInteger('department_key')->unsigned();
 			$table->decimal('discount', 15, 3);
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['cst_type_key','department_key']);
+			$table->primary(['cst_type_key','department_key'], 'index_cst_dst_department');
 		});
 	}
 

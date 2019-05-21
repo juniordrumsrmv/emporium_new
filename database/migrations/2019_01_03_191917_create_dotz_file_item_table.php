@@ -24,7 +24,7 @@ class CreateDotzFileItemTable extends Migration {
 			$table->string('provider_code', 60)->nullable();
 			$table->string('provider_cnpj', 20)->nullable();
 			$table->string('partner_code', 20)->nullable();
-			$table->primary(['plu_list_id','plu_key']);
+			$table->primary(['plu_list_id','plu_key'], 'index_dotz_file_item');
 		});
 	}
 

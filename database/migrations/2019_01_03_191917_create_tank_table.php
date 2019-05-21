@@ -21,7 +21,7 @@ class CreateTankTable extends Migration {
 			$table->dateTime('tank_date_inc')->nullable();
 			$table->dateTime('tank_date_alt')->nullable();
 			$table->decimal('capacity', 15, 3)->nullable();
-			$table->primary(['store_key','tank_number','plu_key']);
+			$table->primary(['store_key','tank_number','plu_key'], 'index_tank');
 		});
 	}
 

@@ -17,7 +17,7 @@ class CreateProducedListTable extends Migration {
 			$table->bigInteger('plu_key_prod')->unsigned();
 			$table->bigInteger('plu_key_input')->unsigned();
 			$table->decimal('quantity', 6, 3);
-			$table->primary(['plu_key_prod','plu_key_input']);
+			$table->primary(['plu_key_prod','plu_key_input'], 'index_produced_list');
 		});
 	}
 

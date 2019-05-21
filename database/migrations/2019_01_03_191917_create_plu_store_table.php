@@ -44,7 +44,7 @@ class CreatePluStoreTable extends Migration {
 			$table->decimal('quantity', 9, 3)->nullable();
 			$table->boolean('is_base_plu')->nullable();
 			$table->decimal('fcp_percent', 15, 3)->nullable();
-			$table->primary(['store_key','plu_key']);
+			$table->primary(['store_key','plu_key'], 'index_plu_store');
 			$table->index(['store_key','last_change_time'], 'index_plu_store_1');
 		});
 	}

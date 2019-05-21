@@ -22,7 +22,7 @@ class CreateWsnfpFileControlTable extends Migration {
 			$table->dateTime('export_time')->nullable();
 			$table->bigInteger('wsnfp_key')->nullable();
 			$table->bigInteger('trans_key')->unsigned()->nullable();
-			$table->primary(['store_key','ecf_number','fiscal_date','md5']);
+			$table->primary(['store_key','ecf_number','fiscal_date','md5'], 'index_wsnfp_file_control');
 		});
 	}
 

@@ -23,7 +23,7 @@ class CreatePromotionKitTable extends Migration {
 			$table->smallInteger('flag_discount')->nullable()->default(0);
 			$table->decimal('points', 15, 3)->nullable();
 			$table->smallInteger('count_type')->nullable()->default(0);
-			$table->primary(['promotion_key','plu_kit','plu_key','store_key','store_group_key']);
+			$table->unique(['promotion_key','plu_kit','plu_key','store_key','store_group_key'], 'index_promotion_kit');
 		});
 	}
 

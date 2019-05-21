@@ -28,7 +28,7 @@ class CreateNcmTable extends Migration {
 			$table->string('ncm_code', 30)->nullable();
 			$table->string('ncm_version', 30)->nullable();
 			$table->string('ncm_source', 20)->nullable();
-			$table->primary(['ncm_key','ncm_ex']);
+			$table->primary(['ncm_key','ncm_ex'], 'index_ncm');
 		});
 	}
 

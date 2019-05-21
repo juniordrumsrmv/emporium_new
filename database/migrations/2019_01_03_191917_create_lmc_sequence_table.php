@@ -21,7 +21,7 @@ class CreateLmcSequenceTable extends Migration {
 			$table->boolean('lmc_type')->nullable();
 			$table->text('lmc_obs', 65535)->nullable();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['store_key','plu_key','fiscal_date']);
+			$table->primary(['store_key','plu_key','fiscal_date'], 'index_lmc_sequence');
 		});
 	}
 

@@ -25,7 +25,7 @@ class CreateDashboardConcHeaderTable extends Migration {
 			$table->bigInteger('qtdecupoms')->unsigned()->nullable();
 			$table->string('situacaolote', 64)->nullable();
 			$table->dateTime('last_sent_time')->nullable();
-			$table->primary(['nseriesat','nrec']);
+			$table->primary(['nseriesat','nrec'], 'index_dashboard_conc_header');
 		});
 	}
 

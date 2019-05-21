@@ -19,7 +19,7 @@ class CreatePlanStorePluTable extends Migration {
 			$table->smallInteger('store_group_key')->unsigned()->default(0);
 			$table->bigInteger('plu_key')->unsigned();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['store_key','store_group_key','plu_key','plan_key']);
+			$table->primary(['store_key','store_group_key','plu_key','plan_key'], 'index_plan_store_plu');
 		});
 	}
 

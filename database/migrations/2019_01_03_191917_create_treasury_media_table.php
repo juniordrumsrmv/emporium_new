@@ -19,7 +19,7 @@ class CreateTreasuryMediaTable extends Migration {
 			$table->smallInteger('media_id')->unsigned();
 			$table->smallInteger('extended_media_id')->unsigned();
 			$table->decimal('amount', 15, 3);
-			$table->primary(['store_key','location','extended_media_id']);
+			$table->primary(['store_key','location','extended_media_id'], 'index_treasury_media');
 			$table->index(['store_key','location','media_id'], 'index_treasury_media');
 		});
 	}

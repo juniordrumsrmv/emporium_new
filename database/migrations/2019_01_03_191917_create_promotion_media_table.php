@@ -21,7 +21,7 @@ class CreatePromotionMediaTable extends Migration {
 			$table->smallInteger('splits')->unsigned();
 			$table->smallInteger('media_type')->unsigned()->nullable();
 			$table->boolean('status')->nullable();
-			$table->primary(['promotion_key','media_id','sub_media_id','media_bin','splits']);
+			$table->primary(['promotion_key','media_id','sub_media_id','media_bin','splits'], 'index_promotion_media');
 		});
 	}
 

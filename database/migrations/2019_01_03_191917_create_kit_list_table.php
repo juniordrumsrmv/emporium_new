@@ -18,7 +18,7 @@ class CreateKitListTable extends Migration {
 			$table->bigInteger('plu_key')->unsigned();
 			$table->decimal('quantity', 6, 3);
 			$table->integer('price_key')->unsigned()->nullable();
-			$table->primary(['plu_key_main','plu_key']);
+			$table->primary(['plu_key_main','plu_key'], 'index_kit_list');
 		});
 	}
 

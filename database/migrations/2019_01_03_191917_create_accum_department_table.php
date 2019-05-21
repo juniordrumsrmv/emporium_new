@@ -24,7 +24,7 @@ class CreateAccumDepartmentTable extends Migration {
 			$table->decimal('amount_canc', 15, 3);
 			$table->decimal('return_quantity', 15, 3)->nullable();
 			$table->decimal('return_amount', 15, 3)->nullable();
-			$table->primary(['store_key','fiscal_date','department_key','hour']);
+			$table->primary(['store_key','fiscal_date','department_key','hour'], 'accum_department_index');
 		});
 	}
 

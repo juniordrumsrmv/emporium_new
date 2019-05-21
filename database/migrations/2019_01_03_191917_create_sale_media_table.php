@@ -24,7 +24,7 @@ class CreateSaleMediaTable extends Migration {
 			$table->bigInteger('authorizer_key')->unsigned()->nullable();
 			$table->smallInteger('extended_media_id')->unsigned()->nullable();
 			$table->bigInteger('cpu_clock')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence']);
+			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_sale_media');
 		});
 	}
 

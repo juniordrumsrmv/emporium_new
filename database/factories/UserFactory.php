@@ -13,11 +13,56 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Emporium\User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+$factory->define(Emporium\Agent::class, function (Faker $faker) {
+    $aCreate = [
+        [
+            'agent_key' => 10,
+            'alternate_id' => 'adm',
+            'password' => bcrypt('adm'),
+            'language' => 'br',
+            'usr_mode' => 'amount'
+        ],
+        [
+            'agent_key' => 11,
+            'alternate_id' => 'api',
+            'password' => bcrypt('api'),
+            'language' => 'br',
+            'usr_mode' => 'amount'
+        ],
+        [
+            'agent_key' => 12,
+            'alternate_id' => '1190',
+            'password' => bcrypt('1190'),
+            'language' => 'br',
+            'usr_mode' => 'plu'
+        ]
     ];
+    return $aCreate;
+});
+
+$factory->define(Emporium\User::class, function (Faker $faker) {
+    $aCreate = [
+        [
+            'agent_key' => 10,
+            'alternate_id' => 'adm',
+            'password' => bcrypt('adm'),
+            'language' => 'br',
+            'usr_mode' => 'amount'
+        ],
+        [
+            'agent_key' => 11,
+            'alternate_id' => 'api',
+            'password' => bcrypt('api'),
+            'language' => 'br',
+            'usr_mode' => 'amount'
+        ],
+        [
+            'agent_key' => 12,
+            'alternate_id' => '1190',
+            'password' => bcrypt('1190'),
+            'language' => 'br',
+            'usr_mode' => 'plu'
+        ]
+    ];
+    return $aCreate;
 });

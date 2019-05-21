@@ -25,7 +25,7 @@ class CreateAccumCustomerItemTable extends Migration {
 			$table->decimal('amount_canc', 15, 3);
 			$table->decimal('return_quantity', 15, 3)->nullable();
 			$table->decimal('return_amount', 15, 3)->nullable();
-			$table->primary(['customer_key','store_key','fiscal_date','department_key','plu_id']);
+			$table->primary(['customer_key','store_key','fiscal_date','department_key','plu_id'], 'accum_customer_item_index');
 		});
 	}
 

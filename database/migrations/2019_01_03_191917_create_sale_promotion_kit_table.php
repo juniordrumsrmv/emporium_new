@@ -26,7 +26,7 @@ class CreateSalePromotionKitTable extends Migration {
 			$table->decimal('discount', 15, 3)->nullable();
 			$table->decimal('discount_percent', 15, 3)->nullable();
 			$table->bigInteger('quantity')->unsigned()->nullable();
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','plu_kit']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','plu_kit'], 'index_sale_promotion_kit');
 		});
 	}
 

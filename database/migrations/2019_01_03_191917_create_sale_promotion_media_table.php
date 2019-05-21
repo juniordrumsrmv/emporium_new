@@ -20,7 +20,7 @@ class CreateSalePromotionMediaTable extends Migration {
 			$table->date('fiscal_date');
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('media_id')->unsigned();
-			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','media_id']);
+			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','promotion_key','media_id'], 'index_sale_promotion_media');
 		});
 	}
 

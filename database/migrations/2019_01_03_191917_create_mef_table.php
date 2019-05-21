@@ -22,7 +22,7 @@ class CreateMefTable extends Migration {
 			$table->bigInteger('trn_number')->unsigned();
 			$table->date('fiscal_date')->nullable();
 			$table->binary('mef_text')->nullable();
-			$table->primary(['store_key','pos_number','trn_number','start_time']);
+			$table->primary(['store_key','pos_number','trn_number','start_time'], 'index_mef');
 		});
 	}
 

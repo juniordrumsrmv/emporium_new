@@ -17,7 +17,7 @@ class CreatePluPackTable extends Migration {
 			$table->bigInteger('store_key')->unsigned()->default(0);
 			$table->bigInteger('plu_key_main')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
-			$table->primary(['store_key','plu_key_main','plu_key']);
+			$table->primary(['store_key','plu_key_main','plu_key'], 'index_plu_pack');
 		});
 	}
 

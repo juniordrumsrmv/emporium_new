@@ -17,7 +17,7 @@ class CreateDiscountWrappedupTable extends Migration {
 			$table->bigInteger('dst_key')->unsigned();
 			$table->boolean('wrappedup_type');
 			$table->bigInteger('wrappedup_key')->unsigned();
-			$table->primary(['dst_key','wrappedup_type','wrappedup_key']);
+			$table->primary(['dst_key','wrappedup_type','wrappedup_key'], 'index_discount_wrappedup');
 		});
 	}
 

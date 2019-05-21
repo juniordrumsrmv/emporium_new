@@ -23,7 +23,7 @@ class CreateDashboardConcItemTable extends Migration {
 			$table->string('situacao', 256)->nullable();
 			$table->string('cfeerros', 256)->nullable();
 			$table->bigInteger('conciliare')->unsigned()->nullable();
-			$table->primary(['nseriesat','chave','ncupom']);
+			$table->primary(['nseriesat','chave','ncupom'], 'index_dashboard_conc_item');
 		});
 	}
 

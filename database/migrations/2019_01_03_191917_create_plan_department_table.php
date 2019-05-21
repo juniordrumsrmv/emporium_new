@@ -19,7 +19,7 @@ class CreatePlanDepartmentTable extends Migration {
 			$table->smallInteger('store_group_key')->unsigned()->default(0);
 			$table->bigInteger('department_key')->unsigned();
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['store_key','store_group_key','department_key','plan_key']);
+			$table->primary(['store_key','store_group_key','department_key','plan_key'], 'index_plan_department');
 		});
 	}
 

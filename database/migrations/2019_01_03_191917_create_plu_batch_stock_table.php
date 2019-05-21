@@ -21,7 +21,7 @@ class CreatePluBatchStockTable extends Migration {
 			$table->date('batch_expiration')->nullable();
 			$table->decimal('quantity_in_stock', 15, 3);
 			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['plu_key','store_key','batch']);
+			$table->primary(['plu_key','store_key','batch'], 'index_plu_batch_stock');
 			$table->index(['plu_key','store_key','batch','batch_expiration'], 'sngpc_batch_index_1');
 		});
 	}

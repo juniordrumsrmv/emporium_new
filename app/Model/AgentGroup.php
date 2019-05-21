@@ -1,4 +1,4 @@
-<?php namespace Emporium;
+<?php namespace Emporium\Model;
 
 /**
  * Eloquent class to describe the agent_group table

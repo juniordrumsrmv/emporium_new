@@ -1,5 +1,8 @@
 <?php
 
+use Emporium\Model\Agent;
+use Emporium\Model\AgentGroup;
+use Emporium\Model\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -12,7 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //Criar os grupos
-        factory(\Emporium\Model\Agent::class, 1)->create(
+        Agent::create(
             [
                 'agent_key' => 1,
                 'agent_type' => 1,
@@ -21,7 +24,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 2,
                 'agent_type' => 1,
@@ -30,7 +35,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 3,
                 'agent_type' => 1,
@@ -39,7 +46,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 4,
                 'agent_type' => 1,
@@ -48,7 +57,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 5,
                 'agent_type' => 1,
@@ -57,7 +68,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 6,
                 'agent_type' => 1,
@@ -66,7 +79,9 @@ class UsersTableSeeder extends Seeder
                 'remark' => 'Distribuição',
                 'sub_type' => 0,
                 'pos_send_group' => 0
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 7,
                 'agent_type' => 1,
@@ -79,19 +94,23 @@ class UsersTableSeeder extends Seeder
         );
 
         //Criar usuários
-        factory(\Emporium\Model\Agent::class, 1)->create(
+        Agent::create(
             [
                 'agent_key' => 10,
                 'agent_type' => 2,
                 'id' => 'adm',
                 'name' => 'Administrador'
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 11,
                 'agent_type' => 2,
                 'id' => 'api',
                 'name' => 'Integrador API'
-            ],
+            ]
+        );
+        Agent::create(
             [
                 'agent_key' => 12,
                 'agent_type' => 2,
@@ -100,40 +119,51 @@ class UsersTableSeeder extends Seeder
             ]
         );
 
-        factory(\Emporium\Model\User::class, 1)->create(
+        User::create(
             [
                 'agent_key' => 10,
                 'alternate_id' => 'adm',
                 'password' => bcrypt('adm'),
                 'language' => 'br',
                 'usr_mode' => 'amount',
-            ],
+                'store_key' => 0
+            ]
+        );
+        User::create(
             [
                 'agent_key' => 11,
                 'alternate_id' => 'api',
                 'password' => bcrypt('api'),
                 'language' => 'br',
                 'usr_mode' => 'amount',
-            ],
+                'store_key' => 0
+            ]
+        );
+        User::create(
             [
                 'agent_key' => 12,
                 'alternate_id' => '1190',
                 'password' => bcrypt('1190'),
                 'language' => 'br',
                 'usr_mode' => 'plu',
+                'store_key' => 0
             ]
         );
 
         //Ligando usuários a grupo
-        factory(\Emporium\Model\AgentGroup::class, 1)->create(
+        AgentGroup::create(
             [
                 'group_key' => 2,
                 'agent_key' => 10
-            ],
+            ]
+        );
+        AgentGroup::create(
             [
                 'group_key' => 7,
                 'agent_key' => 11
-            ],
+            ]
+        );
+        AgentGroup::create(
             [
                 'group_key' => 2,
                 'agent_key' => 12

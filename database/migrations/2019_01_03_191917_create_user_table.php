@@ -16,7 +16,7 @@ class CreateUserTable extends Migration {
 		{
 			$table->bigInteger('agent_key')->unsigned()->primary();
 			$table->string('alternate_id', 10)->nullable()->unique('index_user_alternate_id');
-			$table->string('password', 50)->nullable();
+			$table->string('password', 100)->nullable();
 			$table->char('language', 2)->nullable();
 			$table->string('email', 50)->nullable();
 			$table->decimal('clerk_percent', 4)->nullable();

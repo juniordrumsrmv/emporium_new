@@ -15,7 +15,7 @@ class CreateNcmTable extends Migration {
 		Schema::create('ncm', function(Blueprint $table)
 		{
 			$table->bigInteger('ncm_key')->unsigned();
-			$table->boolean('ncm_ex');
+			$table->boolean('ncm_ex')->default(0);
 			$table->string('description', 60);
 			$table->string('unit', 10)->nullable();
 			$table->boolean('ncm_table')->nullable();

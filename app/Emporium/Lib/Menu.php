@@ -71,6 +71,8 @@ class Menu
      */
     protected function loadSideMenu()
     {
+        $sideMenu = [];
+
         //Passo 1 - Buscar todos menu level 1
         $menuItem = MenuItem::where('menu_item_level','>', 0);
         $menuItem->where('menu_item_module', $this->currentModel);

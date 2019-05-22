@@ -123,7 +123,7 @@ class UsersTableSeeder extends Seeder
             [
                 'agent_key' => 10,
                 'alternate_id' => 'adm',
-                'password' => bcrypt('adm'),
+                'password' => 'adm',
                 'language' => 'br',
                 'usr_mode' => 'amount',
                 'store_key' => 0
@@ -133,7 +133,7 @@ class UsersTableSeeder extends Seeder
             [
                 'agent_key' => 11,
                 'alternate_id' => 'api',
-                'password' => bcrypt('api'),
+                'password' => 'api',
                 'language' => 'br',
                 'usr_mode' => 'amount',
                 'store_key' => 0
@@ -143,12 +143,13 @@ class UsersTableSeeder extends Seeder
             [
                 'agent_key' => 12,
                 'alternate_id' => '1190',
-                'password' => bcrypt('1190'),
+                'password' => '1190',
                 'language' => 'br',
                 'usr_mode' => 'plu',
                 'store_key' => 0
             ]
         );
+
 
         //Ligando usuários a grupo
         AgentGroup::create(

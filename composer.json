@@ -12,6 +12,7 @@
         "laravel/passport": "~4.0",
         "laravel/tinker": "~1.0",
         "lavary/laravel-menu": "^1.7",
+        "mpociot/laravel-apidoc-generator": "^3.7",
         "nwidart/laravel-modules": "^2.7",
         "paragonie/random_compat": "~2.0",
         "sboo/multiauth": "4.0.*",

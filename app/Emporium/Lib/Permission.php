@@ -19,8 +19,6 @@ class Permission
      */
     public static function allow($entity, $action) {
 
-        return true;
-
         //vars
         $permited = false;
 

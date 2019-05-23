@@ -37,4 +37,10 @@ class EmporiumController
 
         return view('home');
     }
+
+    public function passports()
+    {
+
+        return view('layouts.emporium.passports');
+    }
 }

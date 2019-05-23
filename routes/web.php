@@ -24,6 +24,16 @@ Route::prefix('moderator')->group(function() {
 //    Route::get('{module}', 'EmporiumController@index')->name('moderator');
 });
 
+//Rota da biblioteca passpost para controle da api (usuarios e acesso)
+Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'empws'], function()
+{
+    Route::group(['prefix' => 'passports'], function()
+    {
+        Route::get('', 'EmporiumController@passports');
+
+    });
+});
+
 //Rota padrao Laravel de home ( nao utilizada )
 //Route::get('/home', 'HomeController@index')->name('home');
 

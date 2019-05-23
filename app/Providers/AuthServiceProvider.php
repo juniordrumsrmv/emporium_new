@@ -6,6 +6,7 @@ use Emporium\Policies\MenuItemPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Emporium\Auth\EmporiumUserProvider;
 use Emporium\Model\MenuItem;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Registro das politicas
         $this->registerPolicies();
+
+        //Registros das rotas de passport para autenticacao
+        Passport::routes();
 
         \Auth::provider('emporium-user', function ($app){
 

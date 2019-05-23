@@ -41,9 +41,14 @@ return [
             'provider' => 'emporium-user',
         ],
 
+//        'api' => [
+//            'driver' => 'token',
+//            'provider' => 'users',
+//        ],
+
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'passport',
+            'provider' => 'emporium-api',
         ],
     ],
 
@@ -72,6 +77,10 @@ return [
         'emporium-user' => [
             'driver' => 'emporium-user',
             'model' => \Emporium\Model\User::class
+        ],
+        'emporium-api' => [
+            'driver' => 'eloquent',
+            'model' => \Emporium\User::class
         ],
 //         'users' => [
 //             'driver' => 'database',

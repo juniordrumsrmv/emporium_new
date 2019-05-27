@@ -12,7 +12,9 @@ class CreatePlanDepartmentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_department') ) {
 		Schema::create('plan_department', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -21,9 +23,10 @@ class CreatePlanDepartmentTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->primary(['store_key','store_group_key','department_key','plan_key'], 'index_plan_department');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreatePlanDepartmentTable extends Migration {
 	{
 		Schema::drop('plan_department');
 	}
-
 }

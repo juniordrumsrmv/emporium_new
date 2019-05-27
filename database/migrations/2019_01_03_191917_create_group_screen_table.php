@@ -12,7 +12,9 @@ class CreateGroupScreenTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('group_screen') ) {
 		Schema::create('group_screen', function(Blueprint $table)
+
 		{
 			$table->bigInteger('group_screen_key')->unsigned();
 			$table->string('group_screen_name', 50)->nullable();
@@ -28,9 +30,10 @@ class CreateGroupScreenTable extends Migration {
 			$table->smallInteger('group_type')->unsigned()->default(0);
 			$table->primary(['group_type','group_screen_key'], 'index_group_screen');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreateGroupScreenTable extends Migration {
 	{
 		Schema::drop('group_screen');
 	}
-
 }

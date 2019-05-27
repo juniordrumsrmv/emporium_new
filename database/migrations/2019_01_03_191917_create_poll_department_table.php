@@ -12,15 +12,18 @@ class CreatePollDepartmentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('poll_department') ) {
 		Schema::create('poll_department', function(Blueprint $table)
+
 		{
 			$table->smallInteger('department_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
 			$table->primary(['department_key','poll_key'], 'index_poll_department');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreatePollDepartmentTable extends Migration {
 	{
 		Schema::drop('poll_department');
 	}
-
 }

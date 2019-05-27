@@ -12,7 +12,9 @@ class CreateDashboardQuestionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_question') ) {
 		Schema::create('dashboard_question', function(Blueprint $table)
+
 		{
 			$table->bigInteger('question_key', true)->unsigned();
 			$table->bigInteger('question_type')->unsigned();
@@ -21,9 +23,10 @@ class CreateDashboardQuestionTable extends Migration {
 			$table->string('question_action', 24);
 			$table->unique(['question_key','question_type','question_id'], 'index_dashboard_question');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateDashboardQuestionTable extends Migration {
 	{
 		Schema::drop('dashboard_question');
 	}
-
 }

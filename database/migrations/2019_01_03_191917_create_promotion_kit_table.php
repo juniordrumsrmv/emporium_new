@@ -12,7 +12,9 @@ class CreatePromotionKitTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_kit') ) {
 		Schema::create('promotion_kit', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key', true)->unsigned();
 			$table->bigInteger('plu_kit')->unsigned();
@@ -25,9 +27,10 @@ class CreatePromotionKitTable extends Migration {
 			$table->smallInteger('count_type')->nullable()->default(0);
 			$table->unique(['promotion_key','plu_kit','plu_key','store_key','store_group_key'], 'index_promotion_kit');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreatePromotionKitTable extends Migration {
 	{
 		Schema::drop('promotion_kit');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateCustomerSkuTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_sku_type') ) {
 		Schema::create('customer_sku_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('customer_sku_type_key')->unsigned()->primary();
 			$table->string('customer_sku_type_name', 20)->nullable();
@@ -27,9 +29,10 @@ class CreateCustomerSkuTypeTable extends Migration {
 			$table->boolean('customer_sku_type_flag_8')->nullable();
 			$table->dateTime('last_change_time')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreateCustomerSkuTypeTable extends Migration {
 	{
 		Schema::drop('customer_sku_type');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreatePluExtraTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_extra') ) {
 		Schema::create('plu_extra', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
@@ -20,9 +22,10 @@ class CreatePluExtraTable extends Migration {
 			$table->string('extra_value', 128)->nullable();
 			$table->primary(['store_key','plu_key','extra_key'], 'index_plu_extra');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreatePluExtraTable extends Migration {
 	{
 		Schema::drop('plu_extra');
 	}
-
 }

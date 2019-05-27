@@ -12,7 +12,9 @@ class CreateHistoryVersionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('history_version') ) {
 		Schema::create('history_version', function(Blueprint $table)
+
 		{
 			$table->bigInteger('version_key', true)->unsigned();
 			$table->smallInteger('database_version')->unsigned()->nullable();
@@ -22,9 +24,10 @@ class CreateHistoryVersionTable extends Migration {
 			$table->string('description_upd')->nullable();
 			$table->unique(['database_version','version_key'], 'index_version_upd');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateHistoryVersionTable extends Migration {
 	{
 		Schema::drop('history_version');
 	}
-
 }

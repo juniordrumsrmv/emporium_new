@@ -12,15 +12,17 @@ class CreateStoreTaxTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('store_tax_type', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned();
-			$table->bigInteger('tax_type_key')->unsigned();
-			$table->primary(['store_key','tax_type_key'], 'index_store_tax_type');
-		});
+                if ( !Schema::hasTable('store_tax_type') ) {
+
+                    Schema::create('store_tax_type', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->bigInteger('tax_type_key')->unsigned();
+                            $table->primary(['store_key','tax_type_key'], 'index_store_tax_type');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +32,4 @@ class CreateStoreTaxTypeTable extends Migration {
 	{
 		Schema::drop('store_tax_type');
 	}
-
 }

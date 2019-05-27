@@ -12,14 +12,16 @@ class CreateTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('type', function(Blueprint $table)
-		{
-			$table->smallInteger('type_key')->unsigned()->primary();
-			$table->string('name', 50)->nullable();
-		});
+                if ( !Schema::hasTable('type') ) {
+
+                    Schema::create('type', function(Blueprint $table)
+                    {
+                            $table->smallInteger('type_key')->unsigned()->primary();
+                            $table->string('name', 50)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +31,4 @@ class CreateTypeTable extends Migration {
 	{
 		Schema::drop('type');
 	}
-
 }

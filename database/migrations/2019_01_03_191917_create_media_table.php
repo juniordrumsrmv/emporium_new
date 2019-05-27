@@ -12,7 +12,9 @@ class CreateMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('media') ) {
 		Schema::create('media', function(Blueprint $table)
+
 		{
 			$table->char('media_id', 10)->primary();
 			$table->boolean('is_check')->nullable();
@@ -22,9 +24,10 @@ class CreateMediaTable extends Migration {
 			$table->boolean('is_extended')->nullable();
 			$table->smallInteger('base_card_media_id')->unsigned()->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateMediaTable extends Migration {
 	{
 		Schema::drop('media');
 	}
-
 }

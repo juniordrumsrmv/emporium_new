@@ -12,7 +12,9 @@ class CreateGradeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('grade') ) {
 		Schema::create('grade', function(Blueprint $table)
+
 		{
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->char('entity_id', 10);
@@ -21,9 +23,10 @@ class CreateGradeTable extends Migration {
 			$table->char('cfop', 8)->nullable();
 			$table->primary(['cst_type_key','entity_id','department_id','pos_id'], 'index_grade');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateGradeTable extends Migration {
 	{
 		Schema::drop('grade');
 	}
-
 }

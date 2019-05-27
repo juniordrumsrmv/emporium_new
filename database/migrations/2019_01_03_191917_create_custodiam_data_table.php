@@ -12,7 +12,9 @@ class CreateCustodiamDataTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('custodiam_data') ) {
 		Schema::create('custodiam_data', function(Blueprint $table)
+
 		{
 			$table->smallInteger('custodiam_partner')->unsigned();
 			$table->smallInteger('custodiam_service_type')->unsigned();
@@ -23,9 +25,10 @@ class CreateCustodiamDataTable extends Migration {
 			$table->text('custodiam_ws_query_format', 65535)->nullable();
 			$table->primary(['custodiam_service_type','custodiam_action_type'], 'index_custodiam_data');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateCustodiamDataTable extends Migration {
 	{
 		Schema::drop('custodiam_data');
 	}
-
 }

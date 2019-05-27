@@ -12,7 +12,9 @@ class CreateMinutradeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('minutrade') ) {
 		Schema::create('minutrade', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned()->nullable();
 			$table->smallInteger('pos_number')->unsigned()->nullable();
@@ -26,9 +28,10 @@ class CreateMinutradeTable extends Migration {
 			$table->integer('http_code')->unsigned()->nullable();
 			$table->text('request_data')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateMinutradeTable extends Migration {
 	{
 		Schema::drop('minutrade');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateBackupControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('backup_control') ) {
 		Schema::create('backup_control', function(Blueprint $table)
+
 		{
 			$table->bigInteger('backup_key', true)->unsigned();
 			$table->boolean('backup_type')->nullable();
@@ -23,9 +25,10 @@ class CreateBackupControlTable extends Migration {
 			$table->boolean('access_control')->nullable();
 			$table->index(['backup_type','creation_time'], 'index_backup_control');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateBackupControlTable extends Migration {
 	{
 		Schema::drop('backup_control');
 	}
-
 }

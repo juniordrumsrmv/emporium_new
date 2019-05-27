@@ -12,7 +12,9 @@ class CreateCustomerStoreTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_store') ) {
 		Schema::create('customer_store', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -21,9 +23,10 @@ class CreateCustomerStoreTable extends Migration {
 			$table->dateTime('last_change_time');
 			$table->primary(['customer_key','store_key'], 'index_customer_store');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateCustomerStoreTable extends Migration {
 	{
 		Schema::drop('customer_store');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateCounterAdderTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('counter_adder') ) {
 		Schema::create('counter_adder', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -23,9 +25,10 @@ class CreateCounterAdderTable extends Migration {
 			$table->primary(['store_key','pos_number','counter_date','counter_type'], 'index_counter_adder');
 			$table->index(['store_key','pos_number','counter_fiscal_date','counter_type'], 'counter_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateCounterAdderTable extends Migration {
 	{
 		Schema::drop('counter_adder');
 	}
-
 }

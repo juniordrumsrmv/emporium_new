@@ -12,7 +12,9 @@ class CreateCashierDocumentDataTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cashier_document_data') ) {
 		Schema::create('cashier_document_data', function(Blueprint $table)
+
 		{
 			$table->bigInteger('cashier_document_key')->unsigned();
 			$table->smallInteger('data_id')->unsigned();
@@ -20,9 +22,10 @@ class CreateCashierDocumentDataTable extends Migration {
 			$table->string('data_extra', 80)->nullable();
 			$table->primary(['cashier_document_key','data_id'], 'index_cashier_document_data');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateCashierDocumentDataTable extends Migration {
 	{
 		Schema::drop('cashier_document_data');
 	}
-
 }

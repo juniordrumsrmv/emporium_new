@@ -12,7 +12,9 @@ class CreateCustomerExternalTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_external') ) {
 		Schema::create('customer_external', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->bigInteger('customer_store_key')->unsigned()->nullable();
@@ -26,9 +28,10 @@ class CreateCustomerExternalTable extends Migration {
 			$table->dateTime('customer_effective_date')->nullable();
 			$table->smallInteger('customer_status')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateCustomerExternalTable extends Migration {
 	{
 		Schema::drop('customer_external');
 	}
-
 }

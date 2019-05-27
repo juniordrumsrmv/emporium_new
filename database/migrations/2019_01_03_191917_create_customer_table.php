@@ -12,7 +12,9 @@ class CreateCustomerTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer') ) {
 		Schema::create('customer', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key', true)->unsigned();
 			$table->smallInteger('customer_id_type')->unsigned()->nullable();
@@ -109,9 +111,10 @@ class CreateCustomerTable extends Migration {
 			$table->string('customer_delayed', 20)->nullable();
 			$table->index(['customer_last_change_time','store_key'], 'index_customer_last');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -121,5 +124,4 @@ class CreateCustomerTable extends Migration {
 	{
 		Schema::drop('customer');
 	}
-
 }

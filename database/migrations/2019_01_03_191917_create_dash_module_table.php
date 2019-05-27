@@ -12,16 +12,19 @@ class CreateDashModuleTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dash_module') ) {
 		Schema::create('dash_module', function(Blueprint $table)
+
 		{
 			$table->string('name', 30);
 			$table->integer('position')->primary();
 			$table->string('label', 30);
 			$table->integer('status')->default(0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateDashModuleTable extends Migration {
 	{
 		Schema::drop('dash_module');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateFiscalTaxStatusTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_tax_status') ) {
 		Schema::create('fiscal_tax_status', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -26,9 +28,10 @@ class CreateFiscalTaxStatusTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time','pos_id'], 'index_fiscal_tax_status');
 			$table->unique(['store_key','ecf_number','ticket_number','start_time','pos_id'], 'index_ecf_taxsts');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateFiscalTaxStatusTable extends Migration {
 	{
 		Schema::drop('fiscal_tax_status');
 	}
-
 }

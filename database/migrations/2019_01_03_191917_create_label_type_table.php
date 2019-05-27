@@ -12,14 +12,17 @@ class CreateLabelTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('label_type') ) {
 		Schema::create('label_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('label_key')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateLabelTypeTable extends Migration {
 	{
 		Schema::drop('label_type');
 	}
-
 }

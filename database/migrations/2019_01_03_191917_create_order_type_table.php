@@ -12,14 +12,17 @@ class CreateOrderTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('order_type') ) {
 		Schema::create('order_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('order_type')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateOrderTypeTable extends Migration {
 	{
 		Schema::drop('order_type');
 	}
-
 }

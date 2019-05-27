@@ -12,14 +12,17 @@ class CreateAcquirrTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('acquirr_type') ) {
 		Schema::create('acquirr_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('acquirr_key')->unsigned()->primary();
 			$table->string('acquirr_name', 30)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateAcquirrTypeTable extends Migration {
 	{
 		Schema::drop('acquirr_type');
 	}
-
 }

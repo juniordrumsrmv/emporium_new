@@ -12,16 +12,19 @@ class CreateListTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('list_type') ) {
 		Schema::create('list_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('list_type_key')->unsigned()->primary();
 			$table->string('list_type_name', 50)->nullable();
 			$table->decimal('bonus_percent', 6, 3)->nullable()->default(0.000);
 			$table->boolean('delivery')->nullable()->default(0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateListTypeTable extends Migration {
 	{
 		Schema::drop('list_type');
 	}
-
 }

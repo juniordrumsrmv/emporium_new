@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
+/**
+ * Class WebserviceController
+ * @package Modules\Webservice\Http\Controllers
+ */
 class WebserviceController extends Controller
 {
     /**

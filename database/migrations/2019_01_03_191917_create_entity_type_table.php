@@ -12,14 +12,17 @@ class CreateEntityTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('entity_type') ) {
 		Schema::create('entity_type', function(Blueprint $table)
+
 		{
 			$table->integer('entity_type_key')->unsigned()->primary();
 			$table->string('entity_type_name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateEntityTypeTable extends Migration {
 	{
 		Schema::drop('entity_type');
 	}
-
 }

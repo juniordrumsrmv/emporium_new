@@ -12,7 +12,9 @@ class CreateCheckingSystemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('checking_system') ) {
 		Schema::create('checking_system', function(Blueprint $table)
+
 		{
 			$table->bigInteger('checking_system_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned()->nullable();
@@ -22,9 +24,10 @@ class CreateCheckingSystemTable extends Migration {
 			$table->binary('checking_system_data', 65535)->nullable();
 			$table->index(['store_key','pos_number','checking_system_type','checking_system_time'], 'index_checking_system');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateCheckingSystemTable extends Migration {
 	{
 		Schema::drop('checking_system');
 	}
-
 }

@@ -12,17 +12,19 @@ class CreateSealAcceleratorsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('seal_accelerators', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned();
-			$table->bigInteger('plu_id')->unsigned();
-			$table->decimal('quantity_plu', 6, 3);
-			$table->decimal('quantity_seal', 6, 3);
-			$table->integer('max_repeat_times')->nullable();
-		});
+                if ( !Schema::hasTable('seal_accelerators') ) {
+
+                    Schema::create('seal_accelerators', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->bigInteger('plu_id')->unsigned();
+                            $table->decimal('quantity_plu', 6, 3);
+                            $table->decimal('quantity_seal', 6, 3);
+                            $table->integer('max_repeat_times')->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +34,4 @@ class CreateSealAcceleratorsTable extends Migration {
 	{
 		Schema::drop('seal_accelerators');
 	}
-
 }

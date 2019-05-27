@@ -12,7 +12,9 @@ class CreateBankingLocationTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_location') ) {
 		Schema::create('banking_location', function(Blueprint $table)
+
 		{
 			$table->smallInteger('location_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -30,9 +32,10 @@ class CreateBankingLocationTable extends Migration {
 			$table->integer('loc_cmc')->unsigned();
 			$table->integer('loc_ident')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateBankingLocationTable extends Migration {
 	{
 		Schema::drop('banking_location');
 	}
-
 }

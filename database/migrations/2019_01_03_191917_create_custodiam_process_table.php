@@ -12,7 +12,9 @@ class CreateCustodiamProcessTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('custodiam_process') ) {
 		Schema::create('custodiam_process', function(Blueprint $table)
+
 		{
 			$table->integer('iStatus')->nullable()->default(0);
 			$table->integer('iProcessMove')->nullable()->default(0);
@@ -24,9 +26,10 @@ class CreateCustodiamProcessTable extends Migration {
 			$table->dateTime('szNextConciliare')->nullable();
 			$table->integer('iConcStatus')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreateCustodiamProcessTable extends Migration {
 	{
 		Schema::drop('custodiam_process');
 	}
-
 }

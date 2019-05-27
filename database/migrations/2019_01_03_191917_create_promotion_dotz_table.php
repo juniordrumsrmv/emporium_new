@@ -12,7 +12,9 @@ class CreatePromotionDotzTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_dotz') ) {
 		Schema::create('promotion_dotz', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -20,9 +22,10 @@ class CreatePromotionDotzTable extends Migration {
 			$table->decimal('points', 15, 3)->nullable();
 			$table->primary(['promotion_key','store_key','plu_key'], 'index_promotion_dotz');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreatePromotionDotzTable extends Migration {
 	{
 		Schema::drop('promotion_dotz');
 	}
-
 }

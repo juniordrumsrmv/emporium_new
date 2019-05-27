@@ -12,15 +12,18 @@ class CreatePollCstTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('poll_cst_type') ) {
 		Schema::create('poll_cst_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
 			$table->primary(['cst_type_key','poll_key'], 'index_poll_cst_type');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreatePollCstTypeTable extends Migration {
 	{
 		Schema::drop('poll_cst_type');
 	}
-
 }

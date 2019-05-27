@@ -12,7 +12,9 @@ class CreateMenuItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('menu_item') ) {
 		Schema::create('menu_item', function(Blueprint $table)
+
 		{
 			$table->char('menu_item_id', 20)->primary();
 			$table->char('menu_item_parent_id', 20)->nullable();
@@ -32,9 +34,10 @@ class CreateMenuItemTable extends Migration {
 			$table->boolean('menu_item_status')->nullable();
 			$table->index(['menu_item_module','menu_item_level','menu_item_parent_id','menu_item_seq','menu_item_lang'], 'index_menu_item_0');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreateMenuItemTable extends Migration {
 	{
 		Schema::drop('menu_item');
 	}
-
 }

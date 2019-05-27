@@ -12,14 +12,17 @@ class CreatePosTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pos_type') ) {
 		Schema::create('pos_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('pos_type_key')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreatePosTypeTable extends Migration {
 	{
 		Schema::drop('pos_type');
 	}
-
 }

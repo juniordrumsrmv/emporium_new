@@ -12,7 +12,9 @@ class CreateFarmServerTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('farm_server') ) {
 		Schema::create('farm_server', function(Blueprint $table)
+
 		{
 			$table->smallInteger('farm_server_key')->unsigned()->primary();
 			$table->string('farm_server_name')->nullable();
@@ -22,9 +24,10 @@ class CreateFarmServerTable extends Migration {
 			$table->string('farm_server_directory')->nullable();
 			$table->string('farm_server_substitute')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateFarmServerTable extends Migration {
 	{
 		Schema::drop('farm_server');
 	}
-
 }

@@ -12,6 +12,8 @@ class CreateTreasuryMediaTable extends Migration {
 	 */
 	public function up()
 	{
+                if ( !Schema::hasTable('treasury_media') ) {
+
 		Schema::create('treasury_media', function(Blueprint $table)
 		{
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,9 @@ class CreateTreasuryMediaTable extends Migration {
 			$table->primary(['store_key','location','extended_media_id'], 'index_treasury_media');
 			$table->index(['store_key','location','media_id'], 'index_treasury_media');
 		});
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +36,4 @@ class CreateTreasuryMediaTable extends Migration {
 	{
 		Schema::drop('treasury_media');
 	}
-
 }

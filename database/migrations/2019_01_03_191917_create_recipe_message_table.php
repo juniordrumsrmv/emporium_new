@@ -12,7 +12,9 @@ class CreateRecipeMessageTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('recipe_message') ) {
 		Schema::create('recipe_message', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
@@ -21,9 +23,10 @@ class CreateRecipeMessageTable extends Migration {
 			$table->binary('extra_information', 65535)->nullable();
 			$table->primary(['store_key','plu_key'], 'index_recipe_message');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateRecipeMessageTable extends Migration {
 	{
 		Schema::drop('recipe_message');
 	}
-
 }

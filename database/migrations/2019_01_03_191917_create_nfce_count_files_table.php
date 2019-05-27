@@ -12,7 +12,9 @@ class CreateNfceCountFilesTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('nfce_count_files') ) {
 		Schema::create('nfce_count_files', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -20,9 +22,10 @@ class CreateNfceCountFilesTable extends Migration {
 			$table->bigInteger('quantity')->unsigned()->nullable();
 			$table->primary(['store_key','pos_number'], 'index_nfce_count_files');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateNfceCountFilesTable extends Migration {
 	{
 		Schema::drop('nfce_count_files');
 	}
-
 }

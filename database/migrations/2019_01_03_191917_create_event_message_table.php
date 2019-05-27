@@ -12,7 +12,9 @@ class CreateEventMessageTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('event_message') ) {
 		Schema::create('event_message', function(Blueprint $table)
+
 		{
 			$table->bigInteger('evmsg_key', true)->unsigned();
 			$table->bigInteger('agent_key')->unsigned()->nullable();
@@ -33,9 +35,10 @@ class CreateEventMessageTable extends Migration {
 			$table->index(['evmsg_send','evmsg_sent','agent_key'], 'index_event_message_send');
 			$table->index(['agent_key','evmsg_popup','evmsg_popedup'], 'index_event_message_popup');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -45,5 +48,4 @@ class CreateEventMessageTable extends Migration {
 	{
 		Schema::drop('event_message');
 	}
-
 }

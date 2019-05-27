@@ -12,7 +12,9 @@ class CreateExtraTicketTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('extra_ticket') ) {
 		Schema::create('extra_ticket', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -25,9 +27,10 @@ class CreateExtraTicketTable extends Migration {
 			$table->binary('data', 65535)->nullable();
 			$table->primary(['store_key','pos_number','ticket_number','trn_number','start_time'], 'index_extra_ticket');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreateExtraTicketTable extends Migration {
 	{
 		Schema::drop('extra_ticket');
 	}
-
 }

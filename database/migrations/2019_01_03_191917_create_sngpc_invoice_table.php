@@ -12,21 +12,23 @@ class CreateSngpcInvoiceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sngpc_invoice', function(Blueprint $table)
-		{
-			$table->bigInteger('sngpc_key')->unsigned();
-			$table->integer('invoice_number')->unsigned();
-			$table->boolean('invoice_operation');
-			$table->date('fiscal_date');
-			$table->bigInteger('store_origin')->unsigned();
-			$table->bigInteger('store_destiny')->unsigned()->nullable();
-			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'index_sngpc_invoice');
-			$table->index(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'sngpc_invoice_index_1');
-		});
+                if ( !Schema::hasTable('sngpc_invoice') ) {
+
+                    Schema::create('sngpc_invoice', function(Blueprint $table)
+                    {
+                            $table->bigInteger('sngpc_key')->unsigned();
+                            $table->integer('invoice_number')->unsigned();
+                            $table->boolean('invoice_operation');
+                            $table->date('fiscal_date');
+                            $table->bigInteger('store_origin')->unsigned();
+                            $table->bigInteger('store_destiny')->unsigned()->nullable();
+                            $table->dateTime('last_change_time')->nullable();
+                            $table->primary(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'index_sngpc_invoice');
+                            $table->index(['sngpc_key','invoice_number','invoice_operation','fiscal_date'], 'sngpc_invoice_index_1');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +38,4 @@ class CreateSngpcInvoiceTable extends Migration {
 	{
 		Schema::drop('sngpc_invoice');
 	}
-
 }

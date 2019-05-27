@@ -12,7 +12,9 @@ class CreateAdmSendTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('adm_send') ) {
 		Schema::create('adm_send', function(Blueprint $table)
+
 		{
 			$table->string('table_name', 30);
 			$table->string('field', 30);
@@ -25,9 +27,10 @@ class CreateAdmSendTable extends Migration {
 			$table->string('module', 30);
 			$table->index(['table_name','field'], 'adm_send_index');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreateAdmSendTable extends Migration {
 	{
 		Schema::drop('adm_send');
 	}
-
 }

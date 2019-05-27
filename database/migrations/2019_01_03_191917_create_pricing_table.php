@@ -12,7 +12,9 @@ class CreatePricingTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pricing') ) {
 		Schema::create('pricing', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key')->unsigned();
 			$table->dateTime('start');
@@ -28,9 +30,10 @@ class CreatePricingTable extends Migration {
 			$table->primary(['store_key','plu_key','start','type_price'], 'index_pricing');
 			$table->index(['plu_key','type_price','start'], 'pricing_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreatePricingTable extends Migration {
 	{
 		Schema::drop('pricing');
 	}
-
 }

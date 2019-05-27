@@ -12,15 +12,18 @@ class CreateBinTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('bin_type') ) {
 		Schema::create('bin_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('bin_key')->unsigned()->primary();
 			$table->string('bin_name', 30)->nullable();
 			$table->smallInteger('acquirr_key')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateBinTypeTable extends Migration {
 	{
 		Schema::drop('bin_type');
 	}
-
 }

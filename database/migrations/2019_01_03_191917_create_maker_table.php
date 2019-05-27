@@ -12,7 +12,9 @@ class CreateMakerTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('maker') ) {
 		Schema::create('maker', function(Blueprint $table)
+
 		{
 			$table->bigInteger('maker_key', true)->unsigned();
 			$table->string('maker_id', 50)->unique('index_maker_id');
@@ -34,9 +36,10 @@ class CreateMakerTable extends Migration {
 			$table->char('maker_state_code', 10)->nullable();
 			$table->char('maker_city_code', 16)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -46,5 +49,4 @@ class CreateMakerTable extends Migration {
 	{
 		Schema::drop('maker');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreatePumpItemGrandTotalTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pump_item_grand_total') ) {
 		Schema::create('pump_item_grand_total', function(Blueprint $table)
+
 		{
 			$table->date('fiscal_date');
 			$table->bigInteger('store_key')->unsigned();
@@ -23,9 +25,10 @@ class CreatePumpItemGrandTotalTable extends Migration {
 			$table->smallInteger('nozzle_number')->unsigned();
 			$table->primary(['fiscal_date','store_key','pump_number','plu_key','nozzle_number'], 'index_pump_item_grand_total');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreatePumpItemGrandTotalTable extends Migration {
 	{
 		Schema::drop('pump_item_grand_total');
 	}
-
 }

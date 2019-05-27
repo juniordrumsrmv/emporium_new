@@ -12,7 +12,9 @@ class CreatePosUpdateControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pos_update_control') ) {
 		Schema::create('pos_update_control', function(Blueprint $table)
+
 		{
 			$table->boolean('update_type');
 			$table->bigInteger('store_key')->unsigned();
@@ -23,9 +25,10 @@ class CreatePosUpdateControlTable extends Migration {
 			$table->primary(['update_type','store_key','update_number','start_time'], 'index_pos_update_control');
 			$table->index(['update_type','store_key','transaction_status'], 'pos_update_control_status');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreatePosUpdateControlTable extends Migration {
 	{
 		Schema::drop('pos_update_control');
 	}
-
 }

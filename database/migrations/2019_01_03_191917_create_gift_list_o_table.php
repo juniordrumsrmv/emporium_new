@@ -12,7 +12,9 @@ class CreateGiftListOTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('gift_list_o') ) {
 		Schema::create('gift_list_o', function(Blueprint $table)
+
 		{
 			$table->bigInteger('gift_list_key')->unsigned()->index('index_type');
 			$table->smallInteger('list_type_key')->unsigned();
@@ -33,9 +35,10 @@ class CreateGiftListOTable extends Migration {
 			$table->date('gift_list_date_end');
 			$table->string('gift_list_obs')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -45,5 +48,4 @@ class CreateGiftListOTable extends Migration {
 	{
 		Schema::drop('gift_list_o');
 	}
-
 }

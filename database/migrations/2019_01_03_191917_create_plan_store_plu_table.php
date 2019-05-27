@@ -12,7 +12,9 @@ class CreatePlanStorePluTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_store_plu') ) {
 		Schema::create('plan_store_plu', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -21,9 +23,10 @@ class CreatePlanStorePluTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->primary(['store_key','store_group_key','plu_key','plan_key'], 'index_plan_store_plu');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreatePlanStorePluTable extends Migration {
 	{
 		Schema::drop('plan_store_plu');
 	}
-
 }

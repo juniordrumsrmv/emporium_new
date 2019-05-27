@@ -12,7 +12,9 @@ class CreateDiscountTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('discount_type') ) {
 		Schema::create('discount_type', function(Blueprint $table)
+
 		{
 			$table->bigInteger('dst_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -40,9 +42,10 @@ class CreateDiscountTypeTable extends Migration {
 			$table->boolean('dst_quant_receipt')->nullable();
 			$table->primary(['dst_key','store_key','dst_start_time'], 'index_discount_type');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -52,5 +55,4 @@ class CreateDiscountTypeTable extends Migration {
 	{
 		Schema::drop('discount_type');
 	}
-
 }

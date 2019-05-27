@@ -12,7 +12,9 @@ class CreateMefTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('mef') ) {
 		Schema::create('mef', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -24,9 +26,10 @@ class CreateMefTable extends Migration {
 			$table->binary('mef_text')->nullable();
 			$table->primary(['store_key','pos_number','trn_number','start_time'], 'index_mef');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreateMefTable extends Migration {
 	{
 		Schema::drop('mef');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateCstDelayedPaymentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cst_delayed_payment') ) {
 		Schema::create('cst_delayed_payment', function(Blueprint $table)
+
 		{
 			$table->smallInteger('customer_type')->unsigned()->nullable();
 			$table->bigInteger('store_key')->unsigned()->nullable();
@@ -24,9 +26,10 @@ class CreateCstDelayedPaymentTable extends Migration {
 			$table->smallInteger('interest_type')->nullable();
 			$table->smallInteger('allow_negotiation')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreateCstDelayedPaymentTable extends Migration {
 	{
 		Schema::drop('cst_delayed_payment');
 	}
-
 }

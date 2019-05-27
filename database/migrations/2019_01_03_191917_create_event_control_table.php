@@ -12,7 +12,9 @@ class CreateEventControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('event_control') ) {
 		Schema::create('event_control', function(Blueprint $table)
+
 		{
 			$table->bigInteger('evctl_key', true)->unsigned();
 			$table->char('evctl_id', 32);
@@ -20,9 +22,10 @@ class CreateEventControlTable extends Migration {
 			$table->dateTime('evctl_time')->nullable();
 			$table->index(['evctl_id','agent_key'], 'event_control_index');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateEventControlTable extends Migration {
 	{
 		Schema::drop('event_control');
 	}
-
 }

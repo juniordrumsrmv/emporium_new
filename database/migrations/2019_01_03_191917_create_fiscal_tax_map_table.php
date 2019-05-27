@@ -12,7 +12,9 @@ class CreateFiscalTaxMapTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_tax_map') ) {
 		Schema::create('fiscal_tax_map', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->date('fiscal_date');
@@ -26,9 +28,10 @@ class CreateFiscalTaxMapTable extends Migration {
 			$table->primary(['store_key','fiscal_date','pos_number','ticket_number','pos_id'], 'index_fiscal_tax_map');
 			$table->unique(['store_key','fiscal_date','ecf_number','ticket_number','pos_id'], 'index_ecf_taxmap');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateFiscalTaxMapTable extends Migration {
 	{
 		Schema::drop('fiscal_tax_map');
 	}
-
 }

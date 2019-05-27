@@ -12,16 +12,19 @@ class CreateCestTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cest') ) {
 		Schema::create('cest', function(Blueprint $table)
+
 		{
 			$table->string('cest_code', 12)->primary();
 			$table->string('cest_description', 250);
 			$table->string('segment', 50)->nullable();
 			$table->string('item', 10)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateCestTable extends Migration {
 	{
 		Schema::drop('cest');
 	}
-
 }

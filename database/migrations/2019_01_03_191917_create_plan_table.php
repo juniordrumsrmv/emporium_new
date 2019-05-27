@@ -12,7 +12,9 @@ class CreatePlanTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan') ) {
 		Schema::create('plan', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_key')->unsigned()->primary();
 			$table->smallInteger('cst_type_key')->unsigned();
@@ -38,9 +40,10 @@ class CreatePlanTable extends Migration {
 			$table->string('option_09', 250)->nullable();
 			$table->string('option_10', 250)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -50,5 +53,4 @@ class CreatePlanTable extends Migration {
 	{
 		Schema::drop('plan');
 	}
-
 }

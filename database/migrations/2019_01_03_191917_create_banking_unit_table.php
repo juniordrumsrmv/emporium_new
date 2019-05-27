@@ -12,7 +12,9 @@ class CreateBankingUnitTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_unit') ) {
 		Schema::create('banking_unit', function(Blueprint $table)
+
 		{
 			$table->bigInteger('banking_unit_key', true)->unsigned();
 			$table->boolean('type')->nullable();
@@ -50,9 +52,10 @@ class CreateBankingUnitTable extends Migration {
 			$table->index(['extended_media_id','location_key','amount_verified'], 'banking_unit_3');
 			$table->index(['store_key','pos_number','pickup_transaction_number','status'], 'banking_unit_4');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -62,5 +65,4 @@ class CreateBankingUnitTable extends Migration {
 	{
 		Schema::drop('banking_unit');
 	}
-
 }

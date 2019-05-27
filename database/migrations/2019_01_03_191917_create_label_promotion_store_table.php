@@ -12,7 +12,9 @@ class CreateLabelPromotionStoreTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('label_promotion_store') ) {
 		Schema::create('label_promotion_store', function(Blueprint $table)
+
 		{
 			$table->bigInteger('code')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -20,9 +22,10 @@ class CreateLabelPromotionStoreTable extends Migration {
 			$table->dateTime('label_printing_date')->nullable();
 			$table->primary(['code','store_key'], 'index_label_promotion_store');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateLabelPromotionStoreTable extends Migration {
 	{
 		Schema::drop('label_promotion_store');
 	}
-
 }

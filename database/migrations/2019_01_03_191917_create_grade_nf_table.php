@@ -12,7 +12,9 @@ class CreateGradeNfTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('grade_nf') ) {
 		Schema::create('grade_nf', function(Blueprint $table)
+
 		{
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->smallInteger('invoice_type_key')->unsigned();
@@ -21,9 +23,10 @@ class CreateGradeNfTable extends Migration {
 			$table->char('cfop', 8)->nullable();
 			$table->primary(['cst_type_key','invoice_type_key','department_id','pos_id'], 'index_grade_nf');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateGradeNfTable extends Migration {
 	{
 		Schema::drop('grade_nf');
 	}
-
 }

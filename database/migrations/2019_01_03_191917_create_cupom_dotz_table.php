@@ -12,7 +12,9 @@ class CreateCupomDotzTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cupom_dotz') ) {
 		Schema::create('cupom_dotz', function(Blueprint $table)
+
 		{
 			$table->string('crypt_password', 80)->primary();
 			$table->decimal('ticket_amount', 11);
@@ -30,9 +32,10 @@ class CreateCupomDotzTable extends Migration {
 			$table->decimal('quantity', 10, 3)->nullable();
 			$table->index(['store_key','start_time','pos_number','ticket_number','crypt_password'], 'index_tkt');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateCupomDotzTable extends Migration {
 	{
 		Schema::drop('cupom_dotz');
 	}
-
 }

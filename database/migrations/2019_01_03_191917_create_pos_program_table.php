@@ -12,7 +12,9 @@ class CreatePosProgramTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pos_program') ) {
 		Schema::create('pos_program', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -22,9 +24,10 @@ class CreatePosProgramTable extends Migration {
 			$table->string('program_executable')->nullable();
 			$table->primary(['store_key','pos_number','program_id'], 'index_pos_program');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreatePosProgramTable extends Migration {
 	{
 		Schema::drop('pos_program');
 	}
-
 }

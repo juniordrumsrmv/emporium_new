@@ -12,15 +12,18 @@ class CreateCustodiamStoreTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('custodiam_store') ) {
 		Schema::create('custodiam_store', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->primary();
 			$table->string('store_id1', 25);
 			$table->string('store_name', 30);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateCustodiamStoreTable extends Migration {
 	{
 		Schema::drop('custodiam_store');
 	}
-
 }

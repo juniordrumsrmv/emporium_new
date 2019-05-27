@@ -12,7 +12,9 @@ class CreateNozzleTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('nozzle') ) {
 		Schema::create('nozzle', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('tank_number')->unsigned();
@@ -22,9 +24,10 @@ class CreateNozzleTable extends Migration {
 			$table->bigInteger('increase_gt_amo')->unsigned()->nullable()->default(0);
 			$table->primary(['store_key','tank_number','nozzle_number'], 'index_nozzle');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateNozzleTable extends Migration {
 	{
 		Schema::drop('nozzle');
 	}
-
 }

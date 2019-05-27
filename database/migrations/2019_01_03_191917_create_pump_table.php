@@ -12,7 +12,9 @@ class CreatePumpTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pump') ) {
 		Schema::create('pump', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pump_number')->unsigned();
@@ -27,9 +29,10 @@ class CreatePumpTable extends Migration {
 			$table->dateTime('pump_date_alt')->nullable();
 			$table->primary(['store_key','pump_number'], 'index_pump');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreatePumpTable extends Migration {
 	{
 		Schema::drop('pump');
 	}
-
 }

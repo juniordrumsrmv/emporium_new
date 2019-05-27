@@ -12,7 +12,9 @@ class CreatePromotionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion') ) {
 		Schema::create('promotion', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
@@ -57,9 +59,10 @@ class CreatePromotionTable extends Migration {
 			$table->string('option_20', 250)->nullable();
 			$table->smallInteger('source')->unsigned()->nullable()->default(0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -69,5 +72,4 @@ class CreatePromotionTable extends Migration {
 	{
 		Schema::drop('promotion');
 	}
-
 }

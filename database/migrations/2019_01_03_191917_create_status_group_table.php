@@ -12,14 +12,16 @@ class CreateStatusGroupTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('status_group', function(Blueprint $table)
-		{
-			$table->smallInteger('status_type_key')->unsigned();
-			$table->bigInteger('group_key')->unsigned();
-		});
+                if ( !Schema::hasTable('status_group') ) {
+
+                    Schema::create('status_group', function(Blueprint $table)
+                    {
+                            $table->smallInteger('status_type_key')->unsigned();
+                            $table->bigInteger('group_key')->unsigned();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +31,4 @@ class CreateStatusGroupTable extends Migration {
 	{
 		Schema::drop('status_group');
 	}
-
 }

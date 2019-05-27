@@ -12,7 +12,9 @@ class CreateAccumReturnedItemReasonTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('accum_returned_item_reason') ) {
 		Schema::create('accum_returned_item_reason', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -27,9 +29,10 @@ class CreateAccumReturnedItemReasonTable extends Migration {
 			$table->smallInteger('transaction')->unsigned();
 			$table->primary(['store_key','fiscal_date','pos_number','plu_id','reason','transaction'], 'index_accum_returned_item_reason');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreateAccumReturnedItemReasonTable extends Migration {
 	{
 		Schema::drop('accum_returned_item_reason');
 	}
-
 }

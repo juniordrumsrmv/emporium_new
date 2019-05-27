@@ -12,7 +12,9 @@ class CreateAgentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('agent') ) {
 		Schema::create('agent', function(Blueprint $table)
+
 		{
 			$table->bigInteger('agent_key', true)->unsigned();
 			$table->integer('agent_type')->unsigned();
@@ -23,9 +25,10 @@ class CreateAgentTable extends Migration {
 			$table->boolean('pos_send_group')->nullable()->default(0);
 			$table->unique(['agent_type','id'], 'index_agent_id');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateAgentTable extends Migration {
 	{
 		Schema::drop('agent');
 	}
-
 }

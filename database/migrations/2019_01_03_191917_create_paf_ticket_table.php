@@ -12,7 +12,9 @@ class CreatePafTicketTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('paf_ticket') ) {
 		Schema::create('paf_ticket', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -30,9 +32,10 @@ class CreatePafTicketTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_paf_ticket');
 			$table->index(['store_key','ecf_number','fiscal_date','ticket_number'], 'index_ticket_ecf');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreatePafTicketTable extends Migration {
 	{
 		Schema::drop('paf_ticket');
 	}
-
 }

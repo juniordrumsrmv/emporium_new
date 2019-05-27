@@ -12,15 +12,18 @@ class CreatePollStoreTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('poll_store') ) {
 		Schema::create('poll_store', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('poll_key')->unsigned();
 			$table->primary(['store_key','poll_key'], 'index_poll_store');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreatePollStoreTable extends Migration {
 	{
 		Schema::drop('poll_store');
 	}
-
 }

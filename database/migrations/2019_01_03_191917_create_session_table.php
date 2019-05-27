@@ -12,23 +12,25 @@ class CreateSessionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('session', function(Blueprint $table)
-		{
-			$table->bigInteger('session_key', true)->unsigned();
-			$table->string('session_id', 32)->nullable();
-			$table->bigInteger('agent_key')->unsigned()->nullable();
-			$table->boolean('status')->nullable();
-			$table->dateTime('start_time')->nullable();
-			$table->dateTime('finish_time')->nullable();
-			$table->dateTime('update_time')->nullable();
-			$table->bigInteger('store_key')->unsigned()->nullable();
-			$table->smallInteger('pos_number')->unsigned()->nullable();
-			$table->string('terminal_ip', 32)->nullable();
-			$table->index(['agent_key','status'], 'index_session_user_alternate_id');
-		});
+                if ( !Schema::hasTable('session') ) {
+
+                    Schema::create('session', function(Blueprint $table)
+                    {
+                            $table->bigInteger('session_key', true)->unsigned();
+                            $table->string('session_id', 32)->nullable();
+                            $table->bigInteger('agent_key')->unsigned()->nullable();
+                            $table->boolean('status')->nullable();
+                            $table->dateTime('start_time')->nullable();
+                            $table->dateTime('finish_time')->nullable();
+                            $table->dateTime('update_time')->nullable();
+                            $table->bigInteger('store_key')->unsigned()->nullable();
+                            $table->smallInteger('pos_number')->unsigned()->nullable();
+                            $table->string('terminal_ip', 32)->nullable();
+                            $table->index(['agent_key','status'], 'index_session_user_alternate_id');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +40,4 @@ class CreateSessionTable extends Migration {
 	{
 		Schema::drop('session');
 	}
-
 }

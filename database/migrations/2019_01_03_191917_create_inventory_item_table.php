@@ -12,7 +12,9 @@ class CreateInventoryItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('inventory_item') ) {
 		Schema::create('inventory_item', function(Blueprint $table)
+
 		{
 			$table->integer('inventory_number')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -36,9 +38,10 @@ class CreateInventoryItemTable extends Migration {
 			$table->decimal('tax_percent', 6, 3)->nullable();
 			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number','sequence'], 'index_inventory_item');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -48,5 +51,4 @@ class CreateInventoryItemTable extends Migration {
 	{
 		Schema::drop('inventory_item');
 	}
-
 }

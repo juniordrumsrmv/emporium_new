@@ -12,14 +12,17 @@ class CreateNetworkTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('network_type') ) {
 		Schema::create('network_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('network_key')->unsigned()->primary();
 			$table->string('network_name', 30)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateNetworkTypeTable extends Migration {
 	{
 		Schema::drop('network_type');
 	}
-
 }

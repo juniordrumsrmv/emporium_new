@@ -12,15 +12,18 @@ class CreateDiscountClassRestrictionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('discount_class_restriction') ) {
 		Schema::create('discount_class_restriction', function(Blueprint $table)
+
 		{
 			$table->bigInteger('dst_key')->unsigned();
 			$table->string('class', 25);
 			$table->primary(['dst_key','class'], 'index_discount_class_restriction');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateDiscountClassRestrictionTable extends Migration {
 	{
 		Schema::drop('discount_class_restriction');
 	}
-
 }

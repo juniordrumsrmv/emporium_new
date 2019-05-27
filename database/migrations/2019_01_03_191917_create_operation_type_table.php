@@ -12,7 +12,9 @@ class CreateOperationTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('operation_type') ) {
 		Schema::create('operation_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('operation_type_key')->unsigned()->primary();
 			$table->string('description', 128)->nullable();
@@ -21,9 +23,10 @@ class CreateOperationTypeTable extends Migration {
 			$table->boolean('op_signal')->nullable();
 			$table->boolean('op_export')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateOperationTypeTable extends Migration {
 	{
 		Schema::drop('operation_type');
 	}
-
 }

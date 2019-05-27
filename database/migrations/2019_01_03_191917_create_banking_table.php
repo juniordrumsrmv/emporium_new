@@ -12,7 +12,9 @@ class CreateBankingTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking') ) {
 		Schema::create('banking', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -34,9 +36,10 @@ class CreateBankingTable extends Migration {
 			$table->index(['store_key','transaction_type','start_time','pos_number','ticket_number'], 'index_banking_2');
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_banking_3');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -46,5 +49,4 @@ class CreateBankingTable extends Migration {
 	{
 		Schema::drop('banking');
 	}
-
 }

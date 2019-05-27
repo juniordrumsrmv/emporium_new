@@ -12,7 +12,9 @@ class CreateCashierCounterTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cashier_counter') ) {
 		Schema::create('cashier_counter', function(Blueprint $table)
+
 		{
 			$table->bigInteger('agent_key')->unsigned();
 			$table->smallInteger('counter_number')->unsigned();
@@ -21,9 +23,10 @@ class CreateCashierCounterTable extends Migration {
 			$table->decimal('counter_amount', 15, 3);
 			$table->primary(['agent_key','counter_number'], 'index_cashier_counter');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateCashierCounterTable extends Migration {
 	{
 		Schema::drop('cashier_counter');
 	}
-
 }

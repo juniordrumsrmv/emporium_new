@@ -12,7 +12,9 @@ class CreateCustomerOblataTrnPtsTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_oblata_trn_pts') ) {
 		Schema::create('customer_oblata_trn_pts', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned()->nullable();
 			$table->bigInteger('customer_key')->unsigned()->nullable();
@@ -28,9 +30,10 @@ class CreateCustomerOblataTrnPtsTable extends Migration {
 			$table->index(['promotion_key','customer_key'], 'promokey_pts');
 			$table->index(['customer_key','promotion_key'], 'custkey_pts');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreateCustomerOblataTrnPtsTable extends Migration {
 	{
 		Schema::drop('customer_oblata_trn_pts');
 	}
-
 }

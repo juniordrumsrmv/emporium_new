@@ -12,14 +12,17 @@ class CreateGiftListMessageTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('gift_list_message') ) {
 		Schema::create('gift_list_message', function(Blueprint $table)
+
 		{
 			$table->bigInteger('gift_list_message_id')->unsigned()->primary();
 			$table->string('gift_list_message_text');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateGiftListMessageTable extends Migration {
 	{
 		Schema::drop('gift_list_message');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateCstTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cst_type') ) {
 		Schema::create('cst_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('cst_type_key')->unsigned()->primary();
 			$table->string('cst_name', 20);
@@ -23,9 +25,10 @@ class CreateCstTypeTable extends Migration {
 			$table->integer('cst_extra_type_price')->unsigned()->nullable();
 			$table->dateTime('last_change_time')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateCstTypeTable extends Migration {
 	{
 		Schema::drop('cst_type');
 	}
-
 }

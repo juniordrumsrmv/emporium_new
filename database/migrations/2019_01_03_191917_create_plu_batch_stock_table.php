@@ -12,7 +12,9 @@ class CreatePluBatchStockTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_batch_stock') ) {
 		Schema::create('plu_batch_stock', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -24,9 +26,10 @@ class CreatePluBatchStockTable extends Migration {
 			$table->primary(['plu_key','store_key','batch'], 'index_plu_batch_stock');
 			$table->index(['plu_key','store_key','batch','batch_expiration'], 'sngpc_batch_index_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreatePluBatchStockTable extends Migration {
 	{
 		Schema::drop('plu_batch_stock');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateBankingMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_media') ) {
 		Schema::create('banking_media', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -26,9 +28,10 @@ class CreateBankingMediaTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_banking_media');
 			$table->index(['store_key','pos_number','transaction_number','start_time','sequence'], 'index_banking_media_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateBankingMediaTable extends Migration {
 	{
 		Schema::drop('banking_media');
 	}
-
 }

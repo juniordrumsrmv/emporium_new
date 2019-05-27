@@ -12,14 +12,17 @@ class CreateCountryTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('country') ) {
 		Schema::create('country', function(Blueprint $table)
+
 		{
 			$table->integer('country_code')->unsigned()->primary();
 			$table->string('country_name', 80)->nullable()->index('index_country_name');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateCountryTable extends Migration {
 	{
 		Schema::drop('country');
 	}
-
 }

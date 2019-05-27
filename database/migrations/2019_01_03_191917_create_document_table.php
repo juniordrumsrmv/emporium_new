@@ -12,7 +12,9 @@ class CreateDocumentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('document') ) {
 		Schema::create('document', function(Blueprint $table)
+
 		{
 			$table->bigInteger('document_key')->unsigned()->primary();
 			$table->smallInteger('document_type')->unsigned();
@@ -26,9 +28,10 @@ class CreateDocumentTable extends Migration {
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_document_1');
 			$table->index(['document_type','document_id'], 'index_document_id');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateDocumentTable extends Migration {
 	{
 		Schema::drop('document');
 	}
-
 }

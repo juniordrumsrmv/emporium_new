@@ -12,15 +12,18 @@ class CreateNcmCestTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('ncm_cest') ) {
 		Schema::create('ncm_cest', function(Blueprint $table)
+
 		{
 			$table->bigInteger('ncm_key')->unsigned();
 			$table->string('cest_code', 12);
 			$table->primary(['ncm_key','cest_code'], 'index_ncm_cest');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateNcmCestTable extends Migration {
 	{
 		Schema::drop('ncm_cest');
 	}
-
 }

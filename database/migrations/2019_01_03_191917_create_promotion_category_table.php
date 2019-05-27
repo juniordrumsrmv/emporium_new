@@ -12,7 +12,9 @@ class CreatePromotionCategoryTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_category') ) {
 		Schema::create('promotion_category', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreatePromotionCategoryTable extends Migration {
 			$table->index(['promotion_key','store_key'], 'index_promo_store');
 			$table->index(['promotion_key','cst_type_key'], 'index_promo_category');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreatePromotionCategoryTable extends Migration {
 	{
 		Schema::drop('promotion_category');
 	}
-
 }

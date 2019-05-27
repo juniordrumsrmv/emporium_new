@@ -12,7 +12,9 @@ class CreatePluScreenTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_screen') ) {
 		Schema::create('plu_screen', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key')->unsigned();
 			$table->bigInteger('group_screen_key')->unsigned();
@@ -24,9 +26,10 @@ class CreatePluScreenTable extends Migration {
 			$table->smallInteger('store_group_key')->unsigned()->default(0);
 			$table->primary(['group_type','plu_key','group_screen_key','store_key','store_group_key'], 'index_plu_screen');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreatePluScreenTable extends Migration {
 	{
 		Schema::drop('plu_screen');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateBankingGasCashierTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_gas_cashier') ) {
 		Schema::create('banking_gas_cashier', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -22,9 +24,10 @@ class CreateBankingGasCashierTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_banking_gas_cashier');
 			$table->index(['store_key','pos_number','ticket_number','start_time','cashier_key'], 'banking_gas_cashier_key');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateBankingGasCashierTable extends Migration {
 	{
 		Schema::drop('banking_gas_cashier');
 	}
-
 }

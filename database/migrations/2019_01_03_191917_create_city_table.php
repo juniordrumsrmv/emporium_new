@@ -12,7 +12,9 @@ class CreateCityTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('city') ) {
 		Schema::create('city', function(Blueprint $table)
+
 		{
 			$table->char('country_code', 10);
 			$table->char('state_code', 10);
@@ -21,9 +23,10 @@ class CreateCityTable extends Migration {
 			$table->string('city_name_sound')->nullable()->index('index_city_name_sound');
 			$table->primary(['country_code','city_code'], 'index_city');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateCityTable extends Migration {
 	{
 		Schema::drop('city');
 	}
-
 }

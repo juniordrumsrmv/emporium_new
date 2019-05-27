@@ -12,7 +12,9 @@ class CreateCustomerSkuTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_sku') ) {
 		Schema::create('customer_sku', function(Blueprint $table)
+
 		{
 			$table->char('customer_sku_id', 30);
 			$table->smallInteger('customer_sku_type_key')->unsigned();
@@ -27,9 +29,10 @@ class CreateCustomerSkuTable extends Migration {
 			$table->primary(['customer_sku_id','customer_sku_type_key'], 'index_customer_sku');
 			$table->index(['last_change_time','customer_key'], 'index_sku_change');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreateCustomerSkuTable extends Migration {
 	{
 		Schema::drop('customer_sku');
 	}
-
 }

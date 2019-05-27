@@ -12,7 +12,9 @@ class CreateCustomerStatusTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_status') ) {
 		Schema::create('customer_status', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned()->primary();
 			$table->smallInteger('customer_status')->unsigned()->nullable();
@@ -32,9 +34,10 @@ class CreateCustomerStatusTable extends Migration {
 			$table->smallInteger('customer_idt_left')->nullable();
 			$table->date('customer_idt_date')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreateCustomerStatusTable extends Migration {
 	{
 		Schema::drop('customer_status');
 	}
-
 }

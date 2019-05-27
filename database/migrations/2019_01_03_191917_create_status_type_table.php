@@ -12,15 +12,17 @@ class CreateStatusTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('status_type', function(Blueprint $table)
-		{
-			$table->smallInteger('status_type_key')->unsigned()->primary();
-			$table->string('status_type_name', 20)->nullable();
-			$table->string('status_type_msg', 60)->nullable();
-		});
+                if ( !Schema::hasTable('status_type') ) {
+
+                    Schema::create('status_type', function(Blueprint $table)
+                    {
+                            $table->smallInteger('status_type_key')->unsigned()->primary();
+                            $table->string('status_type_name', 20)->nullable();
+                            $table->string('status_type_msg', 60)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +32,4 @@ class CreateStatusTypeTable extends Migration {
 	{
 		Schema::drop('status_type');
 	}
-
 }

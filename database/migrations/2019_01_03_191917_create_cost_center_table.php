@@ -12,14 +12,17 @@ class CreateCostCenterTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cost_center') ) {
 		Schema::create('cost_center', function(Blueprint $table)
+
 		{
 			$table->char('cstc_id', 12)->primary();
 			$table->string('cstc_name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateCostCenterTable extends Migration {
 	{
 		Schema::drop('cost_center');
 	}
-
 }

@@ -12,20 +12,22 @@ class CreateResearchTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('research', function(Blueprint $table)
-		{
-			$table->bigInteger('research_key', true)->unsigned();
-			$table->bigInteger('store_key')->unsigned();
-			$table->string('research_name', 50);
-			$table->boolean('research_status')->nullable();
-			$table->date('research_date');
-			$table->boolean('research_type');
-			$table->unique(['store_key','research_date','research_type'], 'index_research');
-			$table->index(['store_key','research_name'], 'index_research_name');
-		});
+                if ( !Schema::hasTable('research') ) {
+
+                    Schema::create('research', function(Blueprint $table)
+                    {
+                            $table->bigInteger('research_key', true)->unsigned();
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->string('research_name', 50);
+                            $table->boolean('research_status')->nullable();
+                            $table->date('research_date');
+                            $table->boolean('research_type');
+                            $table->unique(['store_key','research_date','research_type'], 'index_research');
+                            $table->index(['store_key','research_name'], 'index_research_name');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +37,4 @@ class CreateResearchTable extends Migration {
 	{
 		Schema::drop('research');
 	}
-
 }

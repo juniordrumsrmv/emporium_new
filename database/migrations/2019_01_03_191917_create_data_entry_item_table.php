@@ -12,7 +12,9 @@ class CreateDataEntryItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('data_entry_item') ) {
 		Schema::create('data_entry_item', function(Blueprint $table)
+
 		{
 			$table->integer('data_entry_key')->unsigned();
 			$table->smallInteger('data_entry_item_key')->unsigned();
@@ -24,9 +26,10 @@ class CreateDataEntryItemTable extends Migration {
 			$table->boolean('required')->nullable();
 			$table->primary(['data_entry_key','data_entry_item_key'], 'index_data_entry_item');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreateDataEntryItemTable extends Migration {
 	{
 		Schema::drop('data_entry_item');
 	}
-
 }

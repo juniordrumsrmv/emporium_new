@@ -12,7 +12,9 @@ class CreateCashierMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cashier_media') ) {
 		Schema::create('cashier_media', function(Blueprint $table)
+
 		{
 			$table->bigInteger('agent_key')->unsigned();
 			$table->smallInteger('media_key')->unsigned();
@@ -26,9 +28,10 @@ class CreateCashierMediaTable extends Migration {
 			$table->decimal('amount_pickup', 15, 3);
 			$table->primary(['agent_key','media_key'], 'index_cashier_media');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateCashierMediaTable extends Migration {
 	{
 		Schema::drop('cashier_media');
 	}
-
 }

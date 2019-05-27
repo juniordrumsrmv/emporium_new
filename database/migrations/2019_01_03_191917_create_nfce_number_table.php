@@ -12,16 +12,19 @@ class CreateNfceNumberTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('nfce_number') ) {
 		Schema::create('nfce_number', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
 			$table->bigInteger('nf_number')->unsigned();
 			$table->primary(['store_key','pos_number'], 'index_nfce_number');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateNfceNumberTable extends Migration {
 	{
 		Schema::drop('nfce_number');
 	}
-
 }

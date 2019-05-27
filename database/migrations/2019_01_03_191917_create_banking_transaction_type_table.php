@@ -12,16 +12,19 @@ class CreateBankingTransactionTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_transaction_type') ) {
 		Schema::create('banking_transaction_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('transaction_type_key')->unsigned()->primary();
 			$table->string('description', 128)->nullable();
 			$table->boolean('type')->nullable();
 			$table->text('observation', 65535)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateBankingTransactionTypeTable extends Migration {
 	{
 		Schema::drop('banking_transaction_type');
 	}
-
 }

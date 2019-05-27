@@ -12,7 +12,9 @@ class CreateDepartmentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('department') ) {
 		Schema::create('department', function(Blueprint $table)
+
 		{
 			$table->smallInteger('department_key', true)->unsigned();
 			$table->smallInteger('parent_department_key')->unsigned()->nullable();
@@ -20,9 +22,10 @@ class CreateDepartmentTable extends Migration {
 			$table->boolean('allow_plu')->nullable();
 			$table->string('name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateDepartmentTable extends Migration {
 	{
 		Schema::drop('department');
 	}
-
 }

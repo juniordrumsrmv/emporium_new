@@ -12,14 +12,17 @@ class CreateBacenCountryTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('bacen_country') ) {
 		Schema::create('bacen_country', function(Blueprint $table)
+
 		{
 			$table->integer('country_id')->unsigned()->primary();
 			$table->string('country_name', 60);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateBacenCountryTable extends Migration {
 	{
 		Schema::drop('bacen_country');
 	}
-
 }

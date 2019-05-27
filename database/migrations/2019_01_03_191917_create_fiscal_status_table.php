@@ -12,7 +12,9 @@ class CreateFiscalStatusTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_status') ) {
 		Schema::create('fiscal_status', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -60,9 +62,10 @@ class CreateFiscalStatusTable extends Migration {
 			$table->index(['store_key','ecf_number','ticket_number','start_time'], 'index_ecf_status');
 			$table->index(['store_key','ecf_number','fiscal_date','start_time','ticket_number'], 'index_ecf_status_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -72,5 +75,4 @@ class CreateFiscalStatusTable extends Migration {
 	{
 		Schema::drop('fiscal_status');
 	}
-
 }

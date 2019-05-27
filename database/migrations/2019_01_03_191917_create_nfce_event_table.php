@@ -12,7 +12,9 @@ class CreateNfceEventTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('nfce_event') ) {
 		Schema::create('nfce_event', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -23,9 +25,10 @@ class CreateNfceEventTable extends Migration {
 			$table->string('event_desc', 250)->nullable();
 			$table->primary(['store_key','pos_number','nfce_number','start_time','event_time'], 'index_nfce_event');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateNfceEventTable extends Migration {
 	{
 		Schema::drop('nfce_event');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreatePromotionExternalIntervalTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_external_interval') ) {
 		Schema::create('promotion_external_interval', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->dateTime('start')->nullable();
@@ -26,9 +28,10 @@ class CreatePromotionExternalIntervalTable extends Migration {
 			$table->text('promo_data')->nullable();
 			$table->smallInteger('status')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreatePromotionExternalIntervalTable extends Migration {
 	{
 		Schema::drop('promotion_external_interval');
 	}
-
 }

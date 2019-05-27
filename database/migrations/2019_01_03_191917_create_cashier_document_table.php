@@ -12,7 +12,9 @@ class CreateCashierDocumentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cashier_document') ) {
 		Schema::create('cashier_document', function(Blueprint $table)
+
 		{
 			$table->bigInteger('cashier_document_key', true)->unsigned();
 			$table->boolean('picked')->nullable();
@@ -43,9 +45,10 @@ class CreateCashierDocumentTable extends Migration {
 			$table->smallInteger('pos_number')->unsigned();
 			$table->index(['agent_key','store_key','pos_number','trn_number','cpu_clock'], 'index_cashier_document_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -55,5 +58,4 @@ class CreateCashierDocumentTable extends Migration {
 	{
 		Schema::drop('cashier_document');
 	}
-
 }

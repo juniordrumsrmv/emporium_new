@@ -12,7 +12,9 @@ class CreateGiftListItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('gift_list_item') ) {
 		Schema::create('gift_list_item', function(Blueprint $table)
+
 		{
 			$table->bigInteger('gift_list_key')->unsigned();
 			$table->bigInteger('id')->unsigned();
@@ -22,9 +24,10 @@ class CreateGiftListItemTable extends Migration {
 			$table->primary(['gift_list_key','id'], 'index_gift_list_item');
 			$table->index(['gift_list_key','long_description'], 'index_gift_list_item');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateGiftListItemTable extends Migration {
 	{
 		Schema::drop('gift_list_item');
 	}
-
 }

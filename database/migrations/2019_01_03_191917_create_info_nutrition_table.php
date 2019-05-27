@@ -12,7 +12,9 @@ class CreateInfoNutritionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('info_nutrition') ) {
 		Schema::create('info_nutrition', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key')->unsigned()->primary();
 			$table->decimal('quantity_portion', 8, 3)->nullable()->default(0.000);
@@ -30,9 +32,10 @@ class CreateInfoNutritionTable extends Migration {
 			$table->decimal('dietary_fiber', 3, 1)->nullable()->default(0.0);
 			$table->decimal('sodium', 5, 1)->nullable()->default(0.0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateInfoNutritionTable extends Migration {
 	{
 		Schema::drop('info_nutrition');
 	}
-
 }

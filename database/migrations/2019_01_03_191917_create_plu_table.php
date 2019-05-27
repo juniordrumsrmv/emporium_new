@@ -12,7 +12,9 @@ class CreatePluTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu') ) {
 		Schema::create('plu', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key', true)->unsigned();
 			$table->bigInteger('id')->unsigned()->unique('index_plu_id');
@@ -111,9 +113,10 @@ class CreatePluTable extends Migration {
 			$table->decimal('fcp_percent', 15, 3)->nullable();
 			$table->string('benef_code', 16)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -123,5 +126,4 @@ class CreatePluTable extends Migration {
 	{
 		Schema::drop('plu');
 	}
-
 }

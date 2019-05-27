@@ -12,15 +12,17 @@ class CreateSerasaTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('serasa_type', function(Blueprint $table)
-		{
-			$table->smallInteger('serasa_type_key')->unsigned()->primary();
-			$table->string('serasa_type_name', 20)->nullable();
-			$table->string('serasa_type_msg', 60)->nullable();
-		});
+                if ( !Schema::hasTable('serasa_type') ) {
+
+                    Schema::create('serasa_type', function(Blueprint $table)
+                    {
+                            $table->smallInteger('serasa_type_key')->unsigned()->primary();
+                            $table->string('serasa_type_name', 20)->nullable();
+                            $table->string('serasa_type_msg', 60)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +32,4 @@ class CreateSerasaTypeTable extends Migration {
 	{
 		Schema::drop('serasa_type');
 	}
-
 }

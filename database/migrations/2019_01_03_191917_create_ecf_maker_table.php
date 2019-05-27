@@ -12,14 +12,17 @@ class CreateEcfMakerTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('ecf_maker') ) {
 		Schema::create('ecf_maker', function(Blueprint $table)
+
 		{
 			$table->string('ecf_manufacturer', 40)->primary();
 			$table->string('code_ff', 4);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateEcfMakerTable extends Migration {
 	{
 		Schema::drop('ecf_maker');
 	}
-
 }

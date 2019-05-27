@@ -12,19 +12,21 @@ class CreateStoreDataTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('store_data', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned();
-			$table->char('data_name', 30);
-			$table->char('data_id', 16);
-			$table->text('data_value', 65535)->nullable();
-			$table->smallInteger('data_type')->nullable()->default(0);
-			$table->smallInteger('data_hidden')->nullable()->default(0);
-			$table->primary(['store_key','data_id'], 'index_store_data');
-		});
+                if ( !Schema::hasTable('store_data') ) {
+
+                    Schema::create('store_data', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->char('data_name', 30);
+                            $table->char('data_id', 16);
+                            $table->text('data_value', 65535)->nullable();
+                            $table->smallInteger('data_type')->nullable()->default(0);
+                            $table->smallInteger('data_hidden')->nullable()->default(0);
+                            $table->primary(['store_key','data_id'], 'index_store_data');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +36,4 @@ class CreateStoreDataTable extends Migration {
 	{
 		Schema::drop('store_data');
 	}
-
 }

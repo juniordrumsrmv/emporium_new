@@ -12,7 +12,9 @@ class CreateCstFiscalTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cst_fiscal_type') ) {
 		Schema::create('cst_fiscal_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('cst_fiscal_type_key')->unsigned()->primary();
 			$table->string('cst_fiscal_type_name', 20)->nullable();
@@ -21,9 +23,10 @@ class CreateCstFiscalTypeTable extends Migration {
 			$table->integer('cst_fiscal_type_price')->unsigned()->nullable()->default(0);
 			$table->boolean('cst_fiscal_tax_exception')->nullable()->default(0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateCstFiscalTypeTable extends Migration {
 	{
 		Schema::drop('cst_fiscal_type');
 	}
-
 }

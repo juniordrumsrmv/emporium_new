@@ -12,7 +12,9 @@ class CreateDashboardNotificationTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_notification') ) {
 		Schema::create('dashboard_notification', function(Blueprint $table)
+
 		{
             $table->engine = 'MyISAM';
 			$table->bigInteger('notification_key', true)->unsigned();
@@ -32,9 +34,10 @@ class CreateDashboardNotificationTable extends Migration {
 			$table->unique(['notification_key','store_key','pos_number','ticket_number','notification_time'], 'index_dashboard_notification');
 			$table->index(['store_key','pos_number','notification_time','process_id','status','transaction_type'], 'index_notification');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreateDashboardNotificationTable extends Migration {
 	{
 		Schema::drop('dashboard_notification');
 	}
-
 }

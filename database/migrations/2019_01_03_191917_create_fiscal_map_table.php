@@ -12,7 +12,9 @@ class CreateFiscalMapTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_map') ) {
 		Schema::create('fiscal_map', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->date('fiscal_date');
@@ -36,9 +38,10 @@ class CreateFiscalMapTable extends Migration {
 			$table->unique(['store_key','fiscal_date','ecf_number'], 'index_ecf_map');
 			$table->index(['store_key','ecf_number','fiscal_date','Z_number','ticket_number'], 'index_ecf_map_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -48,5 +51,4 @@ class CreateFiscalMapTable extends Migration {
 	{
 		Schema::drop('fiscal_map');
 	}
-
 }

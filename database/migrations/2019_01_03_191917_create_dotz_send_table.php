@@ -12,16 +12,19 @@ class CreateDotzSendTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dotz_send') ) {
 		Schema::create('dotz_send', function(Blueprint $table)
+
 		{
 			$table->bigInteger('file_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
 			$table->dateTime('last_send_time');
 			$table->primary(['file_key','store_key'], 'index_dotz_send');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateDotzSendTable extends Migration {
 	{
 		Schema::drop('dotz_send');
 	}
-
 }

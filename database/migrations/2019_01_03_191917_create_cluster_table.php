@@ -12,15 +12,18 @@ class CreateClusterTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cluster') ) {
 		Schema::create('cluster', function(Blueprint $table)
+
 		{
 			$table->text('server_name', 65535)->nullable();
 			$table->text('server_path', 65535)->nullable();
 			$table->bigInteger('store_key')->primary();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateClusterTable extends Migration {
 	{
 		Schema::drop('cluster');
 	}
-
 }

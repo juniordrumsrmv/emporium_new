@@ -12,14 +12,17 @@ class CreateComparisonTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('comparison_type') ) {
 		Schema::create('comparison_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('type')->unsigned()->primary();
 			$table->string('label', 64)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateComparisonTypeTable extends Migration {
 	{
 		Schema::drop('comparison_type');
 	}
-
 }

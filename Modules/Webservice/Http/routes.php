@@ -9,15 +9,15 @@ Route::group(
         'name' => 'emporium-ws'
     ], function()
 {
-    Route::group(['prefix' => 'ticket'], function()
+    Route::group(['prefix' => 'ticket', 'name' => 'Tickets'], function()
     {
-        Route::post('', 'Upload\TicketsController@getTicketStoreByDate')->name('getTicket');
+        Route::post('/date', 'Upload\TicketsController@getTicketStoreDate')->name('getTicketDate');
 
     });
 
-    Route::group(['prefix' => 'docs'], function()
-    {
-        Route::get('', 'WebserviceController@index')->name('api-doc');
-
-    });
+//    Route::group(['prefix' => 'docs'], function()
+//    {
+//        Route::get('', 'WebserviceController@index')->name('api-doc');
+//
+//    });
 });

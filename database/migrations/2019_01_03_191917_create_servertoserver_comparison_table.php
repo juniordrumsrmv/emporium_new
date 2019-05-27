@@ -12,21 +12,23 @@ class CreateServertoserverComparisonTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('servertoserver_comparison', function(Blueprint $table)
-		{
-			$table->bigInteger('from_store_key');
-			$table->bigInteger('to_store_key');
-			$table->string('description')->nullable();
-			$table->string('store_ip', 20)->nullable();
-			$table->string('directory')->nullable();
-			$table->string('ctrl_file')->nullable();
-			$table->smallInteger('update_wait_time')->nullable();
-			$table->dateTime('last_change_time')->nullable();
-			$table->primary(['from_store_key','to_store_key'], 'index_servertoserver_comparison');
-		});
+                if ( !Schema::hasTable('servertoserver_comparison') ) {
+
+                    Schema::create('servertoserver_comparison', function(Blueprint $table)
+                    {
+                            $table->bigInteger('from_store_key');
+                            $table->bigInteger('to_store_key');
+                            $table->string('description')->nullable();
+                            $table->string('store_ip', 20)->nullable();
+                            $table->string('directory')->nullable();
+                            $table->string('ctrl_file')->nullable();
+                            $table->smallInteger('update_wait_time')->nullable();
+                            $table->dateTime('last_change_time')->nullable();
+                            $table->primary(['from_store_key','to_store_key'], 'index_servertoserver_comparison');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +38,4 @@ class CreateServertoserverComparisonTable extends Migration {
 	{
 		Schema::drop('servertoserver_comparison');
 	}
-
 }

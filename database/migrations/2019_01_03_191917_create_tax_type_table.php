@@ -12,21 +12,23 @@ class CreateTaxTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tax_type', function(Blueprint $table)
-		{
-			$table->increments('tax_type_key');
-			$table->smallInteger('type_key')->unsigned();
-			$table->decimal('percent', 6, 4);
-			$table->decimal('extra_percent', 6, 4);
-			$table->string('description', 40);
-			$table->char('pos_id', 4)->unique('index_tax_type_pos_id');
-			$table->bigInteger('interest_plu')->unsigned()->nullable();
-			$table->boolean('allow_map')->nullable();
-			$table->string('extra', 10)->nullable();
-		});
+                if ( !Schema::hasTable('tax_type') ) {
+
+                    Schema::create('tax_type', function(Blueprint $table)
+                    {
+                            $table->increments('tax_type_key');
+                            $table->smallInteger('type_key')->unsigned();
+                            $table->decimal('percent', 6, 4);
+                            $table->decimal('extra_percent', 6, 4);
+                            $table->string('description', 40);
+                            $table->char('pos_id', 4)->unique('index_tax_type_pos_id');
+                            $table->bigInteger('interest_plu')->unsigned()->nullable();
+                            $table->boolean('allow_map')->nullable();
+                            $table->string('extra', 10)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +38,4 @@ class CreateTaxTypeTable extends Migration {
 	{
 		Schema::drop('tax_type');
 	}
-
 }

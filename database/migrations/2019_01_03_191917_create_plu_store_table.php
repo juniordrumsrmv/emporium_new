@@ -12,7 +12,9 @@ class CreatePluStoreTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_store') ) {
 		Schema::create('plu_store', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
@@ -47,9 +49,10 @@ class CreatePluStoreTable extends Migration {
 			$table->primary(['store_key','plu_key'], 'index_plu_store');
 			$table->index(['store_key','last_change_time'], 'index_plu_store_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -59,5 +62,4 @@ class CreatePluStoreTable extends Migration {
 	{
 		Schema::drop('plu_store');
 	}
-
 }

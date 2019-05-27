@@ -12,7 +12,9 @@ class CreateNcmTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('ncm') ) {
 		Schema::create('ncm', function(Blueprint $table)
+
 		{
 			$table->bigInteger('ncm_key')->unsigned();
 			$table->boolean('ncm_ex')->default(0);
@@ -30,9 +32,10 @@ class CreateNcmTable extends Migration {
 			$table->string('ncm_source', 20)->nullable();
 			$table->primary(['ncm_key','ncm_ex'], 'index_ncm');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateNcmTable extends Migration {
 	{
 		Schema::drop('ncm');
 	}
-
 }

@@ -12,16 +12,19 @@ class CreateProducedListTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('produced_list') ) {
 		Schema::create('produced_list', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key_prod')->unsigned();
 			$table->bigInteger('plu_key_input')->unsigned();
 			$table->decimal('quantity', 6, 3);
 			$table->primary(['plu_key_prod','plu_key_input'], 'index_produced_list');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateProducedListTable extends Migration {
 	{
 		Schema::drop('produced_list');
 	}
-
 }

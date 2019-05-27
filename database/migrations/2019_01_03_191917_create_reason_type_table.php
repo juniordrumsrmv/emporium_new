@@ -12,16 +12,19 @@ class CreateReasonTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('reason_type') ) {
 		Schema::create('reason_type', function(Blueprint $table)
+
 		{
 			$table->integer('reason_type_key')->unsigned()->primary();
 			$table->string('description')->nullable();
 			$table->bigInteger('reason_command')->unsigned();
 			$table->bigInteger('store_key')->unsigned()->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateReasonTypeTable extends Migration {
 	{
 		Schema::drop('reason_type');
 	}
-
 }

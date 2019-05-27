@@ -12,7 +12,9 @@ class CreateGlobalStatisticsTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('global_statistics') ) {
 		Schema::create('global_statistics', function(Blueprint $table)
+
 		{
 			$table->char('s_module', 1);
 			$table->char('s_name', 9);
@@ -22,9 +24,10 @@ class CreateGlobalStatisticsTable extends Migration {
 			$table->bigInteger('s_value')->unsigned()->nullable();
 			$table->primary(['s_module','s_name','s_time','store_key','pos_number'], 'index_global_statistics');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateGlobalStatisticsTable extends Migration {
 	{
 		Schema::drop('global_statistics');
 	}
-
 }

@@ -12,17 +12,19 @@ class CreateStoreGroupTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('store_group', function(Blueprint $table)
-		{
-			$table->smallInteger('store_group_key', true)->unsigned();
-			$table->smallInteger('parent_store_group_key')->unsigned()->nullable();
-			$table->char('store_group_id', 12)->unique('index_store_group_id');
-			$table->string('store_group_name', 50)->nullable();
-			$table->boolean('allow_store')->nullable();
-		});
+                if ( !Schema::hasTable('store_group') ) {
+
+                    Schema::create('store_group', function(Blueprint $table)
+                    {
+                            $table->smallInteger('store_group_key', true)->unsigned();
+                            $table->smallInteger('parent_store_group_key')->unsigned()->nullable();
+                            $table->char('store_group_id', 12)->unique('index_store_group_id');
+                            $table->string('store_group_name', 50)->nullable();
+                            $table->boolean('allow_store')->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +34,4 @@ class CreateStoreGroupTable extends Migration {
 	{
 		Schema::drop('store_group');
 	}
-
 }

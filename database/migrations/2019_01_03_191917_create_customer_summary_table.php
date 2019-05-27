@@ -12,7 +12,9 @@ class CreateCustomerSummaryTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_summary') ) {
 		Schema::create('customer_summary', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -39,9 +41,10 @@ class CreateCustomerSummaryTable extends Migration {
 			$table->primary(['customer_key','store_key','pos_number','ticket_number','start_time','summary_sequence'], 'index_customer_summary');
 			$table->index(['store_key','pos_number','ticket_number','start_time','summary_bank','summary_check'], 'cs1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -51,5 +54,4 @@ class CreateCustomerSummaryTable extends Migration {
 	{
 		Schema::drop('customer_summary');
 	}
-
 }

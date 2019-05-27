@@ -12,7 +12,9 @@ class CreateCronControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cron_control') ) {
 		Schema::create('cron_control', function(Blueprint $table)
+
 		{
 			$table->bigInteger('entity_key')->unsigned()->nullable();
 			$table->dateTime('cronctl_reference_time')->nullable();
@@ -21,9 +23,10 @@ class CreateCronControlTable extends Migration {
 			$table->string('cronctl_output')->nullable();
 			$table->unique(['entity_key','cronctl_reference_time','cronctl_start_time'], 'index_entity_id');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateCronControlTable extends Migration {
 	{
 		Schema::drop('cron_control');
 	}
-
 }

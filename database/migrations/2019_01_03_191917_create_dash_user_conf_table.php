@@ -12,7 +12,9 @@ class CreateDashUserConfTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dash_user_conf') ) {
 		Schema::create('dash_user_conf', function(Blueprint $table)
+
 		{
 			$table->string('id_user', 30);
 			$table->string('module', 50);
@@ -21,9 +23,10 @@ class CreateDashUserConfTable extends Migration {
 			$table->string('config', 250);
 			$table->primary(['id_user','position'], 'index_dash_user_conf');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateDashUserConfTable extends Migration {
 	{
 		Schema::drop('dash_user_conf');
 	}
-
 }

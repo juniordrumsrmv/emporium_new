@@ -12,15 +12,17 @@ class CreateStatusSefazTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('status_sefaz', function(Blueprint $table)
-		{
-			$table->smallInteger('status_key')->unsigned()->primary();
-			$table->string('status_desc', 250);
-			$table->text('status_faq');
-		});
+                if ( !Schema::hasTable('status_sefaz') ) {
+
+                    Schema::create('status_sefaz', function(Blueprint $table)
+                    {
+                            $table->smallInteger('status_key')->unsigned()->primary();
+                            $table->string('status_desc', 250);
+                            $table->text('status_faq');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +32,4 @@ class CreateStatusSefazTable extends Migration {
 	{
 		Schema::drop('status_sefaz');
 	}
-
 }

@@ -30,7 +30,7 @@ return [
         /*
          * The description for the exported Postman collection.
          */
-        'description' => null,
+        'description' => 'Documentação Emporium API',
     ],
 
     /*
@@ -58,7 +58,8 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    '*',
+                    'empws/*',
+//                    '*'
                     // 'users/*',
                 ],
 
@@ -189,7 +190,7 @@ return [
     /*
      * Name for the group of routes which do not have a @group set.
      */
-    'default_group' => 'Emporium-api',
+    'default_group' => 'general',
 
     /*
      * Example requests for each endpoint will be shown in each of these languages.

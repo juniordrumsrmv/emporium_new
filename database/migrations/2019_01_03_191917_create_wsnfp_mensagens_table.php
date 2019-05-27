@@ -12,17 +12,19 @@ class CreateWsnfpMensagensTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('wsnfp_mensagens', function(Blueprint $table)
-		{
-			$table->string('rsl_key', 20);
-			$table->string('store_state', 20);
-			$table->text('rsl_proc_mensagens')->nullable();
-			$table->bigInteger('rsl_action')->unsigned();
-			$table->primary(['rsl_key','store_state'], 'index_wsnfp_mensagens');
-		});
+                if ( !Schema::hasTable('wsnfp_mensagens') ) {
+
+                    Schema::create('wsnfp_mensagens', function(Blueprint $table)
+                    {
+                            $table->string('rsl_key', 20);
+                            $table->string('store_state', 20);
+                            $table->text('rsl_proc_mensagens')->nullable();
+                            $table->bigInteger('rsl_action')->unsigned();
+                            $table->primary(['rsl_key','store_state'], 'index_wsnfp_mensagens');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +34,4 @@ class CreateWsnfpMensagensTable extends Migration {
 	{
 		Schema::drop('wsnfp_mensagens');
 	}
-
 }

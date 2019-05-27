@@ -12,7 +12,9 @@ class CreateComparisonTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('comparison') ) {
 		Schema::create('comparison', function(Blueprint $table)
+
 		{
 			$table->smallInteger('type')->unsigned();
 			$table->string('label', 64)->nullable();
@@ -23,9 +25,10 @@ class CreateComparisonTable extends Migration {
 			$table->string('f5_data', 80)->nullable();
 			$table->string('to_data', 80)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateComparisonTable extends Migration {
 	{
 		Schema::drop('comparison');
 	}
-
 }

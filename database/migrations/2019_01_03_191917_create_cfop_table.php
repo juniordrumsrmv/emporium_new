@@ -12,15 +12,18 @@ class CreateCfopTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cfop') ) {
 		Schema::create('cfop', function(Blueprint $table)
+
 		{
 			$table->integer('cfop_from')->unsigned()->primary();
 			$table->integer('cfop_to')->unsigned();
 			$table->string('cfop_desc', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateCfopTable extends Migration {
 	{
 		Schema::drop('cfop');
 	}
-
 }

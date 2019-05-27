@@ -12,7 +12,9 @@ class CreateFiscalSituationTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_situation') ) {
 		Schema::create('fiscal_situation', function(Blueprint $table)
+
 		{
 			$table->smallInteger('fiscal_situation')->unsigned();
 			$table->boolean('operation_type');
@@ -26,9 +28,10 @@ class CreateFiscalSituationTable extends Migration {
 			$table->boolean('merchandise_origin');
 			$table->unique(['merchandise_origin','fiscal_situation','operation_type','operation','destine','origin_region','destine_region','cfop'], 'index_fiscal');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateFiscalSituationTable extends Migration {
 	{
 		Schema::drop('fiscal_situation');
 	}
-
 }

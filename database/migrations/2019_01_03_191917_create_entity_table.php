@@ -12,7 +12,9 @@ class CreateEntityTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('entity') ) {
 		Schema::create('entity', function(Blueprint $table)
+
 		{
 			$table->bigInteger('entity_key', true)->unsigned();
 			$table->integer('entity_type_key')->unsigned();
@@ -31,9 +33,10 @@ class CreateEntityTable extends Migration {
 			$table->dateTime('entity_last_execution')->nullable();
 			$table->unique(['entity_type_key','entity_id'], 'index_entity_id');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -43,5 +46,4 @@ class CreateEntityTable extends Migration {
 	{
 		Schema::drop('entity');
 	}
-
 }

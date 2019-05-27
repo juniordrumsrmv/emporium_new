@@ -12,13 +12,16 @@ class CreateFarmGlobalsTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('farm_globals') ) {
 		Schema::create('farm_globals', function(Blueprint $table)
+
 		{
 			$table->bigInteger('farm_delay')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -28,5 +31,4 @@ class CreateFarmGlobalsTable extends Migration {
 	{
 		Schema::drop('farm_globals');
 	}
-
 }

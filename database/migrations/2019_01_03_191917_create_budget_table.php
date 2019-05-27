@@ -12,7 +12,9 @@ class CreateBudgetTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('budget') ) {
 		Schema::create('budget', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->decimal('budget_sale', 15, 3)->nullable();
@@ -21,9 +23,10 @@ class CreateBudgetTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->primary(['store_key','budget_date'], 'index_budget');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateBudgetTable extends Migration {
 	{
 		Schema::drop('budget');
 	}
-
 }

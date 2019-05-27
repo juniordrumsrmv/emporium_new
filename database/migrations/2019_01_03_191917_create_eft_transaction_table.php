@@ -12,7 +12,9 @@ class CreateEftTransactionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('eft_transaction') ) {
 		Schema::create('eft_transaction', function(Blueprint $table)
+
 		{
 			$table->bigInteger('eft_trans_key', true)->unsigned();
 			$table->bigInteger('eft_trans_nsu')->unsigned()->nullable();
@@ -37,9 +39,10 @@ class CreateEftTransactionTable extends Migration {
 			$table->bigInteger('eft_trans_authorizer_key')->unsigned()->nullable();
 			$table->string('eft_trans_extra_ticket')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -49,5 +52,4 @@ class CreateEftTransactionTable extends Migration {
 	{
 		Schema::drop('eft_transaction');
 	}
-
 }

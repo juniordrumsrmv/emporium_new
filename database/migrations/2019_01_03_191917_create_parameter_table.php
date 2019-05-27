@@ -12,16 +12,19 @@ class CreateParameterTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('parameter') ) {
 		Schema::create('parameter', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->char('prm_id', 10);
 			$table->string('prm_value')->nullable();
 			$table->primary(['store_key','prm_id'], 'index_parameter');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateParameterTable extends Migration {
 	{
 		Schema::drop('parameter');
 	}
-
 }

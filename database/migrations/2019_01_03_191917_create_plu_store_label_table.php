@@ -12,7 +12,9 @@ class CreatePluStoreLabelTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_store_label') ) {
 		Schema::create('plu_store_label', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
@@ -21,9 +23,10 @@ class CreatePluStoreLabelTable extends Migration {
 			$table->integer('label_count')->unsigned()->nullable();
 			$table->unique(['store_key','plu_key','label_type','label_address'], 'index_label');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreatePluStoreLabelTable extends Migration {
 	{
 		Schema::drop('plu_store_label');
 	}
-
 }

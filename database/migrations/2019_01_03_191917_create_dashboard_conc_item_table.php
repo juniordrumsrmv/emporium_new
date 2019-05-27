@@ -12,7 +12,9 @@ class CreateDashboardConcItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_conc_item') ) {
 		Schema::create('dashboard_conc_item', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->date('fiscal_date');
@@ -25,9 +27,10 @@ class CreateDashboardConcItemTable extends Migration {
 			$table->bigInteger('conciliare')->unsigned()->nullable();
 			$table->primary(['nseriesat','chave','ncupom'], 'index_dashboard_conc_item');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreateDashboardConcItemTable extends Migration {
 	{
 		Schema::drop('dashboard_conc_item');
 	}
-
 }

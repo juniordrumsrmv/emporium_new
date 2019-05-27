@@ -12,7 +12,9 @@ class CreateCompetitorTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('competitor') ) {
 		Schema::create('competitor', function(Blueprint $table)
+
 		{
 			$table->bigInteger('compet_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -35,9 +37,10 @@ class CreateCompetitorTable extends Migration {
 			$table->index(['store_key','compet_name'], 'index_compe_name');
 			$table->index(['store_key','compet_flag'], 'index_compe_flag');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -47,5 +50,4 @@ class CreateCompetitorTable extends Migration {
 	{
 		Schema::drop('competitor');
 	}
-
 }

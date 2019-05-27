@@ -12,7 +12,9 @@ class CreateLabelPromotionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('label_promotion') ) {
 		Schema::create('label_promotion', function(Blueprint $table)
+
 		{
 			$table->bigInteger('code', true)->unsigned();
 			$table->bigInteger('plu_id')->unsigned();
@@ -26,9 +28,10 @@ class CreateLabelPromotionTable extends Migration {
 			$table->dateTime('label_printing_date')->nullable();
 			$table->integer('status')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateLabelPromotionTable extends Migration {
 	{
 		Schema::drop('label_promotion');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateBankingTransferTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_transfer') ) {
 		Schema::create('banking_transfer', function(Blueprint $table)
+
 		{
 			$table->bigInteger('transfer_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -30,9 +32,10 @@ class CreateBankingTransferTable extends Migration {
 			$table->string('description')->nullable();
 			$table->smallInteger('extended_media_id')->unsigned()->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateBankingTransferTable extends Migration {
 	{
 		Schema::drop('banking_transfer');
 	}
-
 }

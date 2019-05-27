@@ -12,7 +12,9 @@ class CreateBankingBlockTransferTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_block_transfer') ) {
 		Schema::create('banking_block_transfer', function(Blueprint $table)
+
 		{
 			$table->bigInteger('block_transfer_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -26,9 +28,10 @@ class CreateBankingBlockTransferTable extends Migration {
 			$table->string('description')->nullable();
 			$table->boolean('status')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreateBankingBlockTransferTable extends Migration {
 	{
 		Schema::drop('banking_block_transfer');
 	}
-
 }

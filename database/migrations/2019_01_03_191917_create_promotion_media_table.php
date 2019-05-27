@@ -12,7 +12,9 @@ class CreatePromotionMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_media') ) {
 		Schema::create('promotion_media', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->smallInteger('media_id');
@@ -23,9 +25,10 @@ class CreatePromotionMediaTable extends Migration {
 			$table->boolean('status')->nullable();
 			$table->primary(['promotion_key','media_id','sub_media_id','media_bin','splits'], 'index_promotion_media');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreatePromotionMediaTable extends Migration {
 	{
 		Schema::drop('promotion_media');
 	}
-
 }

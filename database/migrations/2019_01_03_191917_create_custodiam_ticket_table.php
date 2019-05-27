@@ -12,7 +12,9 @@ class CreateCustodiamTicketTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('custodiam_ticket') ) {
 		Schema::create('custodiam_ticket', function(Blueprint $table)
+
 		{
 			$table->bigInteger('nCnpj');
 			$table->boolean('cUF');
@@ -38,9 +40,10 @@ class CreateCustodiamTicketTable extends Migration {
 			$table->dateTime('dhProcessamento')->nullable();
 			$table->string('Situacao')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -50,5 +53,4 @@ class CreateCustodiamTicketTable extends Migration {
 	{
 		Schema::drop('custodiam_ticket');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreatePasswordPolicyTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('password_policy') ) {
 		Schema::create('password_policy', function(Blueprint $table)
+
 		{
 			$table->boolean('security_level')->primary();
 			$table->string('security_name', 30)->nullable();
@@ -35,9 +37,10 @@ class CreatePasswordPolicyTable extends Migration {
 			$table->boolean('option_04')->nullable();
 			$table->integer('option_05')->unsigned()->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -47,5 +50,4 @@ class CreatePasswordPolicyTable extends Migration {
 	{
 		Schema::drop('password_policy');
 	}
-
 }

@@ -12,14 +12,17 @@ class CreatePluTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plu_type') ) {
 		Schema::create('plu_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('plu_type')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreatePluTypeTable extends Migration {
 	{
 		Schema::drop('plu_type');
 	}
-
 }

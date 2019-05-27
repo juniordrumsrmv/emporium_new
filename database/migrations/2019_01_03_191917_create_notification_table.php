@@ -12,7 +12,9 @@ class CreateNotificationTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('notification') ) {
 		Schema::create('notification', function(Blueprint $table)
+
 		{
 			$table->bigInteger('notification_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned()->nullable();
@@ -30,9 +32,10 @@ class CreateNotificationTable extends Migration {
 			$table->binary('notification_data', 65535)->nullable();
 			$table->index(['store_key','pos_number','notification_time'], 'index_notification');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateNotificationTable extends Migration {
 	{
 		Schema::drop('notification');
 	}
-
 }

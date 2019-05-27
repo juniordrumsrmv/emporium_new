@@ -12,7 +12,9 @@ class CreatePosOperationTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pos_operation') ) {
 		Schema::create('pos_operation', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -28,9 +30,10 @@ class CreatePosOperationTable extends Migration {
 			$table->string('pos_oper_data4', 50)->nullable();
 			$table->primary(['store_key','pos_number','ticket_number','fiscal_date','start_time'], 'index_pos_operation');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreatePosOperationTable extends Migration {
 	{
 		Schema::drop('pos_operation');
 	}
-
 }

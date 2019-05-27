@@ -12,7 +12,9 @@ class CreatePosCpuTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('pos_cpu') ) {
 		Schema::create('pos_cpu', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -37,9 +39,10 @@ class CreatePosCpuTable extends Migration {
 			$table->smallInteger('clflush_size')->unsigned()->nullable();
 			$table->primary(['store_key','pos_number','processor_number'], 'index_pos_cpu');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -49,5 +52,4 @@ class CreatePosCpuTable extends Migration {
 	{
 		Schema::drop('pos_cpu');
 	}
-
 }

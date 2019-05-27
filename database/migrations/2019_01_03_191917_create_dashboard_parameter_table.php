@@ -12,7 +12,9 @@ class CreateDashboardParameterTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_parameter') ) {
 		Schema::create('dashboard_parameter', function(Blueprint $table)
+
 		{
 			$table->bigInteger('prm_key', true)->unsigned();
 			$table->bigInteger('prm_type')->unsigned();
@@ -21,9 +23,10 @@ class CreateDashboardParameterTable extends Migration {
 			$table->bigInteger('agent_id')->unsigned()->nullable();
 			$table->unique(['prm_key','prm_type','prm_id'], 'index_dashboard_parameter');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateDashboardParameterTable extends Migration {
 	{
 		Schema::drop('dashboard_parameter');
 	}
-
 }

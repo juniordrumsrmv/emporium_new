@@ -12,7 +12,9 @@ class CreateGasStationInterventionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('gas_station_intervention') ) {
 		Schema::create('gas_station_intervention', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->bigInteger('tank_number')->unsigned();
@@ -33,9 +35,10 @@ class CreateGasStationInterventionTable extends Migration {
 			$table->bigInteger('final_number_seal')->nullable();
 			$table->primary(['store_key','tank_number','pump_number','nozzle_number','plu_key','fiscal_date','intervention_number'], 'index_gas_station_intervention');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -45,5 +48,4 @@ class CreateGasStationInterventionTable extends Migration {
 	{
 		Schema::drop('gas_station_intervention');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreateMakerSkuTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('maker_sku') ) {
 		Schema::create('maker_sku', function(Blueprint $table)
+
 		{
 			$table->char('maker_sku_id', 30);
 			$table->smallInteger('maker_sku_type_key')->unsigned();
@@ -21,9 +23,10 @@ class CreateMakerSkuTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->primary(['maker_sku_id','maker_sku_type_key']);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreateMakerSkuTable extends Migration {
 	{
 		Schema::drop('maker_sku');
 	}
-
 }

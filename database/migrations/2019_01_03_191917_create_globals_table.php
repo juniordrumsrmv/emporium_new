@@ -12,7 +12,9 @@ class CreateGlobalsTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('globals') ) {
 		Schema::create('globals', function(Blueprint $table)
+
 		{
 			$table->smallInteger('database_version')->unsigned()->nullable();
 			$table->dateTime('database_update_time')->nullable();
@@ -53,9 +55,10 @@ class CreateGlobalsTable extends Migration {
 			$table->dateTime('last_user_autosend_check')->nullable();
 			$table->boolean('user_autosend_changed')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -65,5 +68,4 @@ class CreateGlobalsTable extends Migration {
 	{
 		Schema::drop('globals');
 	}
-
 }

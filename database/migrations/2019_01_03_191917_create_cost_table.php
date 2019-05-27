@@ -12,7 +12,9 @@ class CreateCostTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cost') ) {
 		Schema::create('cost', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key')->unsigned();
 			$table->dateTime('start');
@@ -20,9 +22,10 @@ class CreateCostTable extends Migration {
 			$table->bigInteger('store_key')->unsigned();
 			$table->primary(['store_key','plu_key','start']);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateCostTable extends Migration {
 	{
 		Schema::drop('cost');
 	}
-
 }

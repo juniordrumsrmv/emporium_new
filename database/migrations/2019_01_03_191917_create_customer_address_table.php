@@ -12,7 +12,9 @@ class CreateCustomerAddressTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_address') ) {
 		Schema::create('customer_address', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->smallInteger('custaddr_type')->unsigned();
@@ -32,9 +34,10 @@ class CreateCustomerAddressTable extends Migration {
 			$table->char('custaddr_city_code', 16)->nullable();
 			$table->primary(['customer_key','custaddr_type']);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreateCustomerAddressTable extends Migration {
 	{
 		Schema::drop('customer_address');
 	}
-
 }

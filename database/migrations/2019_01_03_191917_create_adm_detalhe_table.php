@@ -12,7 +12,9 @@ class CreateAdmDetalheTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('adm_detalhe') ) {
 		Schema::create('adm_detalhe', function(Blueprint $table)
+
 		{
 			$table->string('num_adm', 30);
 			$table->integer('store_key')->unsigned();
@@ -32,9 +34,10 @@ class CreateAdmDetalheTable extends Migration {
 			$table->integer('cod_indicador_estorno')->unsigned()->nullable();
 			$table->primary(['num_adm','store_key','sku_id'], 'index_adm_detalhe');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreateAdmDetalheTable extends Migration {
 	{
 		Schema::drop('adm_detalhe');
 	}
-
 }

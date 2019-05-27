@@ -12,16 +12,18 @@ class CreateServertoserverStoreTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('servertoserver_store', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned()->primary();
-			$table->boolean('main_server_type_flag')->nullable();
-			$table->boolean('sec_server_type_flag')->nullable();
-			$table->dateTime('last_change_time')->nullable();
-		});
+                if ( !Schema::hasTable('servertoserver_store') ) {
+
+                    Schema::create('servertoserver_store', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned()->primary();
+                            $table->boolean('main_server_type_flag')->nullable();
+                            $table->boolean('sec_server_type_flag')->nullable();
+                            $table->dateTime('last_change_time')->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +33,4 @@ class CreateServertoserverStoreTable extends Migration {
 	{
 		Schema::drop('servertoserver_store');
 	}
-
 }

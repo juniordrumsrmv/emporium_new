@@ -12,7 +12,9 @@ class CreateQueryItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('query_item') ) {
 		Schema::create('query_item', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -38,9 +40,10 @@ class CreateQueryItemTable extends Migration {
 			$table->primary(['store_key','pos_number','trn_number','start_time','sequence'], 'index_query_item');
 			$table->index(['store_key','cashier_key','pos_number','start_time'], 'index_query_item_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -50,5 +53,4 @@ class CreateQueryItemTable extends Migration {
 	{
 		Schema::drop('query_item');
 	}
-
 }

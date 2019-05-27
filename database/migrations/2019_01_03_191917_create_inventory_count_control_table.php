@@ -12,7 +12,9 @@ class CreateInventoryCountControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('inventory_count_control') ) {
 		Schema::create('inventory_count_control', function(Blueprint $table)
+
 		{
 			$table->integer('inventory_number')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreateInventoryCountControlTable extends Migration {
 			$table->smallInteger('status')->unsigned();
 			$table->primary(['inventory_number','store_key','inventory_date','block_number','count_number'], 'index_inventory_count_control');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateInventoryCountControlTable extends Migration {
 	{
 		Schema::drop('inventory_count_control');
 	}
-
 }

@@ -12,15 +12,18 @@ class CreateCustomerCategoryTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_category') ) {
 		Schema::create('customer_category', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->smallInteger('cst_type_key')->unsigned();
 			$table->primary(['customer_key','cst_type_key'], 'index_customer_category');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateCustomerCategoryTable extends Migration {
 	{
 		Schema::drop('customer_category');
 	}
-
 }

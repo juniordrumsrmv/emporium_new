@@ -12,7 +12,9 @@ class CreateKitListTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('kit_list') ) {
 		Schema::create('kit_list', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plu_key_main')->unsigned();
 			$table->bigInteger('plu_key')->unsigned();
@@ -20,9 +22,10 @@ class CreateKitListTable extends Migration {
 			$table->integer('price_key')->unsigned()->nullable();
 			$table->primary(['plu_key_main','plu_key'], 'index_kit_list');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateKitListTable extends Migration {
 	{
 		Schema::drop('kit_list');
 	}
-
 }

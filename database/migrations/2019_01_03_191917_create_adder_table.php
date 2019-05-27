@@ -12,14 +12,17 @@ class CreateAdderTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('adder') ) {
 		Schema::create('adder', function(Blueprint $table)
+
 		{
 			$table->integer('adder_key')->unsigned()->primary();
 			$table->string('adder_name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateAdderTable extends Migration {
 	{
 		Schema::drop('adder');
 	}
-
 }

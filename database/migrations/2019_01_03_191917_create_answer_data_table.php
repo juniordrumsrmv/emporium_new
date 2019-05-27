@@ -12,7 +12,9 @@ class CreateAnswerDataTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('answer_data') ) {
 		Schema::create('answer_data', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -25,9 +27,10 @@ class CreateAnswerDataTable extends Migration {
 			$table->string('data_value', 80)->nullable();
 			$table->primary(['store_key','pos_number','ticket_number','start_time','item_sequence','sequence'], 'index_answer_data');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreateAnswerDataTable extends Migration {
 	{
 		Schema::drop('answer_data');
 	}
-
 }

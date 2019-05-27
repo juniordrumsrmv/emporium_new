@@ -12,7 +12,9 @@ class CreateEcfTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('ecf') ) {
 		Schema::create('ecf', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('ecf_number')->unsigned();
@@ -42,9 +44,10 @@ class CreateEcfTable extends Migration {
 			$table->char('ecf_owner_insertion_time', 6)->nullable();
 			$table->primary(['store_key','ecf_number'], 'index_ecf');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -54,5 +57,4 @@ class CreateEcfTable extends Migration {
 	{
 		Schema::drop('ecf');
 	}
-
 }

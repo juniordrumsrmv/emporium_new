@@ -12,20 +12,22 @@ class CreateTankTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tank', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned();
-			$table->smallInteger('tank_number')->unsigned();
-			$table->string('tank_name', 30)->nullable();
-			$table->bigInteger('plu_key')->unsigned();
-			$table->dateTime('tank_date_inc')->nullable();
-			$table->dateTime('tank_date_alt')->nullable();
-			$table->decimal('capacity', 15, 3)->nullable();
-			$table->primary(['store_key','tank_number','plu_key'], 'index_tank');
-		});
+                if ( !Schema::hasTable('tank') ) {
+
+                    Schema::create('tank', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->smallInteger('tank_number')->unsigned();
+                            $table->string('tank_name', 30)->nullable();
+                            $table->bigInteger('plu_key')->unsigned();
+                            $table->dateTime('tank_date_inc')->nullable();
+                            $table->dateTime('tank_date_alt')->nullable();
+                            $table->decimal('capacity', 15, 3)->nullable();
+                            $table->primary(['store_key','tank_number','plu_key'], 'index_tank');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +37,4 @@ class CreateTankTable extends Migration {
 	{
 		Schema::drop('tank');
 	}
-
 }

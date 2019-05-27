@@ -12,7 +12,9 @@ class CreatePlanSplitTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_split') ) {
 		Schema::create('plan_split', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_key')->unsigned();
 			$table->smallInteger('plan_split_splits')->unsigned();
@@ -26,9 +28,10 @@ class CreatePlanSplitTable extends Migration {
 			$table->bigInteger('plan_split_type_key')->unsigned()->nullable()->default(0);
 			$table->primary(['plan_key','plan_split_splits'], 'index_plan_split');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -38,5 +41,4 @@ class CreatePlanSplitTable extends Migration {
 	{
 		Schema::drop('plan_split');
 	}
-
 }

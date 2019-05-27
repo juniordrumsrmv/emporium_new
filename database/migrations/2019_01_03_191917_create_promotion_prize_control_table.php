@@ -12,7 +12,9 @@ class CreatePromotionPrizeControlTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_prize_control') ) {
 		Schema::create('promotion_prize_control', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreatePromotionPrizeControlTable extends Migration {
 			$table->bigInteger('eft_trans_nsu')->unsigned()->index('ppc_eft_trans_nsu');
 			$table->primary(['promotion_key','store_key','ppc_date','ppc_time'], 'index_promotion_prize_control');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreatePromotionPrizeControlTable extends Migration {
 	{
 		Schema::drop('promotion_prize_control');
 	}
-
 }

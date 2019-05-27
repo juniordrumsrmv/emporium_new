@@ -12,15 +12,18 @@ class CreateExtraTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('extra') ) {
 		Schema::create('extra', function(Blueprint $table)
+
 		{
 			$table->char('extra_key', 12)->primary();
 			$table->string('name', 50)->nullable();
 			$table->smallInteger('type')->unsigned()->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateExtraTable extends Migration {
 	{
 		Schema::drop('extra');
 	}
-
 }

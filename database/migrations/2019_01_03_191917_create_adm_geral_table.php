@@ -12,7 +12,9 @@ class CreateAdmGeralTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('adm_geral') ) {
 		Schema::create('adm_geral', function(Blueprint $table)
+
 		{
 			$table->integer('transaction', true);
 			$table->string('cnpj_loja', 17);
@@ -37,9 +39,10 @@ class CreateAdmGeralTable extends Migration {
 			$table->index(['cnpj_loja','cod_solicitacao'], 'index_adm_geral_01');
 			$table->index(['num_adm','store_key'], 'index_adm_geral_02');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -49,5 +52,4 @@ class CreateAdmGeralTable extends Migration {
 	{
 		Schema::drop('adm_geral');
 	}
-
 }

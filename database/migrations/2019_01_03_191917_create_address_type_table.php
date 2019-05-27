@@ -12,15 +12,18 @@ class CreateAddressTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('address_type') ) {
 		Schema::create('address_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('address_type_key')->unsigned()->primary();
 			$table->string('address_type_name', 20)->nullable();
 			$table->boolean('address_type_send')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateAddressTypeTable extends Migration {
 	{
 		Schema::drop('address_type');
 	}
-
 }

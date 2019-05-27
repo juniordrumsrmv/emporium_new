@@ -12,14 +12,16 @@ class CreateSerasaGroupTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('serasa_group', function(Blueprint $table)
-		{
-			$table->smallInteger('serasa_type_key')->unsigned();
-			$table->bigInteger('group_key')->unsigned();
-		});
+                if ( !Schema::hasTable('serasa_group') ) {
+
+                    Schema::create('serasa_group', function(Blueprint $table)
+                    {
+                            $table->smallInteger('serasa_type_key')->unsigned();
+                            $table->bigInteger('group_key')->unsigned();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +31,4 @@ class CreateSerasaGroupTable extends Migration {
 	{
 		Schema::drop('serasa_group');
 	}
-
 }

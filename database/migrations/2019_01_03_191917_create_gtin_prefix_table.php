@@ -12,16 +12,19 @@ class CreateGtinPrefixTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('gtin_prefix') ) {
 		Schema::create('gtin_prefix', function(Blueprint $table)
+
 		{
 			$table->string('prefix_in', 24)->nullable();
 			$table->string('prefix_fin', 24)->nullable();
 			$table->integer('ind_esp')->nullable();
 			$table->string('country_name')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateGtinPrefixTable extends Migration {
 	{
 		Schema::drop('gtin_prefix');
 	}
-
 }

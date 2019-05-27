@@ -12,7 +12,9 @@ class CreatePlanPluSplitAmountTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_plu_split_amount') ) {
 		Schema::create('plan_plu_split_amount', function(Blueprint $table)
+
 		{
 			$table->bigInteger('ppsa_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -30,9 +32,10 @@ class CreatePlanPluSplitAmountTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->index(['store_key','plu_key','ppsa_status','ppsa_start_time'], 'ppsa_index_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreatePlanPluSplitAmountTable extends Migration {
 	{
 		Schema::drop('plan_plu_split_amount');
 	}
-
 }

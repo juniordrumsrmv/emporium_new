@@ -12,7 +12,9 @@ class CreateBankingLocationAmountTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('banking_location_amount') ) {
 		Schema::create('banking_location_amount', function(Blueprint $table)
+
 		{
 			$table->smallInteger('location_key')->unsigned();
 			$table->date('reference_date');
@@ -23,9 +25,10 @@ class CreateBankingLocationAmountTable extends Migration {
 			$table->primary(['location_key','reference_date','media_id'], 'index_banking_location_amount');
 			$table->index(['location_key','reference_date','extended_media_id'], 'index_banking_location_amount_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreateBankingLocationAmountTable extends Migration {
 	{
 		Schema::drop('banking_location_amount');
 	}
-
 }

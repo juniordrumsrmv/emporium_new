@@ -12,14 +12,17 @@ class CreateGroupTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('group_type') ) {
 		Schema::create('group_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('group_type_key')->unsigned()->primary();
 			$table->string('group_type_name', 50)->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreateGroupTypeTable extends Migration {
 	{
 		Schema::drop('group_type');
 	}
-
 }

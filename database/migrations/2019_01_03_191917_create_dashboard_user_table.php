@@ -12,7 +12,9 @@ class CreateDashboardUserTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_user') ) {
 		Schema::create('dashboard_user', function(Blueprint $table)
+
 		{
 			$table->bigInteger('agent_id')->unsigned();
 			$table->bigInteger('prm_type')->unsigned();
@@ -20,9 +22,10 @@ class CreateDashboardUserTable extends Migration {
 			$table->text('prm_value', 65535)->nullable();
 			$table->primary(['agent_id','prm_type','prm_id'], 'index_dashboard_user');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateDashboardUserTable extends Migration {
 	{
 		Schema::drop('dashboard_user');
 	}
-
 }

@@ -12,14 +12,16 @@ class CreateSkuTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sku', function(Blueprint $table)
-		{
-			$table->char('sku_id', 14)->primary();
-			$table->bigInteger('plu_key')->unsigned()->index('index_sku_plu_key');
-		});
+                if ( !Schema::hasTable('sku') ) {
+
+                    Schema::create('sku', function(Blueprint $table)
+                    {
+                            $table->char('sku_id', 14)->primary();
+                            $table->bigInteger('plu_key')->unsigned()->index('index_sku_plu_key');
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +31,4 @@ class CreateSkuTable extends Migration {
 	{
 		Schema::drop('sku');
 	}
-
 }

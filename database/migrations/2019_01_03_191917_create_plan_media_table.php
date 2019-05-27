@@ -12,7 +12,9 @@ class CreatePlanMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_media') ) {
 		Schema::create('plan_media', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_key')->unsigned();
 			$table->smallInteger('media_id');
@@ -20,9 +22,10 @@ class CreatePlanMediaTable extends Migration {
 			$table->dateTime('last_change_time')->nullable();
 			$table->primary(['plan_key','media_id','media_sub_id'], 'index_plan_media');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreatePlanMediaTable extends Migration {
 	{
 		Schema::drop('plan_media');
 	}
-
 }

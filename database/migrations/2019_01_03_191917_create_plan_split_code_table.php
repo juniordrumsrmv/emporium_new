@@ -12,14 +12,17 @@ class CreatePlanSplitCodeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('plan_split_code') ) {
 		Schema::create('plan_split_code', function(Blueprint $table)
+
 		{
 			$table->bigInteger('plan_split_code_key')->unsigned()->primary();
 			$table->char('plan_split_code_desc', 128);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,5 +32,4 @@ class CreatePlanSplitCodeTable extends Migration {
 	{
 		Schema::drop('plan_split_code');
 	}
-
 }

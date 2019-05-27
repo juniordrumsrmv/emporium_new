@@ -12,7 +12,9 @@ class CreatePromotionGiftTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_gift') ) {
 		Schema::create('promotion_gift', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreatePromotionGiftTable extends Migration {
 			$table->boolean('status')->nullable();
 			$table->primary(['promotion_key','store_key','plu_key'], 'index_promotion_gift');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreatePromotionGiftTable extends Migration {
 	{
 		Schema::drop('promotion_gift');
 	}
-
 }

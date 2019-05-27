@@ -12,7 +12,9 @@ class CreateCustomerAnswerTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_answer') ) {
 		Schema::create('customer_answer', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -30,9 +32,10 @@ class CreateCustomerAnswerTable extends Migration {
 			$table->index(['poll_type','poll_key','question_number'], 'index_customer_answer_poll');
 			$table->index(['customer_key','poll_type','poll_key'], 'index_customer_answer_customer');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -42,5 +45,4 @@ class CreateCustomerAnswerTable extends Migration {
 	{
 		Schema::drop('customer_answer');
 	}
-
 }

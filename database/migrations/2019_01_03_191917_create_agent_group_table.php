@@ -12,15 +12,18 @@ class CreateAgentGroupTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('agent_group') ) {
 		Schema::create('agent_group', function(Blueprint $table)
+
 		{
 			$table->bigInteger('group_key')->unsigned();
 			$table->bigInteger('agent_key')->unsigned();
 			$table->primary(['group_key','agent_key'], 'index_agent_group');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateAgentGroupTable extends Migration {
 	{
 		Schema::drop('agent_group');
 	}
-
 }

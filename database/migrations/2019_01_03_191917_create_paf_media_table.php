@@ -12,7 +12,9 @@ class CreatePafMediaTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('paf_media') ) {
 		Schema::create('paf_media', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -27,9 +29,10 @@ class CreatePafMediaTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time','sequence'], 'index_paf_media');
 			$table->index(['store_key','ecf_number','ticket_number','sequence'], 'index_ticket_ecf');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreatePafMediaTable extends Migration {
 	{
 		Schema::drop('paf_media');
 	}
-
 }

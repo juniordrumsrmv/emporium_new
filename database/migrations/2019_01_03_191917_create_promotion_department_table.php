@@ -12,15 +12,18 @@ class CreatePromotionDepartmentTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_department') ) {
 		Schema::create('promotion_department', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('department_key')->unsigned();
 			$table->primary(['promotion_key','department_key'], 'index_promotion_department');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreatePromotionDepartmentTable extends Migration {
 	{
 		Schema::drop('promotion_department');
 	}
-
 }

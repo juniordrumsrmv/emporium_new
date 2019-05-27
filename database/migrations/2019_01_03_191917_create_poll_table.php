@@ -12,7 +12,9 @@ class CreatePollTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('poll') ) {
 		Schema::create('poll', function(Blueprint $table)
+
 		{
 			$table->bigInteger('poll_key', true)->unsigned();
 			$table->boolean('poll_type')->nullable();
@@ -21,9 +23,10 @@ class CreatePollTable extends Migration {
 			$table->dateTime('start_time')->nullable();
 			$table->dateTime('finish_time')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreatePollTable extends Migration {
 	{
 		Schema::drop('poll');
 	}
-
 }

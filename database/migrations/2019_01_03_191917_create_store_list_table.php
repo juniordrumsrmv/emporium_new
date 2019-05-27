@@ -12,16 +12,18 @@ class CreateStoreListTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('store_list', function(Blueprint $table)
-		{
-			$table->bigInteger('store_key')->unsigned();
-			$table->smallInteger('list_type')->nullable();
-            $table->char('list_id', 20)->nullable();
-            $table->char('list_value', 20)->nullable();
-		});
+                if ( !Schema::hasTable('store_list') ) {
+
+                    Schema::create('store_list', function(Blueprint $table)
+                    {
+                            $table->bigInteger('store_key')->unsigned();
+                            $table->smallInteger('list_type')->nullable();
+                $table->char('list_id', 20)->nullable();
+                $table->char('list_value', 20)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +33,4 @@ class CreateStoreListTable extends Migration {
 	{
 		Schema::drop('store_list');
 	}
-
 }

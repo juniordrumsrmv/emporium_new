@@ -12,7 +12,9 @@ class CreateDashPanelTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dash_panel') ) {
 		Schema::create('dash_panel', function(Blueprint $table)
+
 		{
 			$table->string('name', 128);
 			$table->integer('position');
@@ -20,9 +22,10 @@ class CreateDashPanelTable extends Migration {
 			$table->string('config', 250)->nullable();
 			$table->primary(['position','module'], 'index_dash_panel');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateDashPanelTable extends Migration {
 	{
 		Schema::drop('dash_panel');
 	}
-
 }

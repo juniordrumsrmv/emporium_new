@@ -12,7 +12,9 @@ class CreateInvoiceTypeTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('invoice_type') ) {
 		Schema::create('invoice_type', function(Blueprint $table)
+
 		{
 			$table->smallInteger('invoice_type_key')->unsigned()->primary();
 			$table->string('invoice_name', 30);
@@ -28,9 +30,10 @@ class CreateInvoiceTypeTable extends Migration {
 			$table->boolean('invoice_extra_type')->nullable();
 			$table->boolean('invoice_receipt')->nullable();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreateInvoiceTypeTable extends Migration {
 	{
 		Schema::drop('invoice_type');
 	}
-
 }

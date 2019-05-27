@@ -12,7 +12,9 @@ class CreateMessageTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('message') ) {
 		Schema::create('message', function(Blueprint $table)
+
 		{
 			$table->char('message_key', 12);
 			$table->char('message_lang', 2);
@@ -20,9 +22,10 @@ class CreateMessageTable extends Migration {
 			$table->binary('message_text', 65535)->nullable();
 			$table->primary(['message_key','message_lang'], 'index_message');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +35,4 @@ class CreateMessageTable extends Migration {
 	{
 		Schema::drop('message');
 	}
-
 }

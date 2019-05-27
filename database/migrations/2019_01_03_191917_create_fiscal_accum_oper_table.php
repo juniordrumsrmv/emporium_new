@@ -12,7 +12,9 @@ class CreateFiscalAccumOperTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_accum_oper') ) {
 		Schema::create('fiscal_accum_oper', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('ecf_number')->unsigned();
@@ -28,9 +30,10 @@ class CreateFiscalAccumOperTable extends Migration {
 			$table->decimal('amount_loan', 15, 3);
 			$table->primary(['store_key','ecf_number','fiscal_date','alternate_id','media_id'], 'index_fiscal_accum_oper');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreateFiscalAccumOperTable extends Migration {
 	{
 		Schema::drop('fiscal_accum_oper');
 	}
-
 }

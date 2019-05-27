@@ -12,7 +12,9 @@ class CreatePollQuestionTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('poll_question') ) {
 		Schema::create('poll_question', function(Blueprint $table)
+
 		{
 			$table->bigInteger('poll_key')->unsigned();
 			$table->smallInteger('question_number')->unsigned();
@@ -21,9 +23,10 @@ class CreatePollQuestionTable extends Migration {
 			$table->string('question_prompt')->nullable();
 			$table->primary(['poll_key','question_number'], 'index_poll_question');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -33,5 +36,4 @@ class CreatePollQuestionTable extends Migration {
 	{
 		Schema::drop('poll_question');
 	}
-
 }

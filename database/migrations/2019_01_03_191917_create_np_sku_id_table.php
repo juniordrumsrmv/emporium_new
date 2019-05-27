@@ -12,15 +12,18 @@ class CreateNpSkuIdTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('np_sku_id') ) {
 		Schema::create('np_sku_id', function(Blueprint $table)
+
 		{
 			$table->char('sku_id', 14);
 			$table->bigInteger('np_id')->unsigned();
 			$table->primary(['sku_id','np_id'], 'index_np_sku_id');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -30,5 +33,4 @@ class CreateNpSkuIdTable extends Migration {
 	{
 		Schema::drop('np_sku_id');
 	}
-
 }

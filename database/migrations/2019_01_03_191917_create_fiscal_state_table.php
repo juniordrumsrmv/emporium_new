@@ -12,7 +12,9 @@ class CreateFiscalStateTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_state') ) {
 		Schema::create('fiscal_state', function(Blueprint $table)
+
 		{
 			$table->char('fiscal_state_acronym', 4);
 			$table->smallInteger('fiscal_state_type')->unsigned();
@@ -24,9 +26,10 @@ class CreateFiscalStateTable extends Migration {
 			$table->text('fiscal_state_ws_query_header', 65535)->nullable();
 			$table->primary(['fiscal_state_acronym','fiscal_state_type'], 'index_fiscal_state');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -36,5 +39,4 @@ class CreateFiscalStateTable extends Migration {
 	{
 		Schema::drop('fiscal_state');
 	}
-
 }

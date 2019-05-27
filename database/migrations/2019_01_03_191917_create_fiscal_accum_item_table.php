@@ -12,7 +12,9 @@ class CreateFiscalAccumItemTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('fiscal_accum_item') ) {
 		Schema::create('fiscal_accum_item', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('ecf_number')->unsigned();
@@ -27,9 +29,10 @@ class CreateFiscalAccumItemTable extends Migration {
 			$table->boolean('pis_cofins')->nullable();
 			$table->unique(['store_key','fiscal_date','ecf_number','plu_id'], 'index_accum_item');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreateFiscalAccumItemTable extends Migration {
 	{
 		Schema::drop('fiscal_accum_item');
 	}
-
 }

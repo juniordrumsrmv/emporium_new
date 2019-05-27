@@ -12,7 +12,9 @@ class CreatePromotionExternalTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_external') ) {
 		Schema::create('promotion_external', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->string('name', 50)->nullable();
@@ -32,9 +34,10 @@ class CreatePromotionExternalTable extends Migration {
 			$table->smallInteger('send_pos')->unsigned();
 			$table->smallInteger('status')->unsigned();
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -44,5 +47,4 @@ class CreatePromotionExternalTable extends Migration {
 	{
 		Schema::drop('promotion_external');
 	}
-
 }

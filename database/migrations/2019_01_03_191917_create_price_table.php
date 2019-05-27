@@ -12,16 +12,19 @@ class CreatePriceTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('price') ) {
 		Schema::create('price', function(Blueprint $table)
+
 		{
 			$table->integer('price_key')->unsigned()->primary();
 			$table->string('name', 50)->nullable();
 			$table->dateTime('last_change_time')->nullable();
 			$table->boolean('adm_price')->default(0);
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreatePriceTable extends Migration {
 	{
 		Schema::drop('price');
 	}
-
 }

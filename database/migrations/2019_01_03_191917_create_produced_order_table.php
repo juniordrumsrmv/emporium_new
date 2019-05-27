@@ -12,7 +12,9 @@ class CreateProducedOrderTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('produced_order') ) {
 		Schema::create('produced_order', function(Blueprint $table)
+
 		{
 			$table->bigInteger('order_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -28,9 +30,10 @@ class CreateProducedOrderTable extends Migration {
 			$table->decimal('price_suggestion', 6, 3)->nullable();
 			$table->index(['store_key','plu_key_prod'], 'index_store_order');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -40,5 +43,4 @@ class CreateProducedOrderTable extends Migration {
 	{
 		Schema::drop('produced_order');
 	}
-
 }

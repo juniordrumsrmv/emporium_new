@@ -12,7 +12,9 @@ class CreateCustomerPlatesTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('customer_plates') ) {
 		Schema::create('customer_plates', function(Blueprint $table)
+
 		{
 			$table->bigInteger('customer_key')->unsigned();
 			$table->bigInteger('dependent_id')->unsigned();
@@ -22,9 +24,10 @@ class CreateCustomerPlatesTable extends Migration {
 			$table->string('km', 11)->nullable();
 			$table->primary(['customer_key','dependent_id','plate_number'],'index_customer_plates');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateCustomerPlatesTable extends Migration {
 	{
 		Schema::drop('customer_plates');
 	}
-
 }

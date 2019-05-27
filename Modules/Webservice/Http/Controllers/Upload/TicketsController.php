@@ -29,7 +29,9 @@ class TicketsController extends Controller {
     /**
      * Busca de cupons por loja e data
      *
-     * @bodyParam title string required The title of the post
+     * @bodyParam empresa string required Nome da empresa
+     * @bodyParam dataMovimento date required Data fiscal
+     * @bodyParam loja int required Loja
      * @param \Request $request
      * @return array
      * @response {
@@ -38,7 +40,7 @@ class TicketsController extends Controller {
      *  "roles": ["admin"]
      * }
      */
-    public function getTicketStoreByDate(\Request $request){
+    public function getTicketStoreDate(\Request $request){
         $aaa = [
                 'adsda' => 'adadad'
                ];

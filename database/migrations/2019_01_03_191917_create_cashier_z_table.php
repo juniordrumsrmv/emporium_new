@@ -12,7 +12,9 @@ class CreateCashierZTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('cashier_z') ) {
 		Schema::create('cashier_z', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->smallInteger('pos_number')->unsigned();
@@ -25,9 +27,10 @@ class CreateCashierZTable extends Migration {
 			$table->primary(['store_key','pos_number','ticket_number','start_time'], 'index_cashier_z');
 			$table->index(['store_key','pos_number','transaction_number','start_time'], 'index_cashier_z_1');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -37,5 +40,4 @@ class CreateCashierZTable extends Migration {
 	{
 		Schema::drop('cashier_z');
 	}
-
 }

@@ -12,17 +12,19 @@ class CreateStateTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('state', function(Blueprint $table)
-		{
-			$table->char('acronym', 4)->primary();
-			$table->string('name')->nullable();
-			$table->boolean('timezone')->nullable();
-			$table->boolean('dls_timezone')->nullable();
-			$table->char('state_code', 10)->nullable();
-		});
+                if ( !Schema::hasTable('state') ) {
+
+                    Schema::create('state', function(Blueprint $table)
+                    {
+                            $table->char('acronym', 4)->primary();
+                            $table->string('name')->nullable();
+                            $table->boolean('timezone')->nullable();
+                            $table->boolean('dls_timezone')->nullable();
+                            $table->char('state_code', 10)->nullable();
+                    });
+
+		}
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -32,5 +34,4 @@ class CreateStateTable extends Migration {
 	{
 		Schema::drop('state');
 	}
-
 }

@@ -12,7 +12,9 @@ class CreatePromotionExternalPrmTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('promotion_external_prm') ) {
 		Schema::create('promotion_external_prm', function(Blueprint $table)
+
 		{
 			$table->bigInteger('promotion_key')->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -23,9 +25,10 @@ class CreatePromotionExternalPrmTable extends Migration {
 			$table->smallInteger('data_hidden')->nullable();
 			$table->primary(['promotion_key','store_key','data_id'], 'index_promotion_external_prm');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,5 +38,4 @@ class CreatePromotionExternalPrmTable extends Migration {
 	{
 		Schema::drop('promotion_external_prm');
 	}
-
 }

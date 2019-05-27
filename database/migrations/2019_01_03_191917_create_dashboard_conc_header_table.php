@@ -12,7 +12,9 @@ class CreateDashboardConcHeaderTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dashboard_conc_header') ) {
 		Schema::create('dashboard_conc_header', function(Blueprint $table)
+
 		{
 			$table->bigInteger('store_key')->unsigned();
 			$table->date('fiscal_date');
@@ -27,9 +29,10 @@ class CreateDashboardConcHeaderTable extends Migration {
 			$table->dateTime('last_sent_time')->nullable();
 			$table->primary(['nseriesat','nrec'], 'index_dashboard_conc_header');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -39,5 +42,4 @@ class CreateDashboardConcHeaderTable extends Migration {
 	{
 		Schema::drop('dashboard_conc_header');
 	}
-
 }

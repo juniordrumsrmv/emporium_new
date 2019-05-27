@@ -12,7 +12,9 @@ class CreateDotzFileTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('dotz_file') ) {
 		Schema::create('dotz_file', function(Blueprint $table)
+
 		{
 			$table->bigInteger('file_key', true)->unsigned();
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreateDotzFileTable extends Migration {
 			$table->smallInteger('file_type')->unsigned()->nullable();
 			$table->unique(['file_key','store_key','plu_key_list_id'], 'index_dotz_file');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateDotzFileTable extends Migration {
 	{
 		Schema::drop('dotz_file');
 	}
-
 }

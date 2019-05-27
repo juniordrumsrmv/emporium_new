@@ -12,7 +12,9 @@ class CreateCustodiamUserTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('custodiam_user') ) {
 		Schema::create('custodiam_user', function(Blueprint $table)
+
 		{
 			$table->bigInteger('custodiam_store');
 			$table->string('custodiam_user_email', 64);
@@ -22,9 +24,10 @@ class CreateCustodiamUserTable extends Migration {
 			$table->smallInteger('custodiam_partner')->unsigned();
 			$table->primary(['custodiam_store','custodiam_user_email','custodiam_user_type','custodiam_partner'], 'index_custodiam_user');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateCustodiamUserTable extends Migration {
 	{
 		Schema::drop('custodiam_user');
 	}
-
 }

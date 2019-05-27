@@ -12,16 +12,19 @@ class CreateDiscountWrappedupTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('discount_wrappedup') ) {
 		Schema::create('discount_wrappedup', function(Blueprint $table)
+
 		{
 			$table->bigInteger('dst_key')->unsigned();
 			$table->boolean('wrappedup_type');
 			$table->bigInteger('wrappedup_key')->unsigned();
 			$table->primary(['dst_key','wrappedup_type','wrappedup_key'], 'index_discount_wrappedup');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,5 +34,4 @@ class CreateDiscountWrappedupTable extends Migration {
 	{
 		Schema::drop('discount_wrappedup');
 	}
-
 }

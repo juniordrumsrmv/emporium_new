@@ -12,7 +12,9 @@ class CreateCompetitorResearchTable extends Migration {
 	 */
 	public function up()
 	{
+        if ( !Schema::hasTable('competitor_research') ) {
 		Schema::create('competitor_research', function(Blueprint $table)
+
 		{
 			$table->bigInteger('research_key')->unsigned()->index('index_research_key');
 			$table->bigInteger('store_key')->unsigned();
@@ -22,9 +24,10 @@ class CreateCompetitorResearchTable extends Migration {
 			$table->date('research_date');
 			$table->index(['store_key','compet_key','plu_key','research_date','research_key'], 'index_research_competitor');
 		});
+
+        }
+
 	}
-
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -34,5 +37,4 @@ class CreateCompetitorResearchTable extends Migration {
 	{
 		Schema::drop('competitor_research');
 	}
-
 }
